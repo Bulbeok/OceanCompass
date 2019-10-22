@@ -1,11 +1,9 @@
-package com.example.oceancompass
+package com.glic.oceancompass
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class Sign_inActivity : AppCompatActivity() {

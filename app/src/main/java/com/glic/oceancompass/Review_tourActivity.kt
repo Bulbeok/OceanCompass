@@ -1,4 +1,4 @@
-package com.example.oceancompass
+package com.glic.oceancompass
 
 import android.net.http.SslError
 import android.os.Build
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.webkit.SslErrorHandler
-import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 

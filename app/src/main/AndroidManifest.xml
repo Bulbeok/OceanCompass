@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.example.oceancompass">
+        package="com.glic.oceancompass">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -14,15 +14,15 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".MainActivity"
+                android:name="com.glic.oceancompass.MainActivity"
                 android:label="@string/title_activity_main" />
-        <activity android:name=".Search_tourActivity" />
+        <activity android:name="com.glic.oceancompass.Search_tourActivity" />
         <activity
-                android:name=".Review_tourActivity"
+                android:name="com.glic.oceancompass.Review_tourActivity"
                 android:theme="@style/ReviewTheme" />
-        <activity android:name=".Sign_inActivity" />
+        <activity android:name="com.glic.oceancompass.Sign_inActivity" />
         <activity
-                android:name=".StartActivity"
+                android:name="com.glic.oceancompass.StartActivity"
                 android:noHistory="true"
                 android:theme="@style/FullScreen">
             <intent-filter>

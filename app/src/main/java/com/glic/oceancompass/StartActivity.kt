@@ -1,4 +1,4 @@
-package com.example.oceancompass
+package com.glic.oceancompass
 
 import android.Manifest
 import android.content.DialogInterface

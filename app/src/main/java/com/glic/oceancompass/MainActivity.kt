@@ -1,4 +1,4 @@
-package com.example.oceancompass
+package com.glic.oceancompass
 
 import android.content.Context
 import android.content.Intent
@@ -9,15 +9,11 @@ import android.transition.Slide
 import android.transition.TransitionManager
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.inputmethod.InputMethod
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import android.widget.EditText
 import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import kotlinx.android.synthetic.main.activity_main.*
-import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
