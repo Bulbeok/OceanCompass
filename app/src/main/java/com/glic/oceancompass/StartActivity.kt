@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -15,8 +14,8 @@ import androidx.core.content.ContextCompat
 
 class StartActivity : AppCompatActivity() {
 
-    private val TAG = "tag"
-
+    private val REQUEST_ID_MULTIPLE_PERMISSIONS = 1
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,12 +27,11 @@ class StartActivity : AppCompatActivity() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
 
-                val i = Intent(this@StartActivity, MainActivity::class.java)
-                startActivity(i)
+                startActivity(Intent(this@StartActivity, MainActivity::class.java))
 
                 // close this activity
                 finish()
-            }, SPLASH_TIME_OUT.toLong())
+            }, 2000)
         }
     }
 
@@ -57,7 +55,6 @@ class StartActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        Log.d(TAG, "Permission callback called-------")
         when (requestCode) {
             REQUEST_ID_MULTIPLE_PERMISSIONS -> {
 
@@ -72,20 +69,17 @@ class StartActivity : AppCompatActivity() {
                     // Check for both permissions
                     if (perms[Manifest.permission.ACCESS_COARSE_LOCATION] == PackageManager.PERMISSION_GRANTED
                         && perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED) {
-                        Log.d(TAG, "sms & location services permission granted")
                         // process the normal flow
-                        val i = Intent(this@StartActivity, MainActivity::class.java)
-                        startActivity(i)
+                        startActivity(Intent(this@StartActivity, MainActivity::class.java))
                         finish()
                         //else any one or both the permissions are not granted
                     } else {
-                        Log.d(TAG, "Some permissions are not granted ask again ")
                         //permission is denied (this is the first time, when "never ask again" is not checked) so ask again explaining the usage of permission
                         //                        // shouldShowRequestPermissionRationale will return true
                         //show the dialog or snackbar saying its necessary and try again otherwise proceed with setup.
                         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                             || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                            showDialogOK("Service Permissions are required for this app",
+                            showDialogOK("애프리케이션을 사용할려면 권한이 필요합니다.",
                                 DialogInterface.OnClickListener { _, which ->
                                     when (which) {
                                         DialogInterface.BUTTON_POSITIVE -> checkAndRequestPermissions()
@@ -95,7 +89,7 @@ class StartActivity : AppCompatActivity() {
                                     }
                                 })
                         } else {
-                            explain("You need to give some mandatory permissions to continue. Do you want to go to app settings?")
+                            explain("애플리케이션을 사용을 할려면 권한을 허용해야합니다. 애플리케이션 설정으로 이동하시겠습니까?")
                             //                            //proceed with logic by disabling the related features or quit the app.
                         }//permission is denied (and never ask again is  checked)
                         //shouldShowRequestPermissionRationale will return false
@@ -103,12 +97,11 @@ class StartActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
-    private fun showDialogOK(message: String, okListener: DialogInterface.OnClickListener) {
+    private fun showDialogOK(msg: String, okListener: DialogInterface.OnClickListener) {
         AlertDialog.Builder(this)
-            .setMessage(message)
+            .setMessage(msg)
             .setPositiveButton("OK", okListener)
             .setNegativeButton("Cancel", okListener)
             .create()
@@ -120,14 +113,9 @@ class StartActivity : AppCompatActivity() {
         dialog.setMessage(msg)
             .setPositiveButton("Yes") { _, _ ->
                 //  permissionsclass.requestPermission(type,code);
-                startActivity(Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:com.example.oceancompass")))
+                startActivity(Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:com.glic.oceancompass")))
             }
             .setNegativeButton("Cancel") { _, _ -> finish() }
         dialog.show()
-    }
-
-    companion object {
-        val REQUEST_ID_MULTIPLE_PERMISSIONS = 1
-        private val SPLASH_TIME_OUT = 2000
     }
 }
