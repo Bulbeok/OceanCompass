@@ -2,6 +2,7 @@
     <string name="app_name">OceanCompass</string>
     <string name="title_activity_main">Main</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="Search_tour">Search tour</string>
+    <string name="shared_tour">shared tour</string>
+    <string name="setting">setting</string>
 </resources>

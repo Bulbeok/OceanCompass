@@ -11,14 +11,19 @@
     <item
             app:showAsAction="ifRoom"
             android:id="@+id/search"
-            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:icon="@drawable/search"
 
-            android:title="@string/title_dashboard" />
+            android:title="@string/Search_tour" />
 
     <item
             app:showAsAction="ifRoom"
             android:id="@+id/share"
-            android:icon="@drawable/ic_notifications_black_24dp"
-            android:title="@string/title_notifications" />
+            android:icon="@drawable/shared"
+            android:title="@string/shared_tour" />
+    <item
+            app:showAsAction="ifRoom"
+            android:id="@+id/setting"
+            android:icon="@drawable/setting"
+            android:title="@string/setting" />
 
 </menu>
