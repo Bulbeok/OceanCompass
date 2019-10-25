@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.transition.Slide
-import android.transition.TransitionManager
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -24,10 +23,12 @@ class MainActivity : AppCompatActivity() {
 
         search_picture.setOnClickListener {
             startActivity(Intent(this@MainActivity,SearchActivity::class.java))
+            finish()
             overridePendingTransition(0, 0)
         }
         review_picture.setOnClickListener {
             startActivity(Intent(this@MainActivity,ReviewActivity::class.java))
+            finish()
             overridePendingTransition(0, 0)
         }
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
@@ -37,17 +38,19 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.search -> {
                     startActivity(Intent(this,SearchActivity::class.java))
+                    finish()
                     overridePendingTransition(0, 0)
                 }
                 R.id.share -> {
                     startActivity(Intent(this,ReviewActivity::class.java))
+                    finish()
                     overridePendingTransition(0, 0)
                 }
             }
             true
         }
         sign_in.setOnClickListener{
-            val view = LayoutInflater.from(this).inflate(R.layout.sign_in, this.findViewById(R.id.main),false)
+            val view = LayoutInflater.from(this).inflate(R.layout.sign_in, this.findViewById(R.id.search_layout),false)
             val popupWindow = PopupWindow(
                 view,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT,
@@ -68,9 +71,8 @@ class MainActivity : AppCompatActivity() {
 
                 // Slide animation for popup window exit transition
                 val slideOut = Slide()
-                slideOut.slideEdge = Gravity.RIGHT
+                slideOut.slideEdge = Gravity.END
                 popupWindow.exitTransition = slideOut
-
             }
 
             val login = view.findViewById<Button>(R.id.Login_Button)
@@ -83,7 +85,6 @@ class MainActivity : AppCompatActivity() {
             popupWindow.setOnDismissListener {
                 Toast.makeText(applicationContext,"로그인이 완료되었습니다.",Toast.LENGTH_SHORT).show()
             }
-            TransitionManager.beginDelayedTransition(main)
             popupWindow.showAtLocation(
                 main,
                 Gravity.CENTER,
@@ -111,7 +112,7 @@ class MainActivity : AppCompatActivity() {
 
                 // Slide animation for popup window exit transition
                 val slideOut = Slide()
-                slideOut.slideEdge = Gravity.RIGHT
+                slideOut.slideEdge = Gravity.END
                 popupWindow.exitTransition = slideOut
 
             }
@@ -120,7 +121,6 @@ class MainActivity : AppCompatActivity() {
                 popupWindow.dismiss()
                 Toast.makeText(applicationContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
             }
-            TransitionManager.beginDelayedTransition(main)
             popupWindow.showAtLocation(
                 main,
                 Gravity.CENTER,
@@ -128,7 +128,5 @@ class MainActivity : AppCompatActivity() {
                 0
             )
         }
-
-
     }
 }

@@ -1,12 +1,10 @@
 package com.glic.oceancompass
 
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Slide
-import android.transition.TransitionManager
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -23,33 +21,33 @@ class SearchActivity : AppCompatActivity() {
         setContentView(R.layout.search)
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
 
-        bottomNavigationView.menu.findItem(R.id.search).isChecked = true;
+        bottomNavigationView.menu.findItem(R.id.search_layout).isChecked = true;
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
                     startActivity(Intent(this,MainActivity::class.java))
+                    finish()
                     overridePendingTransition(0, 0)
                 }
                 R.id.search -> {
                 }
                 R.id.share -> {
                     startActivity(Intent(this,ReviewActivity::class.java))
+                    finish()
                     overridePendingTransition(0, 0)
                 }
             }
             true
         }
         input_local.setOnClickListener {
-            val inflater: LayoutInflater =
-                getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val view = inflater.inflate(R.layout.sign_in, null)
+            val view = LayoutInflater.from(this).inflate(R.layout.sign_in, this.findViewById(R.id.search_layout),false)
             val popupWindow = PopupWindow(
                 view,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT
             )
-            popupWindow.setFocusable(true) //팝업윈도우 키보드강제화
-            popupWindow.isOutsideTouchable() //외부터치시 닫기
+            popupWindow.isFocusable = true //팝업윈도우 키보드강제화
+            popupWindow.isOutsideTouchable //외부터치시 닫기
             // Set an elevation for the popup window
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 popupWindow.elevation = 10.0F
@@ -63,7 +61,7 @@ class SearchActivity : AppCompatActivity() {
 
                 // Slide animation for popup window exit transition
                 val slideOut = Slide()
-                slideOut.slideEdge = Gravity.RIGHT
+                slideOut.slideEdge = Gravity.END
                 popupWindow.exitTransition = slideOut
 
             }
@@ -75,13 +73,18 @@ class SearchActivity : AppCompatActivity() {
 
                 popupWindow.dismiss()
             }
-            TransitionManager.beginDelayedTransition(search_layout1)
             popupWindow.showAtLocation(
-                search_layout1,
+                search_layout,
                 Gravity.CENTER,
                 0,
                 0
             )
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this@SearchActivity,MainActivity::class.java))
+        finish()
+        overridePendingTransition(0, 0)
     }
 }

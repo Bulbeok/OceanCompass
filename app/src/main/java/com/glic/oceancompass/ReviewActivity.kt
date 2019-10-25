@@ -23,10 +23,12 @@ class ReviewActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> {
                     startActivity(Intent(this,MainActivity::class.java))
+                    finish()
                     overridePendingTransition(0, 0)
                 }
                 R.id.search -> {
                     startActivity(Intent(this,SearchActivity::class.java))
+                    finish()
                     overridePendingTransition(0, 0)
                 }
                 R.id.share -> {
@@ -52,6 +54,11 @@ class ReviewActivity : AppCompatActivity() {
                 handler!!.proceed()
             }
         }
+    }
 
+    override fun onBackPressed() {
+        startActivity(Intent(this@ReviewActivity,MainActivity::class.java))
+        finish()
+        overridePendingTransition(0, 0)
     }
 }
