@@ -1,6 +1,5 @@
 package com.glic.oceancompass
 
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -15,20 +14,20 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.main)
 
         search_picture.setOnClickListener {
-            startActivity(Intent(this@MainActivity,Search_tourActivity::class.java))
+            startActivity(Intent(this@MainActivity,SearchActivity::class.java))
             overridePendingTransition(0, 0)
         }
         review_picture.setOnClickListener {
-            startActivity(Intent(this@MainActivity,Review_tourActivity::class.java))
+            startActivity(Intent(this@MainActivity,ReviewActivity::class.java))
             overridePendingTransition(0, 0)
         }
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
@@ -37,26 +36,25 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> {
                 }
                 R.id.search -> {
-                    startActivity(Intent(this,Search_tourActivity::class.java))
+                    startActivity(Intent(this,SearchActivity::class.java))
                     overridePendingTransition(0, 0)
                 }
                 R.id.share -> {
-                    startActivity(Intent(this,Review_tourActivity::class.java))
+                    startActivity(Intent(this,ReviewActivity::class.java))
                     overridePendingTransition(0, 0)
                 }
             }
             true
         }
         sign_in.setOnClickListener{
-            val inflater: LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val view = inflater.inflate(R.layout.sign_in,null)
+            val view = LayoutInflater.from(this).inflate(R.layout.sign_in, this.findViewById(R.id.main),false)
             val popupWindow = PopupWindow(
                 view,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT
             )
-            popupWindow.setFocusable(true) //팝업윈도우 키보드강제화
-            popupWindow.isOutsideTouchable() //외부터치시 닫기
+            popupWindow.isFocusable = true //팝업윈도우 키보드강제화
+            popupWindow.isOutsideTouchable //외부터치시 닫기
             // Set an elevation for the popup window
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 popupWindow.elevation = 10.0F
@@ -85,17 +83,16 @@ class MainActivity : AppCompatActivity() {
             popupWindow.setOnDismissListener {
                 Toast.makeText(applicationContext,"로그인이 완료되었습니다.",Toast.LENGTH_SHORT).show()
             }
-            TransitionManager.beginDelayedTransition(home_layout)
+            TransitionManager.beginDelayedTransition(main)
             popupWindow.showAtLocation(
-                home_layout,
+                main,
                 Gravity.CENTER,
                 0,
                 0
             )
         }
         sign_up.setOnClickListener{
-            val inflater: LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val view = inflater.inflate(R.layout.sign_up,null)
+            val view = LayoutInflater.from(this).inflate(R.layout.sign_up, this.findViewById(R.id.main),false)
             val popupWindow = PopupWindow(
                 view,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT,
@@ -123,9 +120,9 @@ class MainActivity : AppCompatActivity() {
                 popupWindow.dismiss()
                 Toast.makeText(applicationContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
             }
-            TransitionManager.beginDelayedTransition(home_layout)
+            TransitionManager.beginDelayedTransition(main)
             popupWindow.showAtLocation(
-                home_layout,
+                main,
                 Gravity.CENTER,
                 0,
                 0

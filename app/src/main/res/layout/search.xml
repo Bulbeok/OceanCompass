@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:layout_weight="10"
         android:background="@drawable/search_background"
-        tools:context=".Search_tourActivity">
+        tools:context=".SearchActivity">
 
     <LinearLayout
             android:id="@+id/linearLayout"

@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffff"
-        tools:context="com.glic.oceancompass.Review_tour2Activity">
+        tools:context="com.glic.oceancompass.ReviewAddActivity">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -127,16 +127,6 @@
                 android:text="#태그"
                 android:textColor="#646464"
                 android:textSize="20sp" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/main_bottom_navigation_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                android:background="?android:attr/windowBackground"
-                app:itemIconTint="@drawable/selector"
-                app:menu="@menu/bottom_nav_menu" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

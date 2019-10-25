@@ -12,7 +12,6 @@
             app:showAsAction="ifRoom"
             android:id="@+id/search"
             android:icon="@drawable/search"
-
             android:title="@string/Search_tour" />
 
     <item

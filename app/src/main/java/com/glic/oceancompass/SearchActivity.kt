@@ -12,17 +12,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.PopupWindow
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_search_tour.*
+import kotlinx.android.synthetic.main.search.*
 
-class Search_tourActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_tour)
+        setContentView(R.layout.search)
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
 
         bottomNavigationView.menu.findItem(R.id.search).isChecked = true;
@@ -35,7 +33,7 @@ class Search_tourActivity : AppCompatActivity() {
                 R.id.search -> {
                 }
                 R.id.share -> {
-                    startActivity(Intent(this,Review_tourActivity::class.java))
+                    startActivity(Intent(this,ReviewActivity::class.java))
                     overridePendingTransition(0, 0)
                 }
             }

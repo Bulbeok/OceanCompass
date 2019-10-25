@@ -10,14 +10,13 @@ import android.webkit.SslErrorHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_review_tour.*
+import kotlinx.android.synthetic.main.review.*
 
-class Review_tourActivity : AppCompatActivity() {
+class ReviewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_review_tour)
+        setContentView(R.layout.review)
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
         bottomNavigationView.menu.findItem(R.id.share).isChecked = true;
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
@@ -27,7 +26,7 @@ class Review_tourActivity : AppCompatActivity() {
                     overridePendingTransition(0, 0)
                 }
                 R.id.search -> {
-                    startActivity(Intent(this,Search_tourActivity::class.java))
+                    startActivity(Intent(this,SearchActivity::class.java))
                     overridePendingTransition(0, 0)
                 }
                 R.id.share -> {
@@ -36,8 +35,7 @@ class Review_tourActivity : AppCompatActivity() {
             true
         }
         sharing_button.setOnClickListener {
-            startActivity(Intent(this,Review_tour2Activity::class.java))
-            overridePendingTransition(0, 0)
+            startActivity(Intent(this,ReviewAddActivity::class.java))
         }
 
         val myWebView = findViewById<View>(R.id.webView1) as WebView
