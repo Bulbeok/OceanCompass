@@ -57,12 +57,9 @@ class Search_tourActivity : AppCompatActivity() {
 
                 popupWindow.dismiss()
             }
-            popupWindow.setOnDismissListener {
-                Toast.makeText(applicationContext,"로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show()
-            }
-            TransitionManager.beginDelayedTransition(home_layout)
+            TransitionManager.beginDelayedTransition(search_layout1)
             popupWindow.showAtLocation(
-                home_layout,
+                search_layout1,
                 Gravity.CENTER,
                 0,
                 0

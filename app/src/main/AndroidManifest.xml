@@ -13,16 +13,18 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".Review_tour2Activity"></activity>
         <activity
-                android:name="com.glic.oceancompass.MainActivity"
-                android:label="@string/title_activity_main" />
-        <activity android:name="com.glic.oceancompass.Search_tourActivity" />
+                android:name=".MainActivity"
+                android:label="@string/title_activity_main"
+                android:theme="@style/AppTheme" />
+        <activity android:name=".Search_tourActivity" />
         <activity
-                android:name="com.glic.oceancompass.Review_tourActivity"
-                android:theme="@style/ReviewTheme" />
-        <activity android:name="com.glic.oceancompass.Sign_inActivity" />
+                android:name=".Review_tourActivity"
+                android:theme="@style/AppTheme" />
+        <activity android:name=".Sign_inActivity" />
         <activity
-                android:name="com.glic.oceancompass.StartActivity"
+                android:name=".StartActivity"
                 android:noHistory="true"
                 android:theme="@style/FullScreen">
             <intent-filter>
