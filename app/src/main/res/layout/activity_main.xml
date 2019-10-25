@@ -109,7 +109,7 @@
             app:srcCompat="@drawable/gall" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation_view"
+            android:id="@+id/main_bottom_navigation_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -117,6 +117,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:itemIconTint="@drawable/selector"
             app:menu="@menu/bottom_nav_menu" />
 
 

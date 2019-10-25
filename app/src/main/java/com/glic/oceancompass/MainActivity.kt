@@ -3,17 +3,20 @@ package com.glic.oceancompass
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Slide
 import android.transition.TransitionManager
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.PopupWindow
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,9 +26,27 @@ class MainActivity : AppCompatActivity() {
 
         search_picture.setOnClickListener {
             startActivity(Intent(this@MainActivity,Search_tourActivity::class.java))
+            overridePendingTransition(0, 0)
         }
         review_picture.setOnClickListener {
             startActivity(Intent(this@MainActivity,Review_tourActivity::class.java))
+            overridePendingTransition(0, 0)
+        }
+        val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                }
+                R.id.search -> {
+                    startActivity(Intent(this,Search_tourActivity::class.java))
+                    overridePendingTransition(0, 0)
+                }
+                R.id.share -> {
+                    startActivity(Intent(this,Review_tourActivity::class.java))
+                    overridePendingTransition(0, 0)
+                }
+            }
+            true
         }
         sign_in.setOnClickListener{
             val inflater: LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -111,5 +132,7 @@ class MainActivity : AppCompatActivity() {
                 0
             )
         }
+
+
     }
 }
