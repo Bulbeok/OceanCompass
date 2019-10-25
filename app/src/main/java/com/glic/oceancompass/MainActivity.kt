@@ -99,6 +99,8 @@ class MainActivity : AppCompatActivity() {
                 ConstraintLayout.LayoutParams.WRAP_CONTENT,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT
             )
+            popupWindow.isFocusable = true //팝업윈도우 키보드강제화
+            popupWindow.isOutsideTouchable //외부터치시 닫기
             // Set an elevation for the popup window
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 popupWindow.elevation = 10.0F
