@@ -18,7 +18,7 @@ class ReviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.review)
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
-        bottomNavigationView.menu.findItem(R.id.share).isChecked = true;
+        bottomNavigationView.menu.findItem(R.id.share).isChecked = true
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
