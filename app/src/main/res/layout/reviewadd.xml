@@ -27,25 +27,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:background="#56bdcc"
+                    android:clickable="false"
                     android:gravity="left|center_vertical"
                     android:paddingLeft="10dp"
+                    android:singleLine="false"
                     android:text="여행지공유하기"
                     android:textSize="25sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                    android:id="@+id/button14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="224dp"
-                    android:layout_marginLeft="224dp"
-                    android:text="임시저장"
-                    app:layout_constraintBottom_toBottomOf="@+id/button"
-                    app:layout_constraintStart_toStartOf="@+id/button"
-                    app:layout_constraintTop_toTopOf="@+id/button"
-                    app:layout_constraintVertical_bias="1.0" />
 
             <Button
                     android:id="@+id/button15"
@@ -60,7 +50,7 @@
                     app:layout_constraintVertical_bias="1.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
+        <EditText
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,12 +62,14 @@
                 android:soundEffectsEnabled="false"
                 android:text="제목"
                 android:textColor="#5F5F5F"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                android:background="@drawable/top_bottom_stroke"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.3">
+                android:layout_weight="0.3"
+                android:background="@drawable/top_bottom_stroke">
 
             <Button
                     android:id="@+id/button2"
@@ -107,17 +99,19 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/gps" />
+                    app:srcCompat="@drawable/gps"
+                    android:background="@drawable/stroke"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
+        <EditText
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
-                android:text="TextView" />
+                android:background="@drawable/top_bottom_stroke"
+                android:gravity="top|left" />
 
-        <TextView
+        <EditText
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,6 +121,7 @@
                 android:text="#태그"
                 android:textColor="#646464"
                 android:textSize="20sp" />
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
