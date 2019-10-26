@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.NetworkResponse
 import com.android.volley.Response
@@ -47,40 +47,61 @@ class SignInActivity : AppCompatActivity() {
             true
         }
 
-        val login = findViewById<Button>(R.id.Login_Button)
         login.setOnClickListener {
             val id = findViewById<EditText>(R.id.id).text.toString()
             val password = findViewById<EditText>(R.id.password).text.toString()
 
-            val request = object : StringRequest(
-                Method.POST, "http://175.206.239.109:8080/oceancompass/LoginServlet",
-                //요청 성공 시
-                Response.Listener { response ->
-                    Log.e("결과", "[$response]")
-                },
-                // 에러 발생 시
-                Response.ErrorListener { error ->
-                    Log.e("에러", "[" + error.message + "]")
-                }) {
-                // request 시 key, value 보낼 때
-                override fun getParams(): Map<String, String> {
-                    val params = HashMap<String, String>()
-                    params["id"] = id
-                    params["password"] = password
-                    return params
+            if(login.text == "로그인") {
+                if(id == "" || password == "") {
+                    Toast.makeText(this, "아이디와 비밀번호를 입력해주세요", Toast.LENGTH_LONG).show()
+                } else {
+                    val request = object : StringRequest(
+                        Method.POST, "http://175.206.239.109:8080/oceancompass/LoginServlet",
+                        //요청 성공 시
+                        Response.Listener {
+                            if (it.toInt() != 1) {
+                                Toast.makeText(this, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_LONG).show()
+                            } else {
+                                Toast.makeText(this, "로그인 성공", Toast.LENGTH_LONG).show()
+                                findViewById<EditText>(R.id.id).isEnabled = false
+                                findViewById<EditText>(R.id.password).isEnabled = false
+                                login.text = "로그아웃"
+                            }
+                        },
+                        // 에러 발생 시
+                        Response.ErrorListener {
+                            Log.e("에러", "[${it.message}]")
+                        }) {
+                        // request 시 key, value 보낼 때
+                        override fun getParams(): Map<String, String> {
+                            val params = HashMap<String, String>()
+                            params["id"] = id
+                            params["password"] = password
+                            return params
+                        }
+                        override fun parseNetworkResponse(response: NetworkResponse?): Response<String> {
+                            val cookiesInfo: TreeMap<String, String> =
+                                response?.headers as TreeMap<String, String>
+                            val cookie = cookiesInfo["Set-Cookie"]
+                            return super.parseNetworkResponse(response)
+                        }
+                    }
+                    val queue = Volley.newRequestQueue(this)
+                    queue.add(request)
                 }
-                override fun parseNetworkResponse(response: NetworkResponse?): Response<String> {
-                    val cookiesInfo: TreeMap<String, String> = response?.headers as TreeMap<String, String>
-                    val cookie = cookiesInfo["Set-Cookie"]
-                    return super.parseNetworkResponse(response)
-                }
+            } else if(login.text == "로그아웃") {
+
             }
-            val queue = Volley.newRequestQueue(this)
-            queue.add(request)
         }
-        Sign_upButton.setOnClickListener {
+        signup.setOnClickListener {
             startActivity(Intent(this,SignUpActivity::class.java))
             finish()
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+        finish()
+        overridePendingTransition(0, 0)
     }
 }
