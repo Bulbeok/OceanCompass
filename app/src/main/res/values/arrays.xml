@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="email_type">
-        <item>naver.com</item>
-        <item>daum.net</item>
-        <item>gmail.com</item>
+        <item>@naver.com</item>
+        <item>@daum.net</item>
+        <item>@gmail.com</item>
     </string-array>
 </resources>
