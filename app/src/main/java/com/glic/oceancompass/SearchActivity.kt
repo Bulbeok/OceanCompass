@@ -21,7 +21,7 @@ class SearchActivity : AppCompatActivity() {
         setContentView(R.layout.search)
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
 
-        bottomNavigationView.menu.findItem(R.id.search_layout).isChecked = true;
+        bottomNavigationView.menu.findItem(R.id.search).isChecked = true;
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
