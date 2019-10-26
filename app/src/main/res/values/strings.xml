@@ -6,4 +6,11 @@
     <string name="shared_tour">shared tour</string>
     <string name="setting">setting</string>
     <string name="todo">TODO</string>
+    <string name="이메일">이메일</string>
+    <string name="비밀번호">비밀번호</string>
+    <string name="비밀번호확인">비밀번호 확인</string>
+    <string name="이름">이름</string>
+    <string name="중복확인">중복확인</string>
+    <string name="회원가입">회원가입</string>
+    <string name="아이디">아이디</string>
 </resources>
