@@ -8,9 +8,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.PopupWindow
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.android.volley.NetworkResponse
@@ -20,6 +18,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.main.*
+import kotlinx.android.synthetic.main.sign_up.*
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -167,7 +166,25 @@ open class MainActivity : AppCompatActivity() {
                 Gravity.CENTER,
                 0,
                 0
-            )
-        }
+            )/*
+            email_select.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    Log.d("MainActivity",
+                        "onItemSelected : $position, ${email_select.getItemAtPosition(position)}")
+                    when (email_select.getItemAtPosition(position)) {
+                        "naver.com" -> {
+                        }
+                        "daum.net" -> {
+                        }
+                        "gmail.com" -> {
+                        }
+                        else -> {
+                        }
+                    }
+                }
+            }*/
+    }
     }
 }
