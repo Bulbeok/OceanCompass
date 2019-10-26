@@ -11,8 +11,8 @@
 
     <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="182dp"
-            android:layout_height="206dp"
+            android:layout_width="173dp"
+            android:layout_height="205dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/sunlight2" />
