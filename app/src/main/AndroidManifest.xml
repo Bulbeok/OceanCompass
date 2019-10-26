@@ -16,9 +16,9 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
-        <activity android:name=".Sign_upActivity"></activity>
+        <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".ReviewAddActivity" />
-        <activity android:name=".Sign_inActivity" />
+        <activity android:name=".SignInActivity" />
         <activity
                 android:name=".MainActivity"
                 android:launchMode="singleTop"

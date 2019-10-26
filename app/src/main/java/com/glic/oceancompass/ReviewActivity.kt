@@ -3,12 +3,12 @@ package com.glic.oceancompass
 import android.content.Intent
 import android.net.http.SslError
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.webkit.SslErrorHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.review.*
 
@@ -34,7 +34,7 @@ class ReviewActivity : AppCompatActivity() {
                 R.id.share -> {
                 }
                 R.id.mypage -> {
-                    startActivity(Intent(this,Sign_inActivity::class.java))
+                    startActivity(Intent(this,SignInActivity::class.java))
                     finish()
                     overridePendingTransition(0, 0)
                 }

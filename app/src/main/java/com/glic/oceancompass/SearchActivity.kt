@@ -1,16 +1,9 @@
 package com.glic.oceancompass
 
 import android.content.Intent
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Slide
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.PopupWindow
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.search.*
 
@@ -21,7 +14,7 @@ class SearchActivity : AppCompatActivity() {
         setContentView(R.layout.search)
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
 
-        bottomNavigationView.menu.findItem(R.id.search).isChecked = true;
+        bottomNavigationView.menu.findItem(R.id.search).isChecked = true
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
@@ -37,7 +30,7 @@ class SearchActivity : AppCompatActivity() {
                     overridePendingTransition(0, 0)
                 }
                 R.id.mypage -> {
-                    startActivity(Intent(this,Sign_inActivity::class.java))
+                    startActivity(Intent(this,SignInActivity::class.java))
                     finish()
                     overridePendingTransition(0, 0)
                 }
@@ -45,7 +38,8 @@ class SearchActivity : AppCompatActivity() {
             true
         }
         input_local.setOnClickListener {
-            val view = LayoutInflater.from(this).inflate(R.layout.sign_in, this.findViewById(R.id.search_layout),false)
+            //소스 수정 필요!
+            /*val view = LayoutInflater.from(this).inflate(R.layout.sign_in, this.findViewById(R.id.search_layout),false)
             val popupWindow = PopupWindow(
                 view,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT,
@@ -71,8 +65,8 @@ class SearchActivity : AppCompatActivity() {
 
             }
 
-            val login = view.findViewById<Button>(R.id.Login_Button)
-            login.setOnClickListener {
+            val signin = view.findViewById<Button>(R.id.Login_Button)
+            signin.setOnClickListener {
                 //val myEmail = (findViewById<EditText>(R.id.Email)).getText().toString()
                 //val myPasswd = (findViewById<EditText>(R.id.Password)).getText().toString()
 
@@ -83,7 +77,7 @@ class SearchActivity : AppCompatActivity() {
                 Gravity.CENTER,
                 0,
                 0
-            )
+            )*/
         }
     }
 
