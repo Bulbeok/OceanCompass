@@ -8,22 +8,27 @@ import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.PopupWindow
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.android.volley.NetworkResponse
+import com.android.volley.Request.Method.GET
 import com.android.volley.Request.Method.POST
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.main.*
-import kotlinx.android.synthetic.main.sign_up.*
 import java.util.*
 import kotlin.collections.HashMap
 
 
 open class MainActivity : AppCompatActivity() {
+
+    val url = "http://175.206.239.109:8080/oceancompass/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +62,7 @@ open class MainActivity : AppCompatActivity() {
             }
             true
         }
+
         sign_in.setOnClickListener{
             val view = LayoutInflater.from(this).inflate(R.layout.sign_in, this.findViewById(R.id.search_layout),false)
             val popupWindow = PopupWindow(
@@ -85,11 +91,11 @@ open class MainActivity : AppCompatActivity() {
 
             val login = view.findViewById<Button>(R.id.Login_Button)
             login.setOnClickListener {
-                //val myEmail = (findViewById<EditText>(R.id.Email)).getText().toString()
-                //val myPasswd = (findViewById<EditText>(R.id.Password)).getText().toString()
+                val id = findViewById<EditText>(R.id.signinid).text.toString()
+                val pwd = findViewById<EditText>(R.id.signinpwd).text.toString()
 
                 val request = object : StringRequest(
-                    POST, "http://175.206.239.109:8080/oceancompass/LoginServlet",
+                    POST, url+"LoginServlet",
                     //요청 성공 시
                     Response.Listener { response ->
                         Log.e("결과", "[$response]") },
@@ -99,8 +105,8 @@ open class MainActivity : AppCompatActivity() {
                     // request 시 key, value 보낼 때
                     override fun getParams(): Map<String, String> {
                         val params = HashMap<String, String>()
-                        params["id"] = "test"
-                        params["password"] = "fbxmtjqj"
+                        params["id"] = id
+                        params["password"] = pwd
                         return params
                     }
                     override fun parseNetworkResponse(response: NetworkResponse?): Response<String> {
@@ -112,13 +118,8 @@ open class MainActivity : AppCompatActivity() {
                         return super.parseNetworkResponse(response)
                     }
                 }
-
                 val queue = Volley.newRequestQueue(this)
                 queue.add(request)
-
-                Log.e("또다른결과", request.toString())
-
-                popupWindow.dismiss()
             }
             popupWindow.setOnDismissListener {
                 Toast.makeText(applicationContext,"로그인이 완료되었습니다.",Toast.LENGTH_SHORT).show()
@@ -130,8 +131,11 @@ open class MainActivity : AppCompatActivity() {
                 0
             )
         }
-        sign_up.setOnClickListener{
-            val view = LayoutInflater.from(this).inflate(R.layout.sign_up, this.findViewById(R.id.main),false)
+
+
+        sign_up.setOnClickListener {
+            val view = LayoutInflater.from(this)
+                .inflate(R.layout.sign_up, this.findViewById(R.id.main), false)
             val popupWindow = PopupWindow(
                 view,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT,
@@ -144,7 +148,7 @@ open class MainActivity : AppCompatActivity() {
                 popupWindow.elevation = 10.0F
             }
             // If API level 23 or higher then execute the code
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 // Create a new slide animation for popup window enter transition
                 val slideIn = Slide()
                 slideIn.slideEdge = Gravity.TOP
@@ -156,35 +160,51 @@ open class MainActivity : AppCompatActivity() {
                 popupWindow.exitTransition = slideOut
 
             }
-            val login = view.findViewById<Button>(R.id.Sign_upbutton)
-            login.setOnClickListener {
-                popupWindow.dismiss()
-                Toast.makeText(applicationContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+
+            val checkid = view.findViewById<Button>(R.id.checkid)
+            checkid.setOnClickListener {
+                val id = findViewById<EditText>(R.id.uesr_id).text.toString()
+                Log.e("주소값 확인",url + "idCheckForm.jsp?id="+id)
+                if(id.isNotEmpty()) {
+
+                    Log.e("주소값 확인",url + "idCheckForm.jsp?id="+id)
+
+                    /*val stringRequest = StringRequest(
+                        GET, url + "idCheckForm.jsp?id="+id,
+                        //요청 성공 시
+                        Response.Listener { response ->
+                            Log.e("결과", "[$response]")
+                        },
+                        // 에러 발생 시
+                        Response.ErrorListener { error ->
+                            Log.e("에러", "[" + error.message + "]")
+                        })
+                    // request queue
+                    val requestQueue = Volley.newRequestQueue(this)
+                    requestQueue.add(stringRequest)*/
+
+                    /*val request = object : StringRequest(
+                        GET, url + "idCheckForm.jsp",
+                        //요청 성공 시
+                        Response.Listener { response ->
+                            Log.e("결과", "[$response]")
+                        },
+                        // 에러 발생 시
+                        Response.ErrorListener { error ->
+                            Log.e("에러", "[" + error.message + "]")
+                        })
+                    val queue = Volley.newRequestQueue(this)
+                    queue.add(request)
+
+                    Log.e("또다른결과", request.toString())*/
+                }
             }
             popupWindow.showAtLocation(
                 main,
                 Gravity.CENTER,
                 0,
                 0
-            )/*
-            email_select.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                }
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    Log.d("MainActivity",
-                        "onItemSelected : $position, ${email_select.getItemAtPosition(position)}")
-                    when (email_select.getItemAtPosition(position)) {
-                        "naver.com" -> {
-                        }
-                        "daum.net" -> {
-                        }
-                        "gmail.com" -> {
-                        }
-                        else -> {
-                        }
-                    }
-                }
-            }*/
-    }
+            )
+        }
     }
 }

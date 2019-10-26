@@ -12,6 +12,6 @@ class Sign_inActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
         val inputManager: InputMethodManager =getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputManager.showSoftInput(Email,0)
+        inputManager.showSoftInput(signinid,0)
     }
 }
