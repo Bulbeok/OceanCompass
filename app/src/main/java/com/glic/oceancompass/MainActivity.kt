@@ -1,26 +1,11 @@
 package com.glic.oceancompass
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.transition.Slide
-import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.android.volley.NetworkResponse
-import com.android.volley.Request.Method.POST
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.main.*
-import kotlinx.android.synthetic.main.sign_up.*
-import java.util.*
-import kotlin.collections.HashMap
 
 
 open class MainActivity : AppCompatActivity() {
@@ -54,10 +39,17 @@ open class MainActivity : AppCompatActivity() {
                     finish()
                     overridePendingTransition(0, 0)
                 }
+                R.id.mypage -> {
+                    startActivity(Intent(this@MainActivity,Sign_inActivity::class.java))
+                    finish()
+                    overridePendingTransition(0, 0)
+                }
             }
             true
         }
+        /*
         sign_in.setOnClickListener{
+
             val view = LayoutInflater.from(this).inflate(R.layout.sign_in, this.findViewById(R.id.search_layout),false)
             val popupWindow = PopupWindow(
                 view,
@@ -105,7 +97,7 @@ open class MainActivity : AppCompatActivity() {
                     }
                     override fun parseNetworkResponse(response: NetworkResponse?): Response<String> {
                         Log.e("결과response", response.toString())
-                        val cookiesInfo : TreeMap<String,String> = response?.headers as TreeMap<String, String>
+                        val cookiesInfo : TreeMap<String, String> = response?.headers as TreeMap<String, String>
                         val cookie = cookiesInfo["Set-Cookie"]
                         Log.e("결과쿠키response", cookie.toString())
 
@@ -131,6 +123,9 @@ open class MainActivity : AppCompatActivity() {
             )
         }
         sign_up.setOnClickListener{
+            startActivity(Intent(this@MainActivity,Sign_upActivity::class.java))
+            finish()
+
             val view = LayoutInflater.from(this).inflate(R.layout.sign_up, this.findViewById(R.id.main),false)
             val popupWindow = PopupWindow(
                 view,
@@ -156,7 +151,7 @@ open class MainActivity : AppCompatActivity() {
                 popupWindow.exitTransition = slideOut
 
             }
-            val login = view.findViewById<Button>(R.id.Sign_upbutton)
+            val login = view.findViewById<Button>(R.id.Sign_upButton)
             login.setOnClickListener {
                 popupWindow.dismiss()
                 Toast.makeText(applicationContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
@@ -166,7 +161,7 @@ open class MainActivity : AppCompatActivity() {
                 Gravity.CENTER,
                 0,
                 0
-            )/*
+            )
             email_select.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                 }
@@ -184,7 +179,7 @@ open class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-            }*/
-    }
+            }
+    }*/
     }
 }

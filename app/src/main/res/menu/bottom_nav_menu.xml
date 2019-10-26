@@ -21,8 +21,8 @@
             android:title="@string/shared_tour" />
     <item
             app:showAsAction="ifRoom"
-            android:id="@+id/setting"
-            android:icon="@drawable/setting"
-            android:title="@string/setting" />
+            android:id="@+id/mypage"
+            android:icon="@drawable/mypage"
+            android:title="@string/mypage" />
 
 </menu>

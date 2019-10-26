@@ -36,6 +36,11 @@ class SearchActivity : AppCompatActivity() {
                     finish()
                     overridePendingTransition(0, 0)
                 }
+                R.id.mypage -> {
+                    startActivity(Intent(this,Sign_inActivity::class.java))
+                    finish()
+                    overridePendingTransition(0, 0)
+                }
             }
             true
         }

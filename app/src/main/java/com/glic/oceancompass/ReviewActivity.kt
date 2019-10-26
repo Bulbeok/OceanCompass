@@ -33,6 +33,11 @@ class ReviewActivity : AppCompatActivity() {
                 }
                 R.id.share -> {
                 }
+                R.id.mypage -> {
+                    startActivity(Intent(this,Sign_inActivity::class.java))
+                    finish()
+                    overridePendingTransition(0, 0)
+                }
             }
             true
         }
