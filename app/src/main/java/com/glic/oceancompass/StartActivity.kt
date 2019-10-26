@@ -79,7 +79,7 @@ class StartActivity : AppCompatActivity() {
                         //show the dialog or snackbar saying its necessary and try again otherwise proceed with setup.
                         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                             || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                            showDialogOK("애프리케이션을 사용할려면 권한이 필요합니다.",
+                            showDialogOK("애플리케이션 사용할려면 권한이 필요합니다.",
                                 DialogInterface.OnClickListener { _, which ->
                                     when (which) {
                                         DialogInterface.BUTTON_POSITIVE -> checkAndRequestPermissions()
