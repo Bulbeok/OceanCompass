@@ -37,13 +37,13 @@ class StartActivity : AppCompatActivity() {
     }
 
     private fun checkAndRequestPermissions(): Boolean {
-        val permissionLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+        val permissionLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
         val permissionStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
         val listPermissionsNeeded = ArrayList<String>()
 
         if (permissionLocation != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION)
+            listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION)
         }
         if (permissionStorage != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -61,14 +61,14 @@ class StartActivity : AppCompatActivity() {
 
                 val perms = HashMap<String, Int>()
                 // Initialize the map with both permissions
-                perms[Manifest.permission.ACCESS_COARSE_LOCATION] = PackageManager.PERMISSION_GRANTED
+                perms[Manifest.permission.ACCESS_FINE_LOCATION] = PackageManager.PERMISSION_GRANTED
                 perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] = PackageManager.PERMISSION_GRANTED
                 // Fill with actual results from user
                 if (grantResults.isNotEmpty()) {
                     for (i in permissions.indices)
                         perms[permissions[i]] = grantResults[i]
                     // Check for both permissions
-                    if (perms[Manifest.permission.ACCESS_COARSE_LOCATION] == PackageManager.PERMISSION_GRANTED
+                    if (perms[Manifest.permission.ACCESS_FINE_LOCATION] == PackageManager.PERMISSION_GRANTED
                         && perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED) {
                         // process the normal flow
                         startActivity(Intent(this@StartActivity, MainActivity::class.java))
@@ -78,7 +78,7 @@ class StartActivity : AppCompatActivity() {
                         //permission is denied (this is the first time, when "never ask again" is not checked) so ask again explaining the usage of permission
                         //                        // shouldShowRequestPermissionRationale will return true
                         //show the dialog or snackbar saying its necessary and try again otherwise proceed with setup.
-                        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)
                             || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                             showDialogOK("애플리케이션 사용할려면 권한이 필요합니다.",
                                 DialogInterface.OnClickListener { _, which ->
