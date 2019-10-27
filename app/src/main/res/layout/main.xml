@@ -1,103 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="10">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:background="@drawable/background1"
+            app:layout_constraintBottom_toTopOf="@+id/main_bottom_navigation_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+        <ImageView
+                android:id="@+id/search"
+                android:layout_width="196dp"
+                android:layout_height="198dp"
+                android:layout_marginBottom="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/search_picture"
+                android:contentDescription="@string/todo" />
+
+        <ImageView
+                android:id="@+id/gull"
+                android:layout_width="239dp"
+                android:layout_height="157dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="72dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/gall"
+                android:contentDescription="@string/todo" />
+
+        <ImageView
+                android:id="@+id/review"
+                android:layout_width="176dp"
+                android:layout_height="118dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/review_picture"
+                app:layout_constraintBottom_toBottomOf="@+id/reviewtext"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/todo" />
+
+        <TextView
+                android:id="@+id/searchtext"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:background="@drawable/background1">
+                android:text="@string/searchtext"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="@+id/search"
+                app:layout_constraintEnd_toEndOf="@+id/search"
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="@+id/search" />
 
-            <ImageView
-                    android:id="@+id/search"
-                    android:layout_width="196dp"
-                    android:layout_height="198dp"
-                    android:layout_marginBottom="40dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/search_picture" />
+        <ImageView
+                android:id="@+id/sun"
+                android:layout_width="173dp"
+                android:layout_height="205dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/sunlight2"
+                android:contentDescription="@string/todo" />
 
-            <ImageView
-                    android:id="@+id/gull"
-                    android:layout_width="239dp"
-                    android:layout_height="157dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="72dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/gall" />
-
-            <ImageView
-                    android:id="@+id/review"
-                    android:layout_width="176dp"
-                    android:layout_height="118dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/review_picture"
-                    app:layout_constraintBottom_toBottomOf="@+id/reviewtext"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-            <TextView
-                    android:id="@+id/searchtext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="여행지찾기"
-                    android:textSize="25sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/search"
-                    app:layout_constraintEnd_toEndOf="@+id/search"
-                    app:layout_constraintHorizontal_bias="0.487"
-                    app:layout_constraintStart_toStartOf="@+id/search" />
-
-            <ImageView
-                    android:id="@+id/sun"
-                    android:layout_width="173dp"
-                    android:layout_height="205dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/sunlight2" />
-
-            <TextView
-                    android:id="@+id/reviewtext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="여행지 공유하기"
-                    android:textSize="25sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/searchtext"
-                    app:layout_constraintEnd_toEndOf="@+id/review" />
-
-            <ImageView
-                    android:id="@+id/tutle"
-                    android:layout_width="91dp"
-                    android:layout_height="63dp"
-                    android:layout_marginEnd="56dp"
-                    android:layout_marginBottom="108dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/review"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/tutle" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/main_bottom_navigation_view"
-                android:layout_width="match_parent"
+        <TextView
+                android:id="@+id/reviewtext"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                android:background="?android:attr/windowBackground"
-                app:itemIconTint="@drawable/selector"
-                app:menu="@menu/bottom_nav_menu" />
+                android:text="@string/reviewtext"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="@+id/searchtext"
+                app:layout_constraintEnd_toEndOf="@+id/review" />
 
-    </LinearLayout>
+        <ImageView
+                android:id="@+id/tutle"
+                android:layout_width="91dp"
+                android:layout_height="63dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginBottom="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/review"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/tutle"
+                android:contentDescription="@string/todo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_bottom_navigation_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="?android:attr/windowBackground"
+            app:itemIconTint="@drawable/selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
