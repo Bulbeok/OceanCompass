@@ -77,6 +77,8 @@ class ReviewActivity : AppCompatActivity() {
                 }
                 val queue = Volley.newRequestQueue(this)
                 queue.add(request)
+            } else {
+                Toast.makeText(this, "로그인 후 리뷰 작성이 가능합니다.", Toast.LENGTH_LONG).show()
             }
         }
 

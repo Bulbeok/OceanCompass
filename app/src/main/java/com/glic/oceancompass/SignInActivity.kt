@@ -26,7 +26,7 @@ class SignInActivity : AppCompatActivity() {
 
         val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
         val edit = pref.edit()
-        var sessionId = pref.getString("sessionCookie", null)
+        var sessionId: String?
 
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
         bottomNavigationView.menu.findItem(R.id.mypage).isChecked = true
@@ -54,14 +54,6 @@ class SignInActivity : AppCompatActivity() {
         }
 
         NukeSSLCerts().nuke()
-
-        if(sessionId != "") {
-            id.setText(pref.getString("sessionId", null))
-            password.setText("!!!!!!!!!!!!!!!")
-            id.isEnabled = false
-            password.isEnabled = false
-            login.text = "로그아웃"
-        }
 
         login.setOnClickListener {
             sessionId = pref.getString("sessionCookie", null)
