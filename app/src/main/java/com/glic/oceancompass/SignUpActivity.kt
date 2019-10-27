@@ -53,7 +53,7 @@ class SignUpActivity : AppCompatActivity() {
                 val request = StringRequest(
                     GET, "https://175.206.239.109:8443/oceancompass/IdCheckForm.jsp?id="+id.text.toString(),
                     Response.Listener {
-                        if(it.length == 8) {
+                        if(it.trim() == "true") {
                             Toast.makeText(this, "사용 불가능한 아이디 입니다", Toast.LENGTH_LONG).show()
                         } else {
                             Toast.makeText(this, "사용 가능한 아이디 입니다", Toast.LENGTH_LONG).show()
@@ -61,7 +61,7 @@ class SignUpActivity : AppCompatActivity() {
                         }
                     },
                     Response.ErrorListener {
-                        Log.e("에러test", "[${it.message}]")
+                        Log.e("에러", "[${it.message}]")
                     })
                 val queue = Volley.newRequestQueue(this)
                 queue.add(request)

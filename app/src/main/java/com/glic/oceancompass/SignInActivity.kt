@@ -65,14 +65,12 @@ class SignInActivity : AppCompatActivity() {
                         POST, "https://175.206.239.109:8443/oceancompass/LoginServlet",
                         //요청 성공 시
                         Response.Listener {
-
-                            Log.e("테스트","순서확인")
                             if (it != "1") {
                                 Toast.makeText(this, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_LONG).show()
                                 edit.putString("sessionCookie", "")
                                 edit.apply()
                             } else {
-                                Toast.makeText(this, "로그인 성공", Toast.LENGTH_LONG).show()
+                                Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_LONG).show()
                                 id.isEnabled = false
                                 password.isEnabled = false
                                 login.text = "로그아웃"
@@ -91,7 +89,6 @@ class SignInActivity : AppCompatActivity() {
                         }
                         override fun parseNetworkResponse(response: NetworkResponse?): Response<String> {
                             val cookiesInfo: TreeMap<String, String> = response?.headers as TreeMap<String, String>
-                            Log.e("테스트",cookiesInfo["Set-Cookie"]!!.split(";")[0])
                             edit.putString("sessionCookie", cookiesInfo["Set-Cookie"]!!.split(";")[0])
                             edit.putString("sessionId", id.text.toString())
                             edit.apply()
@@ -108,7 +105,7 @@ class SignInActivity : AppCompatActivity() {
                     Response.Listener {
                         edit.putString("sessionCookie", "")
                         edit.apply()
-                        Toast.makeText(this, "로그아웃 성공", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
                         id.isEnabled = true
                         password.isEnabled = true
                         login.text = "로그인"
