@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.NetworkResponse
+import com.android.volley.Request.Method.POST
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -25,6 +26,7 @@ class SignInActivity : AppCompatActivity() {
 
         val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
         val edit = pref.edit()
+        var sessionId = pref.getString("sessionCookie", null)
 
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
         bottomNavigationView.menu.findItem(R.id.mypage).isChecked = true
@@ -53,17 +55,30 @@ class SignInActivity : AppCompatActivity() {
 
         NukeSSLCerts().nuke()
 
+        if(sessionId != "") {
+            id.setText(pref.getString("sessionId", null))
+            password.setText("!!!!!!!!!!!!!!!")
+            id.isEnabled = false
+            password.isEnabled = false
+            login.text = "로그아웃"
+        }
+
         login.setOnClickListener {
-            if(login.text == "로그인") {
+            sessionId = pref.getString("sessionCookie", null)
+            if(sessionId.isNullOrEmpty() || sessionId == "") {
                 if(id.text.toString() == "" || password.text.toString() == "") {
                     Toast.makeText(this, "아이디와 비밀번호를 입력해주세요", Toast.LENGTH_LONG).show()
                 } else {
                     val request = object : StringRequest(
-                        Method.POST, "https://175.206.239.109:8443/oceancompass/LoginServlet",
+                        POST, "https://175.206.239.109:8443/oceancompass/LoginServlet",
                         //요청 성공 시
                         Response.Listener {
-                            if (it.toInt() != 1) {
+
+                            Log.e("테스트","순서확인")
+                            if (it != "1") {
                                 Toast.makeText(this, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_LONG).show()
+                                edit.putString("sessionCookie", "")
+                                edit.apply()
                             } else {
                                 Toast.makeText(this, "로그인 성공", Toast.LENGTH_LONG).show()
                                 id.isEnabled = false
@@ -84,7 +99,9 @@ class SignInActivity : AppCompatActivity() {
                         }
                         override fun parseNetworkResponse(response: NetworkResponse?): Response<String> {
                             val cookiesInfo: TreeMap<String, String> = response?.headers as TreeMap<String, String>
-                            edit.putString("sessionid", cookiesInfo["Set-Cookie"])
+                            Log.e("테스트",cookiesInfo["Set-Cookie"]!!.split(";")[0])
+                            edit.putString("sessionCookie", cookiesInfo["Set-Cookie"]!!.split(";")[0])
+                            edit.putString("sessionId", id.text.toString())
                             edit.apply()
                             return super.parseNetworkResponse(response)
                         }
@@ -93,9 +110,35 @@ class SignInActivity : AppCompatActivity() {
                     queue.add(request)
                 }
             } else if(login.text == "로그아웃") {
+                val request = object : StringRequest(
+                    POST, "https://175.206.239.109:8443/oceancompass/logout.jsp",
+                    //요청 성공 시
+                    Response.Listener {
+                        edit.putString("sessionCookie", "")
+                        edit.apply()
+                        Toast.makeText(this, "로그아웃 성공", Toast.LENGTH_LONG).show()
+                        id.isEnabled = true
+                        password.isEnabled = true
+                        login.text = "로그인"
+                    },
+                    // 에러 발생 시
+                    Response.ErrorListener {
+                        Log.e("에러", "[${it.message}]")
+                    }) {
+                    override fun getHeaders() : Map<String, String> {
+                        val headers = HashMap<String, String>()
+                        headers["Cookie"] = sessionId!!
+                        return headers
+                    }
+                }
+                val queue = Volley.newRequestQueue(this)
+                queue.add(request)
 
+                id.setText("")
+                password.setText("")
             }
         }
+
         signup.setOnClickListener {
             startActivity(Intent(this,SignUpActivity::class.java))
             finish()
