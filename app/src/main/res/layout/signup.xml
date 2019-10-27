@@ -45,7 +45,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-            android:id="@+id/uesr_id"
+            android:id="@+id/id"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -78,7 +78,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/uesr_id"
+            app:layout_constraintTop_toBottomOf="@+id/id"
             app:layout_constraintVertical_bias="0.0" />
 
     <EditText
@@ -250,7 +250,7 @@
             android:text="@string/중복확인"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.433"
-            app:layout_constraintStart_toEndOf="@+id/uesr_id"
+            app:layout_constraintStart_toEndOf="@+id/id"
             app:layout_constraintTop_toBottomOf="@+id/Id_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

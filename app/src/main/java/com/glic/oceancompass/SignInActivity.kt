@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.NetworkResponse
@@ -52,14 +51,11 @@ class SignInActivity : AppCompatActivity() {
             true
         }
 
-        NukeSSLCerts.nuke()
+        NukeSSLCerts().nuke()
 
         login.setOnClickListener {
-            val id = findViewById<EditText>(R.id.id).text.toString()
-            val password = findViewById<EditText>(R.id.password).text.toString()
-
             if(login.text == "로그인") {
-                if(id == "" || password == "") {
+                if(id.text.toString() == "" || password.text.toString() == "") {
                     Toast.makeText(this, "아이디와 비밀번호를 입력해주세요", Toast.LENGTH_LONG).show()
                 } else {
                     val request = object : StringRequest(
@@ -70,8 +66,8 @@ class SignInActivity : AppCompatActivity() {
                                 Toast.makeText(this, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_LONG).show()
                             } else {
                                 Toast.makeText(this, "로그인 성공", Toast.LENGTH_LONG).show()
-                                findViewById<EditText>(R.id.id).isEnabled = false
-                                findViewById<EditText>(R.id.password).isEnabled = false
+                                id.isEnabled = false
+                                password.isEnabled = false
                                 login.text = "로그아웃"
                             }
                         },
@@ -82,8 +78,8 @@ class SignInActivity : AppCompatActivity() {
                         // request 시 key, value 보낼 때
                         override fun getParams(): Map<String, String> {
                             val params = HashMap<String, String>()
-                            params["id"] = id
-                            params["password"] = password
+                            params["id"] = id.text.toString()
+                            params["password"] = password.text.toString()
                             return params
                         }
                         override fun parseNetworkResponse(response: NetworkResponse?): Response<String> {
@@ -111,85 +107,4 @@ class SignInActivity : AppCompatActivity() {
         finish()
         overridePendingTransition(0, 0)
     }
-/*
-
-    var hurlStack: HurlStack = object : HurlStack() {
-        override fun createConnection(url: java.net.URL): HttpURLConnection {
-            val httpsURLConnection = super
-                .createConnection(url) as HttpsURLConnection
-            try {
-                httpsURLConnection.sslSocketFactory = getSSLSocketFactory(this)
-                // httpsURLConnection.setHostnameVerifier(getHostnameVerifier());
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-            return httpsURLConnection
-        }
-    }
-
-    private fun getSSLSocketFactory(context: Context): SSLSocketFactory {
-
-        // the certificate file will be stored in \app\src\main\res\raw folder path
-        val cf = CertificateFactory.getInstance("X.509")
-        val caInput = context.resources.openRawResource(
-            R.raw.server.cer
-        )
-
-        val ca = cf.generateCertificate(caInput)
-        caInput.close()
-
-        val keyStore = KeyStore.getInstance("BKS")
-
-        keyStore.load(null, null)
-        keyStore.setCertificateEntry("ca", ca)
-
-        val tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm()
-        val tmf = TrustManagerFactory.getInstance(tmfAlgorithm)
-        tmf.init(keyStore)
-
-        val wrappedTrustManagers = getWrappedTrustManagers(
-            tmf
-                .trustManagers
-        )
-        val sslContext = SSLContext.getInstance("TLS")
-        sslContext.init(null, wrappedTrustManagers, null)
-
-        return sslContext.socketFactory
-    }
-    private TrustManager[] getWrappedTrustManagers(TrustManager[] trustManagers) {
-        final X509TrustManager originalTrustManager = (X509TrustManager) trustManagers[0];
-        return new TrustManager[] { new X509TrustManager() {
-            public X509Certificate[] getAcceptedIssuers() {
-                return originalTrustManager.getAcceptedIssuers();
-            }
-
-            public void checkClientTrusted(X509Certificate[] certs,
-                    String authType) {
-                try {
-                    if (certs != null && certs.length > 0) {
-                        certs[0].checkValidity();
-                    } else {
-                        originalTrustManager
-                                .checkClientTrusted(certs, authType);
-                    }
-                } catch (CertificateException e) {
-                    Log.w("checkClientTrusted", e.toString());
-                }
-            }
-
-            public void checkServerTrusted(X509Certificate[] certs,
-                    String authType) {
-                try {
-                    if (certs != null && certs.length > 0) {
-                        certs[0].checkValidity();
-                    } else {
-                        originalTrustManager
-                                .checkServerTrusted(certs, authType);
-                    }
-                } catch (CertificateException e) {
-                    Log.w("checkServerTrusted", e.toString());
-                }
-            }
-        } };
-    }*/
 }

@@ -3,7 +3,6 @@ package com.glic.oceancompass
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request.Method.GET
@@ -19,15 +18,14 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.signup)
 
-        val id = findViewById<EditText>(R.id.id).text.toString()
-        val password = findViewById<EditText>(R.id.password).text.toString()
+        NukeSSLCerts().nuke()
 
         checkid.setOnClickListener {
-            if (id == "") {
+            if (id.text.toString() == "") {
                 Toast.makeText(this, "아이디를 입력해주세요", Toast.LENGTH_LONG).show()
             } else {
                 val request = StringRequest(
-                    GET, "https://175.206.239.109:8443/oceancompass/LoginServlet",
+                    GET, "https://175.206.239.109:8443/oceancompass/IdCheckForm.jsp?id="+id.text.toString(),
                     Response.Listener {
                         Log.d("성공test", ">>$it")
                     },

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
+
 class StartActivity : AppCompatActivity() {
 
     private val REQUEST_ID_MULTIPLE_PERMISSIONS = 1
