@@ -44,21 +44,20 @@
                     android:layout_width="176dp"
                     android:layout_height="118dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="30dp"
                     android:background="@drawable/review_picture"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/reviewtext"
                     app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                     android:id="@+id/searchtext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="44dp"
-                    android:layout_marginBottom="28dp"
                     android:text="여행지찾기"
                     android:textSize="25sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintBottom_toBottomOf="@+id/search"
+                    app:layout_constraintEnd_toEndOf="@+id/search"
+                    app:layout_constraintHorizontal_bias="0.487"
+                    app:layout_constraintStart_toStartOf="@+id/search" />
 
             <ImageView
                     android:id="@+id/sun"
@@ -72,19 +71,18 @@
                     android:id="@+id/reviewtext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="28dp"
                     android:text="여행지 공유하기"
                     android:textSize="25sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/searchtext"
                     app:layout_constraintEnd_toEndOf="@+id/review" />
 
             <ImageView
                     android:id="@+id/tutle"
                     android:layout_width="91dp"
                     android:layout_height="63dp"
-                    android:layout_marginEnd="48dp"
-                    android:layout_marginBottom="148dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginBottom="108dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/review"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:srcCompat="@drawable/tutle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
