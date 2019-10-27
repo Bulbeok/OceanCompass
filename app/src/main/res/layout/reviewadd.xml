@@ -8,6 +8,7 @@
         tools:context="com.glic.oceancompass.ReviewAddActivity">
 
     <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom"
@@ -55,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
+                android:background="@drawable/top_bottom_stroke"
                 android:gravity="center_vertical"
                 android:hint="제목"
                 android:paddingLeft="10dp"
@@ -62,8 +64,7 @@
                 android:soundEffectsEnabled="false"
                 android:text="제목"
                 android:textColor="#5F5F5F"
-                android:textSize="25sp"
-                android:background="@drawable/top_bottom_stroke"/>
+                android:textSize="25sp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -96,32 +97,67 @@
                     android:layout_height="52dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
+                    android:background="@drawable/stroke"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/gps"
-                    android:background="@drawable/stroke"/>
+                    app:srcCompat="@drawable/gps" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="8"
+                android:layout_weight="8.4"
                 android:background="@drawable/top_bottom_stroke"
                 android:gravity="top|left" />
 
-        <EditText
-                android:id="@+id/textView10"
-                android:layout_width="match_parent"
+        <Button
+                android:id="@+id/upload"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.7"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:text="#태그"
-                android:textColor="#646464"
+                android:text="이미지 업로드"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
 
     </LinearLayout>
+
+    <ImageView
+            android:id="@+id/Picture1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="80dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:srcCompat="@color/ic_launcher_tour_background" />
+
+    <ImageView
+            android:id="@+id/Picture2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginBottom="80dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:srcCompat="@color/ic_launcher_tour_background" />
+
+    <ImageView
+            android:id="@+id/Picture3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="250dp"
+            android:layout_marginBottom="80dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:srcCompat="@color/ic_launcher_tour_background" />
 </androidx.constraintlayout.widget.ConstraintLayout>
