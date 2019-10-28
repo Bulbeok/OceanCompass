@@ -16,6 +16,7 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
+        <activity android:name=".ReviewLoca"></activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ReviewAddActivity" />
         <activity android:name=".SignInActivity" />
@@ -31,7 +32,7 @@
                 android:name=".ReviewActivity"
                 android:launchMode="singleTop"
                 android:theme="@style/AppTheme"
-                android:windowSoftInputMode="adjustNothing"/>
+                android:windowSoftInputMode="adjustNothing" />
         <activity
                 android:name=".StartActivity"
                 android:noHistory="true"
