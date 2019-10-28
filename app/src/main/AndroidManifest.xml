@@ -16,10 +16,22 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
-        <activity android:name=".ReviewLocaActivity"></activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".ReviewAddActivity" />
-        <activity android:name=".SignInActivity" />
+        <activity
+                android:name=".ReviewLocaActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/AppTheme" />
+        <activity
+                android:name=".SignUpActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/AppTheme" />
+        <activity
+                android:name=".ReviewAddActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/AppTheme" />
+        <activity
+                android:name=".SignInActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".MainActivity"
                 android:launchMode="singleTop"
@@ -45,5 +57,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
