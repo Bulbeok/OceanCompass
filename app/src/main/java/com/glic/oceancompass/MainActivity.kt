@@ -1,5 +1,6 @@
 package com.glic.oceancompass
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -48,5 +49,13 @@ open class MainActivity : AppCompatActivity() {
             }
             true
         }
+    }
+
+    override fun onBackPressed() {
+        val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
+        val edit = pref.edit()
+        edit.putString("sessionCookie", "")
+        edit.apply()
+        super.onBackPressed()
     }
 }
