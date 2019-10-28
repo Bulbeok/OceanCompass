@@ -16,6 +16,10 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.review.*
+import android.webkit.GeolocationPermissions
+import android.webkit.WebChromeClient
+
+
 
 
 class ReviewActivity : AppCompatActivity() {
@@ -97,11 +101,7 @@ class ReviewActivity : AppCompatActivity() {
             }
         }
         myWebView.webChromeClient = object : WebChromeClient() {
-            override fun onGeolocationPermissionsShowPrompt(
-                origin: String,
-                callback: GeolocationPermissions.Callback
-            ) {
-                super.onGeolocationPermissionsShowPrompt(origin, callback)
+            override fun onGeolocationPermissionsShowPrompt(origin: String, callback: GeolocationPermissions.Callback) {
                 callback.invoke(origin, true, false)
             }
         }
