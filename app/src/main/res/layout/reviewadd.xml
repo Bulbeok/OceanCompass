@@ -58,7 +58,7 @@
                 android:background="@drawable/top_bottom_stroke">
 
             <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/loca"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -90,7 +90,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
-                android:id="@+id/reviewtitle"
+                android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -105,7 +105,7 @@
                 android:textSize="25sp" />
 
         <EditText
-                android:id="@+id/explan"
+                android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="8.9"
@@ -119,17 +119,17 @@
 
             <ImageView
                     android:id="@+id/upload"
-                    android:layout_width="96dp"
-                    android:layout_height="89dp"
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
                     android:layout_marginStart="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/empty_photo" />
 
             <ImageView
-                    android:id="@+id/upload2"
-                    android:layout_width="96dp"
-                    android:layout_height="89dp"
+                    android:id="@+id/Picture2"
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
                     android:layout_marginStart="110dp"
                     android:background="@drawable/empty_photo"
                     android:visibility="invisible"
@@ -138,9 +138,9 @@
                     app:srcCompat="@color/ic_launcher_tour_background" />
 
             <ImageView
-                    android:id="@+id/upload3"
-                    android:layout_width="96dp"
-                    android:layout_height="89dp"
+                    android:id="@+id/Picture3"
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
                     android:layout_marginStart="210dp"
                     android:background="@drawable/empty_photo"
                     android:visibility="invisible"

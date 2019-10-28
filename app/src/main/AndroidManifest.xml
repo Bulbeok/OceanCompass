@@ -16,7 +16,7 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
-        <activity android:name=".ReviewLoca"></activity>
+        <activity android:name=".ReviewLocaActivity"></activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ReviewAddActivity" />
         <activity android:name=".SignInActivity" />

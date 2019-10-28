@@ -11,7 +11,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.reviewadd.*
 
-
 class ReviewAddActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +29,11 @@ class ReviewAddActivity : AppCompatActivity() {
             val queue = Volley.newRequestQueue(this)
             queue.add(request)
         }
+        loca.setOnClickListener{
+            startActivity(Intent(this,ReviewLocaActivity::class.java))
+            finish()
+        }
     }
-
 
     override fun onBackPressed() {
         startActivity(Intent(this,ReviewActivity::class.java))

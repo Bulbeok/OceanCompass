@@ -4,17 +4,18 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="10"
         tools:context=".ReviewActivity">
 
     <SearchView
             android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
+            android:layout_height="60dp"
+            android:layout_weight="1"
             android:background="#353434"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
     </SearchView>
 
@@ -22,17 +23,17 @@
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6.5"
+            android:layout_weight="8"
             app:layout_constraintBottom_toTopOf="@+id/addReview"
-            app:layout_constraintTop_toBottomOf="@+id/search"
-            tools:layout_editor_absoluteX="-31dp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search">
 
     </WebView>
 
     <Button
             android:id="@+id/addReview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="#56bdcc"
             android:text="@string/addReview"
@@ -42,14 +43,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/main_bottom_navigation_view"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_weight="1"
             android:background="?android:attr/windowBackground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:itemIconTint="@drawable/selector"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
