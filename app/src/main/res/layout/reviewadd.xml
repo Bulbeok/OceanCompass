@@ -59,10 +59,10 @@
 
             <Button
                     android:id="@+id/loca"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="10dp"
                     android:background="#FFFFFF"
                     android:gravity="left"
                     android:paddingLeft="10dp"
@@ -73,20 +73,10 @@
                     android:textColor="#5E5E5E"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="68dp"
-                    android:layout_height="52dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@drawable/stroke"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/gps" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
@@ -108,46 +98,9 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="8.9"
+                android:layout_weight="9"
                 android:background="@drawable/top_bottom_stroke"
                 android:gravity="top|left" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1">
-
-            <ImageView
-                    android:id="@+id/upload"
-                    android:layout_width="70dp"
-                    android:layout_height="80dp"
-                    android:layout_marginStart="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/empty_photo" />
-
-            <ImageView
-                    android:id="@+id/Picture2"
-                    android:layout_width="70dp"
-                    android:layout_height="80dp"
-                    android:layout_marginStart="110dp"
-                    android:background="@drawable/empty_photo"
-                    android:visibility="invisible"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/ic_launcher_tour_background" />
-
-            <ImageView
-                    android:id="@+id/Picture3"
-                    android:layout_width="70dp"
-                    android:layout_height="80dp"
-                    android:layout_marginStart="210dp"
-                    android:background="@drawable/empty_photo"
-                    android:visibility="invisible"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/ic_launcher_tour_background" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
