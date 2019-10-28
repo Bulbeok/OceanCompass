@@ -1,5 +1,6 @@
 package com.glic.oceancompass
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.http.SslError
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.review.*
 
 class ReviewActivity : AppCompatActivity() {
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.review)
@@ -57,16 +59,14 @@ class ReviewActivity : AppCompatActivity() {
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 map.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap.jsp?search=$query")
-                Toast.makeText(this@ReviewActivity, "서브밋$query.", Toast.LENGTH_LONG).show()
-                return false
+                return true
             }
             override fun onQueryTextChange(newText: String): Boolean {
-                /*Toast.makeText(this@ReviewActivity, "체인지.", Toast.LENGTH_LONG).show()*/
                 return true
             }
         })
 
-        addreview.setOnClickListener {
+        addReview.setOnClickListener {
             val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
             val sessionId = pref.getString("sessionCookie", null)
             if (!sessionId.isNullOrEmpty() || sessionId != "") {

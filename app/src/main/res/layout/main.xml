@@ -45,12 +45,12 @@
                 android:layout_height="118dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/review_picture"
-                app:layout_constraintBottom_toBottomOf="@+id/reviewtext"
+                app:layout_constraintBottom_toBottomOf="@+id/reviewText"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:contentDescription="@string/todo" />
 
         <TextView
-                android:id="@+id/searchtext"
+                android:id="@+id/searchText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/searchtext"
@@ -70,12 +70,12 @@
                 android:contentDescription="@string/todo" />
 
         <TextView
-                android:id="@+id/reviewtext"
+                android:id="@+id/reviewText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/reviewtext"
+                android:text="@string/addReview"
                 android:textSize="25sp"
-                app:layout_constraintBottom_toBottomOf="@+id/searchtext"
+                app:layout_constraintBottom_toBottomOf="@+id/searchText"
                 app:layout_constraintEnd_toEndOf="@+id/review" />
 
         <ImageView
