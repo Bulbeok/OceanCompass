@@ -94,7 +94,7 @@ class ReviewActivity : AppCompatActivity() {
         val settings = myWebView.settings
         settings.javaScriptEnabled = true
         settings.domStorageEnabled = true
-        myWebView.loadUrl("https://175.206.239.109:8443/oceancompass/map.jsp")
+        myWebView.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap.jsp")
         myWebView.webViewClient = object : WebViewClient(){
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler!!.proceed()

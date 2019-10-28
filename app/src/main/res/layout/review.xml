@@ -6,48 +6,50 @@
         android:layout_height="match_parent"
         tools:context=".ReviewActivity">
 
-    <LinearLayout
+    <SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:background="#353434"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
 
-        <SearchView
-                android:id="@+id/searchView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:background="#353434"
-                android:orientation="vertical">
+    </SearchView>
 
-        </SearchView>
+    <WebView
+            android:id="@+id/webView1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6.5"
+            app:layout_constraintBottom_toTopOf="@+id/addreview"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"
+            tools:layout_editor_absoluteX="-31dp">
 
-        <WebView
-                android:id="@+id/webView1"
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:layout_weight="6.5">
+    </WebView>
 
-        </WebView>
+    <Button
+            android:id="@+id/addreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#56bdcc"
+            android:text="여행지공유하기"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@+id/main_bottom_navigation_view"
+            tools:layout_editor_absoluteX="0dp" />
 
-        <Button
-                android:id="@+id/addreview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#56bdcc"
-                android:text="여행지공유하기"
-                android:textSize="25sp" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/main_bottom_navigation_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                android:background="?android:attr/windowBackground"
-                app:itemIconTint="@drawable/selector"
-                app:menu="@menu/bottom_nav_menu" />
-
-    </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_bottom_navigation_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="?android:attr/windowBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:itemIconTint="@drawable/selector"
+            app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
