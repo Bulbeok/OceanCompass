@@ -38,7 +38,7 @@ class StartActivity : AppCompatActivity() {
 
     private fun checkAndRequestPermissions(): Boolean {
         val permissionLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-        val permissionStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        val permissionStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
 
         val listPermissionsNeeded = ArrayList<String>()
 
@@ -46,7 +46,7 @@ class StartActivity : AppCompatActivity() {
             listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION)
         }
         if (permissionStorage != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
         if (listPermissionsNeeded.isNotEmpty()) {
             ActivityCompat.requestPermissions(this, listPermissionsNeeded.toTypedArray(), REQUEST_ID_MULTIPLE_PERMISSIONS)
@@ -62,14 +62,14 @@ class StartActivity : AppCompatActivity() {
                 val perms = HashMap<String, Int>()
                 // Initialize the map with both permissions
                 perms[Manifest.permission.ACCESS_FINE_LOCATION] = PackageManager.PERMISSION_GRANTED
-                perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] = PackageManager.PERMISSION_GRANTED
+                perms[Manifest.permission.READ_EXTERNAL_STORAGE] = PackageManager.PERMISSION_GRANTED
                 // Fill with actual results from user
                 if (grantResults.isNotEmpty()) {
                     for (i in permissions.indices)
                         perms[permissions[i]] = grantResults[i]
                     // Check for both permissions
                     if (perms[Manifest.permission.ACCESS_FINE_LOCATION] == PackageManager.PERMISSION_GRANTED
-                        && perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED) {
+                        && perms[Manifest.permission.READ_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED) {
                         // process the normal flow
                         startActivity(Intent(this@StartActivity, MainActivity::class.java))
                         finish()
