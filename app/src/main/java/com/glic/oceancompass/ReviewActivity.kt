@@ -16,10 +16,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.review.*
-import android.webkit.GeolocationPermissions
-import android.webkit.WebChromeClient
-
-
 
 
 class ReviewActivity : AppCompatActivity() {
@@ -53,6 +49,10 @@ class ReviewActivity : AppCompatActivity() {
         }
 
         NukeSSLCerts().nuke()
+
+        search.setOnClickListener {
+            search.isIconified = false
+        }
 
         addreview.setOnClickListener {
             val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
@@ -94,7 +94,7 @@ class ReviewActivity : AppCompatActivity() {
         val settings = myWebView.settings
         settings.javaScriptEnabled = true
         settings.domStorageEnabled = true
-        myWebView.loadUrl("https://175.206.239.109:8443/oceancompass/map.jsp")
+        myWebView.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap.jsp")
         myWebView.webViewClient = object : WebViewClient(){
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler!!.proceed()
