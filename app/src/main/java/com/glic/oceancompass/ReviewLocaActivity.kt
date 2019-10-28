@@ -1,7 +1,6 @@
 package com.glic.oceancompass
 
 import android.app.Activity
-import android.content.Context
 import android.net.http.SslError
 import android.os.Bundle
 import android.os.Handler
@@ -14,19 +13,14 @@ import kotlinx.android.synthetic.main.reviewloca.*
 
 class ReviewLocaActivity : AppCompatActivity() {
 
-    companion object {
-        var context : Context? = null
-        var handler : Handler? = Handler()
-        var address : String? = null
-    }
+    var handler : Handler? = Handler()
+    var address : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.reviewloca)
 
         NukeSSLCerts().nuke()
-
-        context = this
 
         send.setOnClickListener {
             val intent = intent
@@ -61,12 +55,12 @@ class ReviewLocaActivity : AppCompatActivity() {
         }
     }
 
-    class WebBrideg{
+    inner class WebBrideg{
         @JavascriptInterface
-        fun getAddress(num : String){
-            handler?.post {
-                address = num
-                Toast.makeText(context,"선택한 위치는 $num 입니다.",Toast.LENGTH_SHORT).show()
+        fun getAddress(add : String){
+            handler!!.post {
+                address = add
+                Toast.makeText(this@ReviewLocaActivity,"선택한 위치는 $add 입니다.",Toast.LENGTH_SHORT).show()
             }
         }
     }

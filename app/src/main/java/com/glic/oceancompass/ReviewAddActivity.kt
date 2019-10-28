@@ -32,7 +32,7 @@ class ReviewAddActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode==RESULT_OK && requestCode==1) {
+        if(resultCode == RESULT_OK && requestCode == 1) {
             loca.text = data!!.extras!!.getString("Date")
         }
     }
