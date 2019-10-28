@@ -39,7 +39,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                    android:id="@+id/button15"
+                    android:id="@+id/send"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -90,7 +90,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
-                android:id="@+id/textView8"
+                android:id="@+id/reviewtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -105,7 +105,7 @@
                 android:textSize="25sp" />
 
         <EditText
-                android:id="@+id/textView9"
+                android:id="@+id/explan"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="8.9"
@@ -127,7 +127,7 @@
                     app:srcCompat="@drawable/empty_photo" />
 
             <ImageView
-                    android:id="@+id/Picture2"
+                    android:id="@+id/upload2"
                     android:layout_width="96dp"
                     android:layout_height="89dp"
                     android:layout_marginStart="110dp"
@@ -138,7 +138,7 @@
                     app:srcCompat="@color/ic_launcher_tour_background" />
 
             <ImageView
-                    android:id="@+id/Picture3"
+                    android:id="@+id/upload3"
                     android:layout_width="96dp"
                     android:layout_height="89dp"
                     android:layout_marginStart="210dp"
