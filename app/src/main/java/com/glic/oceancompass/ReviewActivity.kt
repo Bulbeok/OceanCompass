@@ -3,11 +3,11 @@ package com.glic.oceancompass
 import android.content.Context
 import android.content.Intent
 import android.net.http.SslError
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.webkit.*
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request.Method.POST
@@ -54,6 +54,18 @@ class ReviewActivity : AppCompatActivity() {
             search.isIconified = false
         }
 
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                map.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap.jsp?search=$query")
+                Toast.makeText(this@ReviewActivity, "서브밋$query.", Toast.LENGTH_LONG).show()
+                return false
+            }
+            override fun onQueryTextChange(newText: String): Boolean {
+                /*Toast.makeText(this@ReviewActivity, "체인지.", Toast.LENGTH_LONG).show()*/
+                return true
+            }
+        })
+
         addreview.setOnClickListener {
             val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
             val sessionId = pref.getString("sessionCookie", null)
@@ -86,21 +98,15 @@ class ReviewActivity : AppCompatActivity() {
             }
         }
 
-        val myWebView = findViewById<View>(R.id.webView1) as WebView
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            WebView.setWebContentsDebuggingEnabled(true)
-        }
-        val settings = myWebView.settings
-        settings.javaScriptEnabled = true
-        settings.domStorageEnabled = true
-        myWebView.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap.jsp")
-        myWebView.webViewClient = object : WebViewClient(){
+        map.settings.javaScriptEnabled = true
+        map.settings.domStorageEnabled = true
+        map.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap.jsp")
+        map.webViewClient = object : WebViewClient(){
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler!!.proceed()
             }
         }
-        myWebView.webChromeClient = object : WebChromeClient() {
+        map.webChromeClient = object : WebChromeClient() {
             override fun onGeolocationPermissionsShowPrompt(origin: String, callback: GeolocationPermissions.Callback) {
                 callback.invoke(origin, true, false)
             }
