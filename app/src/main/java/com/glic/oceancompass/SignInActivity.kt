@@ -98,7 +98,7 @@ class SignInActivity : AppCompatActivity() {
                     val queue = Volley.newRequestQueue(this)
                     queue.add(request)
                 }
-            } else if(login.text == "로그아웃") {
+            } else {
                 val request = object : StringRequest(
                     POST, "https://175.206.239.109:8443/oceancompass/logout.jsp",
                     //요청 성공 시
