@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request.Method.GET
 import com.android.volley.Request.Method.POST
 import com.android.volley.Response
@@ -83,17 +84,13 @@ class SignUpActivity : AppCompatActivity() {
             } else if(email.text.toString() == "" || !email.text.toString().matches(regExpMail)) {
                 Toast.makeText(this, "이메일 형식에 맞게 입력해주세요.", Toast.LENGTH_LONG).show()
             } else {
-                Log.e("테스트","진행테스트")
                 val request = object : StringRequest(
                     POST, "https://175.206.239.109:8443/oceancompass/AddUserServlet",
                     //요청 성공 시
                     Response.Listener {
-                        Log.e("테스트",it)
                         if (it != "1") {
-                            Log.e("테스트",it)
                             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
                         } else {
-                            Log.e("테스트",it)
                             val builder = AlertDialog.Builder(this@SignUpActivity)
                             builder.setTitle("회원가입 성공")
                             builder.setMessage("이메일을 보냈습니다. 이메일 인증 확인을 해야 모든 기능을 사용 할 수 있습니다.")
@@ -107,12 +104,12 @@ class SignUpActivity : AppCompatActivity() {
                     },
                     // 에러 발생 시
                     Response.ErrorListener {
-                        Log.e("테스트에러", "[${it.message}]")
+                        Log.e("에러", "[${it.message}]")
                     }) {
+
                     // request 시 key, value 보낼 때
                     override fun getParams(): Map<String, String> {
                         val params = HashMap<String, String>()
-                        Log.e("테스트params","params")
                         params["id"] = id.text.toString()
                         params["password"] = password.text.toString()
                         params["name"] = name.text.toString()
@@ -121,6 +118,9 @@ class SignUpActivity : AppCompatActivity() {
                     }
                 }
                 val queue = Volley.newRequestQueue(this)
+                request.retryPolicy = DefaultRetryPolicy(30000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
                 queue.add(request)
             }
         }
