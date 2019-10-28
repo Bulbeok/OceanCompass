@@ -16,10 +16,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.review.*
-import android.webkit.GeolocationPermissions
-import android.webkit.WebChromeClient
-
-
 
 
 class ReviewActivity : AppCompatActivity() {
@@ -53,6 +49,10 @@ class ReviewActivity : AppCompatActivity() {
         }
 
         NukeSSLCerts().nuke()
+
+        search.setOnClickListener {
+            search.isIconified = false
+        }
 
         addreview.setOnClickListener {
             val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
