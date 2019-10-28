@@ -23,14 +23,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6.5"
-            app:layout_constraintBottom_toTopOf="@+id/addReview"
+            app:layout_constraintBottom_toTopOf="@+id/send"
             app:layout_constraintTop_toBottomOf="@+id/search"
             tools:layout_editor_absoluteX="-31dp">
 
     </WebView>
 
     <Button
-            android:id="@+id/addReview"
+            android:id="@+id/send"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_weight="1"

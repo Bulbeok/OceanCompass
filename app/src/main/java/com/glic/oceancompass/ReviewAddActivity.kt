@@ -2,14 +2,9 @@ package com.glic.oceancompass
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.Request.Method.POST
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.reviewadd.*
+
 
 class ReviewAddActivity : AppCompatActivity() {
 
@@ -18,6 +13,7 @@ class ReviewAddActivity : AppCompatActivity() {
         setContentView(R.layout.reviewadd)
 
         send.setOnClickListener {
+            /*//구현안함 나중에
             val request = StringRequest(
                 POST, "https://175.206.239.109:8443/oceancompass/mobilemap2.jsp?id=원주시",
                 Response.Listener {
@@ -27,13 +23,20 @@ class ReviewAddActivity : AppCompatActivity() {
                     Log.e("에러", "[${it.message}]")
                 })
             val queue = Volley.newRequestQueue(this)
-            queue.add(request)
+            queue.add(request)*/
         }
-        loca.setOnClickListener{
-            startActivity(Intent(this,ReviewLocaActivity::class.java))
-            finish()
+        loca.setOnClickListener {
+            startActivityForResult(Intent(this, ReviewLocaActivity::class.java), 1)
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode==RESULT_OK && requestCode==1) {
+            loca.text = data!!.extras!!.getString("Date")
+        }
+    }
+
 
     override fun onBackPressed() {
         startActivity(Intent(this,ReviewActivity::class.java))

@@ -1,7 +1,7 @@
 package com.glic.oceancompass
 
+import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.net.http.SslError
 import android.os.Bundle
 import android.os.Handler
@@ -9,25 +9,30 @@ import android.webkit.*
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.review.*
+import kotlinx.android.synthetic.main.reviewloca.*
+
 
 class ReviewLocaActivity : AppCompatActivity() {
 
     companion object {
         var context : Context? = null
         var handler : Handler? = Handler()
+        var address : String? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_review_loca)
+        setContentView(R.layout.reviewloca)
 
         NukeSSLCerts().nuke()
 
         context = this
 
-        search.setOnClickListener {
-            search.isIconified = false
+        send.setOnClickListener {
+            val intent = intent
+            intent.putExtra("Date", address)
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
 
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -60,13 +65,13 @@ class ReviewLocaActivity : AppCompatActivity() {
         @JavascriptInterface
         fun getAddress(num : String){
             handler?.post {
+                address = num
                 Toast.makeText(context,"선택한 위치는 $num 입니다.",Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this,ReviewAddActivity::class.java))
         finish()
         overridePendingTransition(0, 0)
     }
