@@ -90,8 +90,8 @@
                 android:paddingLeft="10dp"
                 android:singleLine="false"
                 android:soundEffectsEnabled="false"
-                android:text="제목"
                 android:textColor="#5F5F5F"
+                android:textColorHint="#4E4E4E"
                 android:textSize="25sp" />
 
         <EditText
@@ -100,7 +100,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="9"
                 android:background="@drawable/top_bottom_stroke"
-                android:gravity="top|left" />
+                android:gravity="top|left"
+                android:textColor="#2B2B2B" />
 
     </LinearLayout>
 
