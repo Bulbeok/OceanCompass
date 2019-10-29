@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.main.*
 import kotlinx.android.synthetic.main.search.*
 
 
@@ -44,7 +43,6 @@ class SearchActivity : AppCompatActivity() {
             finish()
         }
         radioButton1.setOnClickListener {
-            view ->
             radioButton1.isChecked=true
             radioButton2.isChecked=false
             button10.visibility = View.VISIBLE
@@ -55,7 +53,6 @@ class SearchActivity : AppCompatActivity() {
             day.visibility = View.INVISIBLE
         }
         radioButton2.setOnClickListener {
-                view ->
             radioButton2.isChecked=true
             radioButton1.isChecked=false
             button10.visibility = View.INVISIBLE
