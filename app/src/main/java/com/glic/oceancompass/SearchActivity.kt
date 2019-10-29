@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.main.*
 import kotlinx.android.synthetic.main.search.*
 
 
@@ -37,6 +38,32 @@ class SearchActivity : AppCompatActivity() {
                 }
             }
             true
+        }
+        recommend.setOnClickListener {
+            startActivity(Intent(this,recommendActivity::class.java))
+            finish()
+        }
+        radioButton1.setOnClickListener {
+            view ->
+            radioButton1.isChecked=true
+            radioButton2.isChecked=false
+            button10.visibility = View.VISIBLE
+            button11.visibility = View.VISIBLE
+            button12.visibility = View.VISIBLE
+            button13.visibility = View.VISIBLE
+            direct_input.visibility = View.INVISIBLE
+            day.visibility = View.INVISIBLE
+        }
+        radioButton2.setOnClickListener {
+                view ->
+            radioButton2.isChecked=true
+            radioButton1.isChecked=false
+            button10.visibility = View.INVISIBLE
+            button11.visibility = View.INVISIBLE
+            button12.visibility = View.INVISIBLE
+            button13.visibility = View.INVISIBLE
+            direct_input.visibility = View.VISIBLE
+            day.visibility = View.VISIBLE
         }
         input_local.setOnClickListener {
             //소스 수정 필요!
