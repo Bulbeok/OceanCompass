@@ -79,8 +79,6 @@ open class MainActivity : AppCompatActivity() {
                     if(it.trim() == "1") {
                         Toast.makeText(this,"위치를 다시 입력해 주세요",Toast.LENGTH_LONG).show()
                     } else {
-                        edit.putString("location", location.text.toString())
-                        edit.apply()
                         when(Integer.parseInt(it.split(",")[3])) {
                             1, 4 -> backgroundweather.setBackgroundResource(R.drawable.background_rain)
                             2, 3 -> backgroundweather.setBackgroundResource(R.drawable.background_snow)
@@ -88,6 +86,9 @@ open class MainActivity : AppCompatActivity() {
                         }
                         temperature.text = it.split(",")[0]
                         humidity.text = it.split(",")[1]
+                        location.setText(location.text.toString())
+                        edit.putString("location", location.text.toString())
+                        edit.apply()
                     }
                 },
                 // 에러 발생 시
@@ -119,8 +120,6 @@ open class MainActivity : AppCompatActivity() {
                             if(it.trim() == "1") {
                                 Toast.makeText(this,"위치를 다시 입력해 주세요",Toast.LENGTH_LONG).show()
                             } else {
-                                edit.putString("location", location.text.toString())
-                                edit.apply()
                                 when(Integer.parseInt(it.split(",")[3])) {
                                     1, 4 -> backgroundweather.setBackgroundResource(R.drawable.background_rain)
                                     2, 3 -> backgroundweather.setBackgroundResource(R.drawable.background_snow)
@@ -128,6 +127,9 @@ open class MainActivity : AppCompatActivity() {
                                 }
                                 temperature.text = it.split(",")[0]
                                 humidity.text = it.split(",")[1]
+                                location.setText(location.text.toString())
+                                edit.putString("location", location.text.toString())
+                                edit.apply()
                             }
                         },
                         // 에러 발생 시
