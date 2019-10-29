@@ -15,18 +15,20 @@
             android:background="@drawable/background1"
             app:layout_constraintBottom_toTopOf="@+id/main_bottom_navigation_view"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
         <ImageView
                 android:id="@+id/search"
                 android:layout_width="196dp"
                 android:layout_height="198dp"
                 android:layout_marginBottom="50dp"
+                android:contentDescription="@string/todo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/search_picture"
-                android:contentDescription="@string/todo" />
+                app:srcCompat="@drawable/search_picture" />
 
         <ImageView
                 android:id="@+id/gull"
@@ -34,10 +36,10 @@
                 android:layout_height="157dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="72dp"
+                android:contentDescription="@string/todo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/gall"
-                android:contentDescription="@string/todo" />
+                app:srcCompat="@drawable/gall" />
 
         <ImageView
                 android:id="@+id/review"
@@ -45,9 +47,9 @@
                 android:layout_height="118dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/review_picture"
+                android:contentDescription="@string/todo"
                 app:layout_constraintBottom_toBottomOf="@+id/reviewText"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:contentDescription="@string/todo" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
                 android:id="@+id/searchText"
@@ -64,10 +66,10 @@
                 android:id="@+id/sun"
                 android:layout_width="173dp"
                 android:layout_height="205dp"
+                android:contentDescription="@string/todo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/sunlight2"
-                android:contentDescription="@string/todo" />
+                app:srcCompat="@drawable/sunlight2" />
 
         <TextView
                 android:id="@+id/reviewText"
@@ -84,10 +86,36 @@
                 android:layout_height="63dp"
                 android:layout_marginEnd="56dp"
                 android:layout_marginBottom="100dp"
+                android:contentDescription="@string/todo"
                 app:layout_constraintBottom_toBottomOf="@+id/review"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/tutle"
-                android:contentDescription="@string/todo" />
+                app:srcCompat="@drawable/tutle" />
+
+        <EditText
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="112dp"
+                android:layout_marginTop="36dp"
+                android:textColor="#494949"
+                android:textColorHighlight="#00FFFFFF"
+                android:textColorHint="#5E5E5E"
+                android:textColorLink="#00FFFFFF"
+                android:textSize="30sp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="192dp"
+                android:layout_height="238dp"
+                android:layout_marginTop="92dp"
+                android:layout_marginEnd="72dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sun"
+                app:srcCompat="@drawable/tolk" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

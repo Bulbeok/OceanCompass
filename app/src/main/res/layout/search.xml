@@ -6,299 +6,196 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10"
-        android:background="@drawable/search_background"
         tools:context=".SearchActivity">
 
-    <LinearLayout
-            android:id="@+id/linearLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="10">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/main_bottom_navigation_view"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp"
+            android:background="@drawable/search_background"
+            >
 
-        <ScrollView
-                android:id="@+id/scrollView2"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/local"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="10">
+                android:layout_weight="3"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                    android:layout_width="match_parent"
+            <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="64dp"
+                    android:text="지역"
+                    android:textColor="#535353"
+                    android:textSize="40sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/local"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+            <Button
+                    android:id="@+id/input_local"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="32dp"
+                    android:background="#D0FDFDFD"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="지역을 입력해주세요."
+                    android:textColor="#646464"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-                    <TextView
-                            android:id="@+id/textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="36dp"
-                            android:layout_marginLeft="36dp"
-                            android:layout_marginTop="28dp"
-                            android:text="지역"
-                            android:textSize="30sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <Button
-                            android:id="@+id/input_local"
-                            android:layout_width="265dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="36dp"
-                            android:layout_marginLeft="36dp"
-                            android:layout_marginTop="16dp"
-                            android:background="#D0FDFDFD"
-                            android:gravity="left|center_vertical"
-                            android:paddingLeft="10dp"
-                            android:text="지역을 입력해주세요."
-                            android:textColor="#646464"
-                            android:textSize="20sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-                    <ImageButton
-                            android:id="@+id/imageButton"
-                            android:layout_width="41dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="16dp"
-                            android:background="#FCFCFC"
-                            app:layout_constraintStart_toEndOf="@+id/input_local"
-                            app:layout_constraintTop_toBottomOf="@+id/textView"
-                            app:srcCompat="@android:drawable/ic_menu_compass" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/act"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="36dp"
-                            android:layout_marginLeft="36dp"
-                            android:layout_marginTop="48dp"
-                            android:text="놀거리"
-                            android:textSize="30sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                            android:id="@+id/button3"
-                            android:layout_width="316dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="36dp"
-                            android:layout_marginLeft="36dp"
-                            android:layout_marginTop="24dp"
-                            android:background="#FFFFFF"
-                            android:gravity="left|center_vertical"
-                            android:paddingLeft="10dp"
-                            android:text="ex) 스킨스쿠버, 낚시, 박물관"
-                            android:textColor="#D5666666"
-                            android:textSize="20sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView3" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/food"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
-                            android:layout_marginLeft="40dp"
-                            android:layout_marginTop="28dp"
-                            android:text="음식"
-                            android:textSize="30sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                            android:id="@+id/button4"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="40dp"
-                            android:layout_marginLeft="40dp"
-                            android:layout_marginTop="8dp"
-                            android:background="#FFFFFF"
-                            android:text="한식"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-                    <Button
-                            android:id="@+id/button5"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="40dp"
-                            android:layout_marginLeft="40dp"
-                            android:layout_marginTop="16dp"
-                            android:background="#FFFFFF"
-                            android:text="패스트푸드"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/button4" />
-
-                    <Button
-                            android:id="@+id/button6"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="16dp"
-                            android:background="#FFFFFF"
-                            android:text="치킨"
-                            app:layout_constraintStart_toEndOf="@+id/button5"
-                            app:layout_constraintTop_toBottomOf="@+id/button9" />
-
-                    <Button
-                            android:id="@+id/button7"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="8dp"
-                            android:background="#FFFFFF"
-                            android:text="양식"
-                            app:layout_constraintStart_toEndOf="@+id/button8"
-                            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-                    <Button
-                            android:id="@+id/button8"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="8dp"
-                            android:background="#FFFFFF"
-                            android:text="일식"
-                            app:layout_constraintStart_toEndOf="@+id/button9"
-                            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-                    <Button
-                            android:id="@+id/button9"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="8dp"
-                            android:background="#FFFFFF"
-                            android:text="중식"
-                            app:layout_constraintStart_toEndOf="@+id/button4"
-                            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/time"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
-                            android:layout_marginLeft="40dp"
-                            android:layout_marginTop="28dp"
-                            android:text="여행기간"
-                            android:textSize="30sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    <RadioButton
-                            android:id="@+id/radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
-                            android:layout_marginLeft="40dp"
-                            android:layout_marginTop="16dp"
-                            android:text="목록에서 선택"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-                    <RadioButton
-                            android:id="@+id/radioButton2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="16dp"
-                            android:text="직접 입력"
-                            app:layout_constraintStart_toEndOf="@+id/radioButton"
-                            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-                    <Button
-                            android:id="@+id/button10"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="40dp"
-                            android:layout_marginLeft="40dp"
-                            android:layout_marginTop="16dp"
-                            android:background="#FFFFFF"
-                            android:text="월~금"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
-
-                    <Button
-                            android:id="@+id/button11"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="16dp"
-                            android:background="#FFFFFF"
-                            android:text="월~수"
-                            app:layout_constraintStart_toEndOf="@+id/button10"
-                            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
-
-                    <Button
-                            android:id="@+id/button12"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="16dp"
-                            android:background="#FFFFFF"
-                            android:text="수~금"
-                            app:layout_constraintStart_toEndOf="@+id/button11"
-                            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
-
-                    <Button
-                            android:id="@+id/button13"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="16dp"
-                            android:background="#FFFFFF"
-                            android:text="주말(토,일)"
-                            app:layout_constraintStart_toEndOf="@+id/button12"
-                            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
-        </ScrollView>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/main_bottom_navigation_view"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/act"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                android:background="?android:attr/windowBackground"
-                app:layout_behavior="tech.thdev.app.view.BottomNavigationBehavior"
-                app:itemIconTint="@drawable/selector"
-                app:menu="@menu/bottom_nav_menu" />
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                app:layout_constraintBottom_toTopOf="@+id/time"
+                app:layout_constraintTop_toBottomOf="@+id/local"
+                tools:layout_editor_absoluteX="-16dp">
 
-    </LinearLayout>
+            <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="72dp"
+                    android:text="놀거리"
+                    android:textColor="#535353"
+                    android:textSize="40sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                    android:id="@+id/button3"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="36dp"
+                    android:background="#FFFFFF"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="ex) 스킨스쿠버, 낚시, 박물관"
+                    android:textColor="#D5666666"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="0dp">
+
+            <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="20dp"
+                    android:text="여행기간"
+                    android:textColor="#535353"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="25dp"
+                    android:text="목록에서 선택"
+                    android:textColor="#535353"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:text="직접 입력"
+                    android:textColor="#535353"
+                    app:layout_constraintStart_toEndOf="@+id/radioButton"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <Button
+                    android:id="@+id/button10"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#FFFFFF"
+                    android:text="1박2일"
+                    android:textColor="#535353"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+
+            <Button
+                    android:id="@+id/button11"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:background="#FFFFFF"
+                    android:text="2박3일"
+                    android:textColor="#535353"
+                    app:layout_constraintStart_toEndOf="@+id/button10"
+                    app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+
+            <Button
+                    android:id="@+id/button12"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:background="#FFFFFF"
+                    android:text="3박4일"
+                    android:textColor="#535353"
+                    app:layout_constraintStart_toEndOf="@+id/button11"
+                    app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+
+            <Button
+                    android:id="@+id/button13"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:background="#FFFFFF"
+                    android:text="4박5일"
+                    android:textColor="#535353"
+                    app:layout_constraintStart_toEndOf="@+id/button12"
+                    app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="?android:attr/windowBackground"
+            app:itemIconTint="@drawable/selector"
+            app:layout_behavior="tech.thdev.app.view.BottomNavigationBehavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

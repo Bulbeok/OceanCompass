@@ -16,6 +16,7 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
+        <activity android:name=".recommendActivity"></activity>
         <activity
                 android:name=".ReviewLocaActivity"
                 android:launchMode="singleTop"
@@ -57,4 +58,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

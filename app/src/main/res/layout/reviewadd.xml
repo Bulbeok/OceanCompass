@@ -101,6 +101,10 @@
                 android:layout_weight="9"
                 android:background="@drawable/top_bottom_stroke"
                 android:gravity="top|left"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
                 android:textColor="#2B2B2B" />
 
     </LinearLayout>
