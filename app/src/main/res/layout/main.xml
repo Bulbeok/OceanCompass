@@ -92,11 +92,13 @@
                 app:srcCompat="@drawable/tutle" />
 
         <EditText
-                android:id="@+id/textView4"
+                android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="112dp"
                 android:layout_marginTop="36dp"
+                android:hint="ex) 해남군"
+                android:singleLine="true"
                 android:textColor="#494949"
                 android:textColorHighlight="#00FFFFFF"
                 android:textColorHint="#5E5E5E"
@@ -107,14 +109,24 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="192dp"
-                android:layout_height="238dp"
-                android:layout_marginTop="92dp"
-                android:layout_marginEnd="72dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sun"
-                app:srcCompat="@drawable/tolk" />
+                android:id="@+id/tutlehint"
+                android:layout_width="264dp"
+                android:layout_height="93dp"
+                app:layout_constraintBottom_toTopOf="@+id/tutle"
+                app:layout_constraintEnd_toEndOf="@+id/tutle"
+                app:srcCompat="@drawable/talk" />
+
+        <TextView
+                android:id="@+id/tutlehinttext"
+                android:layout_width="136dp"
+                android:layout_height="36dp"
+                android:text="날씨 정보를 받으려면 선택 하세요"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/tutlehint"
+                app:layout_constraintEnd_toEndOf="@+id/tutlehint"
+                app:layout_constraintStart_toStartOf="@+id/tutlehint"
+                app:layout_constraintTop_toTopOf="@+id/tutlehint"
+                app:layout_constraintVertical_bias="0.21" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

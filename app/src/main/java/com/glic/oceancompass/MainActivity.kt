@@ -1,10 +1,15 @@
 package com.glic.oceancompass
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.main.*
 
@@ -14,6 +19,8 @@ open class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
+
+        NukeSSLCerts().nuke()
 
         search.setOnClickListener {
             startActivity(Intent(this@MainActivity,SearchActivity::class.java))
@@ -48,6 +55,38 @@ open class MainActivity : AppCompatActivity() {
                 }
             }
             true
+        }
+
+        tutlehint.setOnClickListener {
+            location.visibility = View.VISIBLE
+            tutlehint.visibility = View.INVISIBLE
+            tutlehinttext.visibility = View.INVISIBLE
+        }
+
+        location.setOnKeyListener { _, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                if(location.text.toString() != "") {
+                    val request = object : StringRequest(
+                        Method.POST, "https://175.206.239.109:8443/oceancompass/WeatherServlet",
+                        //요청 성공 시
+                        Response.Listener {
+                            Toast.makeText(this,it,Toast.LENGTH_LONG).show()
+                        },
+                        // 에러 발생 시
+                        Response.ErrorListener {
+                            Log.e("에러", "[${it.message}]")
+                        }) {
+                        override fun getParams(): Map<String, String> {
+                            val params = HashMap<String, String>()
+                            params["loca"] = location.text.toString()
+                            return params
+                        }
+                    }
+                    val queue = Volley.newRequestQueue(this)
+                    queue.add(request)
+                }
+            }
+            false
         }
     }
 }
