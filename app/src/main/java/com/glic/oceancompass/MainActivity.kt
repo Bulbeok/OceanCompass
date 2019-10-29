@@ -50,12 +50,4 @@ open class MainActivity : AppCompatActivity() {
             true
         }
     }
-
-    override fun onBackPressed() {
-        val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
-        val edit = pref.edit()
-        edit.putString("sessionCookie", "")
-        edit.apply()
-        super.onBackPressed()
-    }
 }

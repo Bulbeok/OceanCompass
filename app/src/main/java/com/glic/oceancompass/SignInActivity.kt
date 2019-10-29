@@ -26,7 +26,7 @@ class SignInActivity : AppCompatActivity() {
 
         val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
         val edit = pref.edit()
-        var sessionId: String?
+        val sessionId = pref.getString("sessionCookie", null)
 
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
         bottomNavigationView.menu.findItem(R.id.mypage).isChecked = true
@@ -55,9 +55,36 @@ class SignInActivity : AppCompatActivity() {
 
         NukeSSLCerts().nuke()
 
+        var temp = true
+        val request2 = object : StringRequest(
+            POST, "https://175.206.239.109:8443/oceancompass/mailcheck.jsp",
+            //요청 성공 시
+            Response.Listener {
+                if(it.trim() == "2") {
+                    temp = true
+                } else {
+                    id.isEnabled = false
+                    password.isEnabled = false
+                    temp = false
+                    id.setText(pref.getString("sessionId", null))
+                    login.text = "로그아웃"
+                }
+            },
+            // 에러 발생 시
+            Response.ErrorListener {
+                Log.e("에러", "[${it.message}]")
+            }) {
+            override fun getHeaders(): Map<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Cookie"] = sessionId!!
+                return headers
+            }
+        }
+        val queue2 = Volley.newRequestQueue(this)
+        queue2.add(request2)
+
         login.setOnClickListener {
-            sessionId = pref.getString("sessionCookie", null)
-            if(sessionId.isNullOrEmpty() || sessionId == "") {
+            if(temp) {
                 if(id.text.toString() == "" || password.text.toString() == "") {
                     Toast.makeText(this, "아이디와 비밀번호를 입력해주세요", Toast.LENGTH_LONG).show()
                 } else {
@@ -73,6 +100,7 @@ class SignInActivity : AppCompatActivity() {
                                 Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_LONG).show()
                                 id.isEnabled = false
                                 password.isEnabled = false
+                                temp = false
                                 login.text = "로그아웃"
                             }
                         },
@@ -104,10 +132,12 @@ class SignInActivity : AppCompatActivity() {
                     //요청 성공 시
                     Response.Listener {
                         edit.putString("sessionCookie", "")
+                        edit.putString("sessionId", "")
                         edit.apply()
                         Toast.makeText(this, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
                         id.isEnabled = true
                         password.isEnabled = true
+                        temp = true
                         login.text = "로그인"
                     },
                     // 에러 발생 시
