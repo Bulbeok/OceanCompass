@@ -80,7 +80,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
-                android:id="@+id/textView8"
+                android:id="@+id/titles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -95,7 +95,7 @@
                 android:textSize="25sp" />
 
         <EditText
-                android:id="@+id/textView9"
+                android:id="@+id/explanation"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="9"

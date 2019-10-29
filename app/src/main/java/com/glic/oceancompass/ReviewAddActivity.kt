@@ -1,8 +1,15 @@
 package com.glic.oceancompass
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request.Method.POST
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.reviewadd.*
 
 
@@ -13,17 +20,42 @@ class ReviewAddActivity : AppCompatActivity() {
         setContentView(R.layout.reviewadd)
 
         send.setOnClickListener {
-            /*//구현안함 나중에
-            val request = StringRequest(
-                POST, "https://175.206.239.109:8443/oceancompass/mobilemap2.jsp?id=원주시",
-                Response.Listener {
-                    Toast.makeText(this, "[$it]", Toast.LENGTH_LONG).show()
-                },
-                Response.ErrorListener {
-                    Log.e("에러", "[${it.message}]")
-                })
-            val queue = Volley.newRequestQueue(this)
-            queue.add(request)*/
+            when {
+                titles.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
+                explanation.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
+                loca.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
+                else -> {
+                    val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
+                    val sessionId = pref.getString("sessionCookie", null)
+                    val request = object : StringRequest(
+                        POST, "https://175.206.239.109:8443/oceancompass/AddMobilReviewServlet",
+                        Response.Listener {
+                            Toast.makeText(this, "작성되었습니다.", Toast.LENGTH_LONG).show()
+                            startActivity(Intent(this,ReviewActivity::class.java))
+                            finish()
+                        },
+                        Response.ErrorListener {
+                            Log.e("에러", "[${it.message}]")
+                        }) {
+                        // request 시 key, value 보낼 때
+                        override fun getParams(): Map<String, String> {
+                            val params = HashMap<String, String>()
+                            params["title"] = titles.text.toString()
+                            params["explanation"] = explanation.text.toString()
+                            params["address"] = loca.text.toString()
+                            return params
+                        }
+
+                        override fun getHeaders(): Map<String, String> {
+                            val headers = HashMap<String, String>()
+                            headers["Cookie"] = sessionId!!
+                            return headers
+                        }
+                    }
+                    val queue = Volley.newRequestQueue(this)
+                    queue.add(request)
+                }
+            }
         }
         loca.setOnClickListener {
             startActivityForResult(Intent(this, ReviewLocaActivity::class.java), 1)

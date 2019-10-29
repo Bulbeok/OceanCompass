@@ -74,11 +74,13 @@ class ReviewActivity : AppCompatActivity() {
                     POST, "https://175.206.239.109:8443/oceancompass/mailcheck.jsp",
                     //요청 성공 시
                     Response.Listener {
-                        if(it.trim() == "0") {
-                            Toast.makeText(this, "이메일 인증 후 리뷰 작성이 가능합니다.", Toast.LENGTH_LONG).show()
-                        } else {
-                            startActivity(Intent(this,ReviewAddActivity::class.java))
-                            finish()
+                        when {
+                            it.trim() == "0" -> Toast.makeText(this, "이메일 인증 후 리뷰 작성이 가능합니다.", Toast.LENGTH_LONG).show()
+                            it.trim() == "2" -> Toast.makeText(this, "로그인 후 리뷰 작성이 가능합니다.", Toast.LENGTH_LONG).show()
+                            else -> {
+                                startActivity(Intent(this,ReviewAddActivity::class.java))
+                                finish()
+                            }
                         }
                     },
                     // 에러 발생 시
