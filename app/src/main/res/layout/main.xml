@@ -128,6 +128,16 @@
                 app:layout_constraintTop_toTopOf="@+id/tutlehint"
                 app:layout_constraintVertical_bias="0.21" />
 
+        <ImageView
+                android:id="@+id/tempture"
+                android:layout_width="63dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="116dp"
+                android:layout_marginEnd="28dp"
+                app:layout_constraintEnd_toEndOf="@+id/search"
+                app:layout_constraintTop_toTopOf="@+id/search"
+                app:srcCompat="@drawable/tempture" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
