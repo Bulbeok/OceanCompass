@@ -70,7 +70,17 @@ open class MainActivity : AppCompatActivity() {
                         Method.POST, "https://175.206.239.109:8443/oceancompass/WeatherServlet",
                         //요청 성공 시
                         Response.Listener {
-                            Toast.makeText(this,it,Toast.LENGTH_LONG).show()
+                            if(it.trim() == "1") {
+                                Toast.makeText(this,"위치를 다시 입력해 주세요",Toast.LENGTH_LONG).show()
+                            } else {
+                                when(Integer.parseInt(it.split(",")[3])) {
+                                    1, 4 -> backgroundweather.setBackgroundResource(R.drawable.background_rain)
+                                    2, 3 -> backgroundweather.setBackgroundResource(R.drawable.background_snow)
+                                    else -> backgroundweather.setBackgroundResource(R.drawable.background1)
+                                }
+                                temperature.text = it.split(",")[0]
+                                humidity.text = it.split(",")[1]
+                            }
                         },
                         // 에러 발생 시
                         Response.ErrorListener {
