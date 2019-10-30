@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -151,5 +152,17 @@ open class MainActivity : AppCompatActivity() {
             }
             false
         }
+    }
+
+    override fun onBackPressed() {
+        val alert = AlertDialog.Builder(this@MainActivity)
+        alert.setMessage("정말로 종료하시겠습니까?")
+        alert.setPositiveButton("종료") { _, _ ->
+            super.onBackPressed()
+        }
+        alert.setNegativeButton("취소") { _, _ ->
+        }
+        val dialog: AlertDialog = alert.create()
+        dialog.show()
     }
 }
