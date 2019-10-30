@@ -116,8 +116,12 @@ class ReviewActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this@ReviewActivity,MainActivity::class.java))
-        finish()
-        overridePendingTransition(0, 0)
+        if(map.canGoBack()){
+            map.goBack()
+        }else{
+            startActivity(Intent(this@ReviewActivity,MainActivity::class.java))
+            finish()
+            overridePendingTransition(0, 0)
+        }
     }
 }
