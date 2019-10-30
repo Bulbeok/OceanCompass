@@ -31,7 +31,7 @@ class SignUpActivity : AppCompatActivity() {
         val reqExpName = Regex("^[가-힣]*$")
         val regExpMail = Regex("""^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$""")
 
-        var checkId = true
+        var checkUserId = true
 
         id.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -39,11 +39,11 @@ class SignUpActivity : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                checkId =  true
+                checkUserId =  true
             }
         })
 
-        checkid.setOnClickListener {
+        checkId.setOnClickListener {
             val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, 0)
 
@@ -59,7 +59,7 @@ class SignUpActivity : AppCompatActivity() {
                             Toast.makeText(this, "사용 불가능한 아이디 입니다", Toast.LENGTH_LONG).show()
                         } else {
                             Toast.makeText(this, "사용 가능한 아이디 입니다", Toast.LENGTH_LONG).show()
-                            checkId = false
+                            checkUserId = false
                         }
                     },
                     Response.ErrorListener {
@@ -70,8 +70,8 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-        signup.setOnClickListener {
-            if(checkId) {
+        signUp.setOnClickListener {
+            if(checkUserId) {
                 Toast.makeText(this, "아이디 중복확인 해주세요.", Toast.LENGTH_LONG).show()
             } else if(password.text.toString() == "" || password.text.toString().length !in 6..16) {
                 Toast.makeText(this, "비밀번호 형식에 맞게 입력해주세요.", Toast.LENGTH_LONG).show()

@@ -12,17 +12,13 @@
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="94dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="94dp"
+            android:layout_marginTop="55dp"
             android:text="@string/회원가입"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.018" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
             android:id="@+id/Id_text"
@@ -67,7 +63,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
     <Button
-            android:id="@+id/checkid"
+            android:id="@+id/checkId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -237,18 +233,14 @@
             android:textColor="#707070"
             android:textColorHint="#80000000"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/signup"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/EmailText"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/EmailText" />
 
     <Button
-            android:id="@+id/signup"
+            android:id="@+id/signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="94dp"
-            android:layout_marginTop="576dp"
-            android:layout_marginEnd="94dp"
+            android:layout_marginBottom="55dp"
             android:background="#CE535353"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
@@ -258,9 +250,7 @@
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.527"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.227" />
+            app:layout_constraintTop_toBottomOf="@+id/email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

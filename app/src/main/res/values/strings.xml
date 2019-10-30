@@ -12,6 +12,7 @@
     <string name="중복확인">중복확인</string>
     <string name="회원가입">회원가입</string>
     <string name="아이디">아이디</string>
+    <string name="로그인">로그인</string>
     <string name="todo">TODO</string>
     <string name="searchtext">여행지찾기</string>
     <string name="addReview">여행지 공유하기</string>
