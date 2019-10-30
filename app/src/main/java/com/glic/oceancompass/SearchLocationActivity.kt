@@ -66,7 +66,11 @@ class SearchLocationActivity : AppCompatActivity(), RecycleViewClick {
 
     override fun cityClick(value: String) {
         val intent = intent
-        intent.putExtra("city", "$state $value")
+        if(state == value) {
+            intent.putExtra("city", value)
+        } else {
+            intent.putExtra("city", "$state $value")
+        }
         setResult(Activity.RESULT_OK, intent)
         finish()
     }
