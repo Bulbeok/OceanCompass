@@ -199,7 +199,7 @@
         <Button
                 android:id="@+id/recommend"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="0dp"
                 android:background="@color/colorPrimary"
                 android:text="여행지 검색"
                 android:textColor="#FFFFFF"
