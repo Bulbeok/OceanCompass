@@ -63,8 +63,16 @@ class SearchActivity : AppCompatActivity() {
             direct_input.visibility = View.VISIBLE
             day.visibility = View.VISIBLE
         }
+
         input_local.setOnClickListener {
-            startActivity(Intent(this,SearchLocationActivity::class.java))
+            startActivityForResult(Intent(this,SearchLocationActivity::class.java), 1)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == 1) {
+            input_local.text = data!!.extras!!.getString("city")
         }
     }
 
