@@ -17,4 +17,5 @@
     <string name="searchtext">여행지찾기</string>
     <string name="addReview">여행지 공유하기</string>
     <string name="addLoca">위치선택</string>
+    <string name="select">선택 완료</string>
 </resources>

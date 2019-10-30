@@ -43,6 +43,7 @@ class SearchActivity : AppCompatActivity() {
             startActivity(Intent(this,recommendActivity::class.java))
             finish()
         }
+
         radioButton1.setOnClickListener {
             radioButton1.isChecked=true
             radioButton2.isChecked=false
@@ -67,12 +68,17 @@ class SearchActivity : AppCompatActivity() {
         input_local.setOnClickListener {
             startActivityForResult(Intent(this,SearchLocationActivity::class.java), 1)
         }
+        input_play.setOnClickListener {
+            startActivityForResult(Intent(this,SearchPlayActivity::class.java), 2)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == 1) {
             input_local.text = data!!.extras!!.getString("city")
+        } else if(resultCode == RESULT_OK && requestCode == 2) {
+            input_play.text = data!!.extras!!.getString("play")
         }
     }
 

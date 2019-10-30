@@ -37,7 +37,6 @@ class SearchLocationActivity : AppCompatActivity(), RecycleViewClick {
         }
         val queue = Volley.newRequestQueue(this)
         queue.add(request)
-
     }
 
     override fun stateClick(value: String) {

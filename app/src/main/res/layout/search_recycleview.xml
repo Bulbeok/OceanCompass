@@ -28,11 +28,14 @@
             card_view:contentPadding="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recycleview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|center_vertical"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:paddingRight="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/truefalse"
+                app:layout_constraintTop_toBottomOf="@+id/truefalse">
 
             <TextView
                     android:id="@+id/location_recycleview_text"
@@ -54,6 +57,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                    android:id="@+id/truefalse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="@+id/location_recycleview_text"
+                    app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

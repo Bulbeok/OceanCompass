@@ -16,8 +16,12 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
-        <activity android:name=".searchActActivity"></activity>
         <activity android:name=".recommendActivity" />
+
+        <activity
+                android:name=".SearchPlayActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".SearchLocationActivity"
                 android:launchMode="singleTop"
