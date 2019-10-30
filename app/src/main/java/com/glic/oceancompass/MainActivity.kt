@@ -86,8 +86,8 @@ open class MainActivity : AppCompatActivity() {
                         }
                         temperature.text = it.split(",")[0]
                         humidity.text = it.split(",")[1]
-                        location.setText(location.text.toString())
-                        edit.putString("location", location.text.toString())
+                        location.setText(it.split(",")[4])
+                        edit.putString("location", it.split(",")[4])
                         edit.apply()
                     }
                 },
@@ -127,8 +127,8 @@ open class MainActivity : AppCompatActivity() {
                                 }
                                 temperature.text = it.split(",")[0]
                                 humidity.text = it.split(",")[1]
-                                location.setText(location.text.toString())
-                                edit.putString("location", location.text.toString())
+                                location.setText(it.split(",")[4])
+                                edit.putString("location", it.split(",")[4])
                                 edit.apply()
                             }
                         },
