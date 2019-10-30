@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.search.*
+import java.net.URLEncoder
 
 
 class SearchActivity : AppCompatActivity() {
@@ -14,7 +15,8 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search)
         val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
-
+        val name = "고영민"
+        URLEncoder.encode(name,"utf-8")
         bottomNavigationView.menu.findItem(R.id.search).isChecked = true
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {

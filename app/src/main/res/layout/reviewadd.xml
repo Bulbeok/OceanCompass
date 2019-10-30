@@ -32,7 +32,7 @@
                     android:gravity="left|center_vertical"
                     android:paddingLeft="10dp"
                     android:singleLine="false"
-                    android:text="여행지공유하기"
+                    android:text="여행지 공유하기"
                     android:textSize="25sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
