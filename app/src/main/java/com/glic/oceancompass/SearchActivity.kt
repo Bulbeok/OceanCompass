@@ -47,27 +47,6 @@ class SearchActivity : AppCompatActivity() {
             finish()
         }
 
-        radioButton1.setOnClickListener {
-            radioButton1.isChecked=true
-            radioButton2.isChecked=false
-            button10.visibility = View.VISIBLE
-            button11.visibility = View.VISIBLE
-            button12.visibility = View.VISIBLE
-            button13.visibility = View.VISIBLE
-            direct_input.visibility = View.INVISIBLE
-            day.visibility = View.INVISIBLE
-        }
-        radioButton2.setOnClickListener {
-            radioButton2.isChecked=true
-            radioButton1.isChecked=false
-            button10.visibility = View.INVISIBLE
-            button11.visibility = View.INVISIBLE
-            button12.visibility = View.INVISIBLE
-            button13.visibility = View.INVISIBLE
-            direct_input.visibility = View.VISIBLE
-            day.visibility = View.VISIBLE
-        }
-
         input_local.setOnClickListener {
             startActivityForResult(Intent(this,SearchLocationActivity::class.java), 1)
         }

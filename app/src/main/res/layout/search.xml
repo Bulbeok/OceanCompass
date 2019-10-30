@@ -116,115 +116,88 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioButton
-                    android:id="@+id/radioButton1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
+            <Button
+                    android:id="@+id/button10"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="20dp"
-                    android:checked="true"
-                    android:text="목록에서 선택"
+                    android:background="#FFFFFF"
+                    android:text="1일"
                     android:textColor="#535353"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-            <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:checked="false"
-                    android:text="직접 입력"
+            <Button
+                    android:id="@+id/button13"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="#FFFFFF"
+                    android:text="3박4일"
                     android:textColor="#535353"
-                    app:layout_constraintStart_toEndOf="@+id/radioButton1"
-                    app:layout_constraintTop_toTopOf="@+id/radioButton1" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/button12" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/radioButton2">
+            <Button
+                    android:id="@+id/button4"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#FFFFFF"
+                    android:text="5박6일"
+                    android:textColor="#535353"
+                    app:layout_constraintStart_toEndOf="@+id/button2"
+                    app:layout_constraintTop_toTopOf="@+id/button2" />
 
-                <Button
-                        android:id="@+id/button10"
-                        android:layout_width="69dp"
-                        android:layout_height="45dp"
-                        android:layout_marginStart="36dp"
-                        android:background="#FFFFFF"
-                        android:text="1박2일"
-                        android:textColor="#535353"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+            <Button
+                    android:id="@+id/button5"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="128dp"
+                    android:background="#FFFFFF"
+                    android:text="6박7일"
+                    android:textColor="#535353"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/button4"
+                    app:layout_constraintTop_toTopOf="@+id/button4" />
 
-                <Button
-                        android:id="@+id/button11"
-                        android:layout_width="69dp"
-                        android:layout_height="45dp"
-                        android:layout_marginStart="20dp"
-                        android:background="#FFFFFF"
-                        android:text="2박3일"
-                        android:textColor="#535353"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/button10" />
+            <Button
+                    android:id="@+id/button11"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#FFFFFF"
+                    android:text="1박2일"
+                    android:textColor="#535353"
+                    app:layout_constraintStart_toEndOf="@+id/button10"
+                    app:layout_constraintTop_toTopOf="@+id/button10" />
 
-                <Button
-                        android:id="@+id/button12"
-                        android:layout_width="69dp"
-                        android:layout_height="45dp"
-                        android:layout_marginStart="20dp"
-                        android:background="#FFFFFF"
-                        android:text="3박4일"
-                        android:textColor="#535353"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/button11" />
+            <Button
+                    android:id="@+id/button2"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#FFFFFF"
+                    android:text="4박5일"
+                    android:textColor="#535353"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button10" />
 
-                <Button
-                        android:id="@+id/button13"
-                        android:layout_width="69dp"
-                        android:layout_height="45dp"
-                        android:layout_marginStart="20dp"
-                        android:background="#FFFFFF"
-                        android:text="4박5일"
-                        android:textColor="#535353"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/button12" />
-
-                <EditText
-                        android:id="@+id/direct_input"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="36dp"
-                        android:background="#FFFFFF"
-                        android:ems="10"
-                        android:hint="ex) 3"
-                        android:inputType="textPersonName"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:textColorHint="#646464"
-                        android:textSize="20sp"
-                        android:visibility="invisible"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0" />
-
-                <TextView
-                        android:id="@+id/day"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginBottom="3dp"
-                        android:text="일"
-                        android:textColor="#303030"
-                        android:textSize="20sp"
-                        android:visibility="invisible"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/direct_input"
-                        app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                    android:id="@+id/button12"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="20dp"
+                    android:background="#FFFFFF"
+                    android:text="2박3일"
+                    android:textColor="#535353"
+                    app:layout_constraintEnd_toStartOf="@+id/button13"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/button11"
+                    app:layout_constraintTop_toTopOf="@+id/button11" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -234,7 +207,7 @@
                 android:layout_height="60dp"
                 android:background="@color/colorPrimary"
                 android:text="여행지 검색"
-                android:textColor="#292929"
+                android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
