@@ -10,6 +10,9 @@ import kotlinx.android.synthetic.main.search.*
 
 class SearchActivity : AppCompatActivity() {
 
+    private lateinit var location: String
+    private lateinit var play: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search)
@@ -77,8 +80,12 @@ class SearchActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == 1) {
             input_local.text = data!!.extras!!.getString("city")
+            location = data.extras!!.getString("city")!!
         } else if(resultCode == RESULT_OK && requestCode == 2) {
-            input_play.text = data!!.extras!!.getString("play")
+            if(data!!.extras!!.getString("play") != "") {
+                input_play.text = data.extras!!.getString("play")
+                play = data.extras!!.getString("play")!!
+            }
         }
     }
 

@@ -75,7 +75,6 @@ class SearchLocationActivity : AppCompatActivity(), RecycleViewClick {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this,SearchActivity::class.java))
         finish()
     }
 }

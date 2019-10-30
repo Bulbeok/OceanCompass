@@ -72,7 +72,6 @@ class ReviewAddActivity : AppCompatActivity() {
     override fun onBackPressed() {
         startActivity(Intent(this, ReviewActivity::class.java))
         finish()
-        overridePendingTransition(0, 0)
     }
 }
 

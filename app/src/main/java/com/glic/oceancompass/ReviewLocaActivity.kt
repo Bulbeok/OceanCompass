@@ -67,6 +67,5 @@ class ReviewLocaActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         finish()
-        overridePendingTransition(0, 0)
     }
 }

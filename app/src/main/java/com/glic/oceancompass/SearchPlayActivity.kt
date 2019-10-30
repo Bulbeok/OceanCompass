@@ -39,8 +39,11 @@ class SearchPlayActivity : AppCompatActivity(), RecycleViewClick {
 
         playcheck.setOnClickListener {
             val intent = intent
-
-            intent.putExtra("play", play.substring(1,play.length))
+            if(play == "") {
+                intent.putExtra("play", "")
+            } else {
+                intent.putExtra("play", play.substring(1,play.length))
+            }
             setResult(Activity.RESULT_OK, intent)
             finish()
         }
@@ -55,7 +58,6 @@ class SearchPlayActivity : AppCompatActivity(), RecycleViewClick {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this,SearchActivity::class.java))
         finish()
     }
 }
