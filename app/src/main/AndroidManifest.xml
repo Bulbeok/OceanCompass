@@ -18,6 +18,10 @@
             tools:targetApi="m">
         <activity android:name=".recommendActivity" />
         <activity
+                android:name=".SearchLocationActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/AppTheme"  />
+        <activity
                 android:name=".ReviewLocaActivity"
                 android:launchMode="singleTop"
                 android:theme="@style/AppTheme" />
