@@ -61,7 +61,7 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
                     }
                 }
                 5 -> {
-                    itemView.location_recycleview_text.text = str.trim()
+                    itemView.location_recycleview_text.text = str.trim().split("/")[0]
                     itemView.setOnClickListener {
                         listener!!.cityClick(urlList[position].trim())
                     }

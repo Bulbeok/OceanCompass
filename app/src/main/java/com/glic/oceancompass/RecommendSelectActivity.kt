@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request.Method.POST
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -46,10 +47,6 @@ class RecommendSelectActivity : AppCompatActivity(), RecycleViewClick {
         }
     }
 
-    /*fun firstClick(type : String) {
-
-    }*/
-
     override fun stateClick(value: String) {
         state = value
         val request = object : StringRequest(
@@ -72,11 +69,14 @@ class RecommendSelectActivity : AppCompatActivity(), RecycleViewClick {
             }
         }
         val queue = Volley.newRequestQueue(this)
+        request.retryPolicy = DefaultRetryPolicy(30000,
+            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(request)
     }
 
     override fun cityClick(value: String) {
-        setResult(Activity.RESULT_OK, intent.putExtra("type", "$state,$value"))
+        setResult(Activity.RESULT_OK, intent.putExtra("type", "$state/$value"))
         finish()
     }
 
