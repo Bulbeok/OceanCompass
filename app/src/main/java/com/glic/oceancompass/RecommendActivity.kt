@@ -73,29 +73,29 @@ class RecommendActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == 1) {
-            type1.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type1.text = data!!.extras!!.getString("type")!!.split(",")[1]
         } else if(resultCode == RESULT_OK && requestCode == 2) {
-            type2.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type2.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }else if(resultCode == RESULT_OK && requestCode == 3) {
-            type3.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type3.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }else if(resultCode == RESULT_OK && requestCode == 4) {
-            type4.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type4.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }else if(resultCode == RESULT_OK && requestCode == 5) {
-            type5.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type5.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }else if(resultCode == RESULT_OK && requestCode == 6) {
-            type6.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type6.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }else if(resultCode == RESULT_OK && requestCode == 7) {
-            type7.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type7.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }else if(resultCode == RESULT_OK && requestCode == 8) {
-            type8.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type8.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }else if(resultCode == RESULT_OK && requestCode == 9) {
-            type9.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type9.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }else if(resultCode == RESULT_OK && requestCode == 10) {
-            type10.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type10.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }else if(resultCode == RESULT_OK && requestCode == 11) {
-            type11.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type11.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }else if(resultCode == RESULT_OK && requestCode == 12) {
-            type12.text = data!!.extras!!.getString("type")!!.split(" ")[1]
+            type12.text = data!!.extras!!.getString("type")!!.split(",")[1]
         }
     }
 

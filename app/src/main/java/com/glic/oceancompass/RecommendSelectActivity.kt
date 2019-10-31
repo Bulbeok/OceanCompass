@@ -25,7 +25,9 @@ class RecommendSelectActivity : AppCompatActivity(), RecycleViewClick {
 
         house.setOnClickListener {
             test.clear()
-            test.add("숙소")
+            test.add("숙박업소")
+            test.add("캠핑장")
+            test.add("휴양림")
             firstrecycleview.adapter = RecycleViewAdapter(4, test , this@RecommendSelectActivity,this@RecommendSelectActivity)
             firstrecycleview.layoutManager = LinearLayoutManager(this@RecommendSelectActivity)
             firstrecycleview.setHasFixedSize(true)
@@ -54,7 +56,6 @@ class RecommendSelectActivity : AppCompatActivity(), RecycleViewClick {
             POST, "https://175.206.239.109:8443/oceancompass/RecommendServlet",
             //요청 성공 시
             Response.Listener {
-                Log.e(" 테스트", ArrayList(it.substring(1,it.length-1).split(',')).toString())
                 seccndrecycleview.adapter = RecycleViewAdapter(5, ArrayList(it.substring(1,it.length-1).split(',')) , this@RecommendSelectActivity,this@RecommendSelectActivity)
                 seccndrecycleview.layoutManager = LinearLayoutManager(this@RecommendSelectActivity)
                 seccndrecycleview.setHasFixedSize(true)
@@ -75,7 +76,7 @@ class RecommendSelectActivity : AppCompatActivity(), RecycleViewClick {
     }
 
     override fun cityClick(value: String) {
-        setResult(Activity.RESULT_OK, intent.putExtra("type", "$state $value"))
+        setResult(Activity.RESULT_OK, intent.putExtra("type", "$state,$value"))
         finish()
     }
 
