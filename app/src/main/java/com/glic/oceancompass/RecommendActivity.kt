@@ -99,4 +99,8 @@ class RecommendActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(this,SearchActivity::class.java))
+        finish()
+    }
 }
