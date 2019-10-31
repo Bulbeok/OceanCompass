@@ -10,7 +10,19 @@ import kotlinx.android.synthetic.main.recommend.*
 
 class RecommendActivity : AppCompatActivity() {
 
-    private var url:String = ""
+    private var url = ""
+    private var td1 = ""
+    private var td2 = ""
+    private var td3 = ""
+    private var td4 = ""
+    private var td5 = ""
+    private var td6 = ""
+    private var td7 = ""
+    private var td8 = ""
+    private var td9 = ""
+    private var td10 = ""
+    private var td11 = ""
+    private var td12 = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,51 +104,63 @@ class RecommendActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == 1) {
             type1.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td1 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         } else if(resultCode == RESULT_OK && requestCode == 2) {
             type2.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td2 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }else if(resultCode == RESULT_OK && requestCode == 3) {
             type3.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td3 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }else if(resultCode == RESULT_OK && requestCode == 4) {
             type4.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td4 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }else if(resultCode == RESULT_OK && requestCode == 5) {
             type5.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td5 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }else if(resultCode == RESULT_OK && requestCode == 6) {
             type6.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td6 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }else if(resultCode == RESULT_OK && requestCode == 7) {
             type7.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td7 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }else if(resultCode == RESULT_OK && requestCode == 8) {
             type8.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td8 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }else if(resultCode == RESULT_OK && requestCode == 9) {
             type9.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td9 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }else if(resultCode == RESULT_OK && requestCode == 10) {
             type10.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td10 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }else if(resultCode == RESULT_OK && requestCode == 11) {
             type11.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td11 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }else if(resultCode == RESULT_OK && requestCode == 12) {
             type12.text = data!!.extras!!.getString("type")!!.split("/")[1]
-            url = url + data.extras!!.getString("type")!!.split("/")[2] + ","
+            td12 = data.extras!!.getString("type")!!.split("/")[2] + ","
+            url = td1+td2+td3+td4+td5+td6+td7+td8+td9+td10+td11+td12
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
         }
     }
