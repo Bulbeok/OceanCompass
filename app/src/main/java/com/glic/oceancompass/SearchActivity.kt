@@ -47,7 +47,7 @@ class SearchActivity : AppCompatActivity() {
         }
 
         tour_search.setOnClickListener {
-            startActivity(Intent(this,recommendActivity::class.java))
+            startActivity(Intent(this,RecommendActivity::class.java))
             finish()
         }
 
@@ -63,7 +63,10 @@ class SearchActivity : AppCompatActivity() {
                 location == "" -> Toast.makeText(this, "위치를 선택해주세요", Toast.LENGTH_LONG).show()
                 play == "" -> Toast.makeText(this, "놀거리를 선택해주세요", Toast.LENGTH_LONG).show()
                 day == "" -> Toast.makeText(this, "여행 기간을 선택해주세요", Toast.LENGTH_LONG).show()
-                else -> Toast.makeText(this, "여기를 이제 다음 엑티비티 선언 하면됨", Toast.LENGTH_LONG).show()
+                else -> {
+                    startActivity(Intent(this,RecommendActivity::class.java))
+                    finish()
+                }
             }
         }
 
@@ -94,7 +97,7 @@ class SearchActivity : AppCompatActivity() {
         button.setBackgroundColor(Color.parseColor("#008577"))
         findViewById<Button>(resources.getIdentifier("day$position", "id", packageName)).setTextColor(Color.parseColor("#FFFFFF"))
         day = position.toString()
-        for (i in 1 until 8) {
+        for (i in 1 .. 7) {
             if(position == i) {
                 continue
             } else {
