@@ -28,7 +28,7 @@ class SignInActivity : AppCompatActivity() {
         val edit = pref.edit()
         val sessionId = pref.getString("sessionCookie", null)
 
-        val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
+        val bottomNavigationView  = findViewById<View>(R.id.bottom_navigation_view) as BottomNavigationView
         bottomNavigationView.menu.findItem(R.id.mypage).isChecked = true
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {

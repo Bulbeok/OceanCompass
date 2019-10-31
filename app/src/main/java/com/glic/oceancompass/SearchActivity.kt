@@ -1,8 +1,11 @@
 package com.glic.oceancompass
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.search.*
@@ -10,13 +13,14 @@ import kotlinx.android.synthetic.main.search.*
 
 class SearchActivity : AppCompatActivity() {
 
-    private lateinit var location: String
-    private lateinit var play: String
+    private var location: String = ""
+    private var play: String = ""
+    private var day: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search)
-        val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
+        val bottomNavigationView  = findViewById<View>(R.id.bottom_navigation_view) as BottomNavigationView
 
         bottomNavigationView.menu.findItem(R.id.search).isChecked = true
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
@@ -42,7 +46,7 @@ class SearchActivity : AppCompatActivity() {
             true
         }
 
-        recommend.setOnClickListener {
+        tour_search.setOnClickListener {
             startActivity(Intent(this,recommendActivity::class.java))
             finish()
         }
@@ -53,7 +57,51 @@ class SearchActivity : AppCompatActivity() {
         input_play.setOnClickListener {
             startActivityForResult(Intent(this,SearchPlayActivity::class.java), 2)
         }
+
+        tour_search.setOnClickListener {
+            when {
+                location == "" -> Toast.makeText(this, "위치를 선택해주세요", Toast.LENGTH_LONG).show()
+                play == "" -> Toast.makeText(this, "놀거리를 선택해주세요", Toast.LENGTH_LONG).show()
+                day == "" -> Toast.makeText(this, "여행 기간을 선택해주세요", Toast.LENGTH_LONG).show()
+                else -> Toast.makeText(this, "여기를 이제 다음 엑티비티 선언 하면됨", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        day1.setOnClickListener {
+            setColor(it, 1)
+        }
+        day2.setOnClickListener {
+            setColor(it, 2)
+        }
+        day3.setOnClickListener {
+            setColor(it, 3)
+        }
+        day4.setOnClickListener {
+            setColor(it, 4)
+        }
+        day5.setOnClickListener {
+            setColor(it, 5)
+        }
+        day6.setOnClickListener {
+            setColor(it, 6)
+        }
+        day7.setOnClickListener {
+            setColor(it, 7)
+        }
     }
+
+    private fun setColor(button: View, position: Int) {
+        button.setBackgroundColor((Color.parseColor("#008577")))
+        day = position.toString()
+        for (i in 1 until 8) {
+            if(position == i) {
+                continue
+            } else {
+                findViewById<Button>(resources.getIdentifier("day$i", "id", packageName)).setBackgroundColor((Color.parseColor("#FFFFFF")))
+            }
+        }
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

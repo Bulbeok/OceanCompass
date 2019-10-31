@@ -12,7 +12,7 @@
             android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/main_bottom_navigation_view"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp"
             android:background="@drawable/search_background"
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                app:layout_constraintBottom_toTopOf="@+id/recommend"
+                app:layout_constraintBottom_toTopOf="@+id/tour_search"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/act">
 
@@ -117,7 +117,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                    android:id="@+id/button10"
+                    android:id="@+id/day1"
                     android:layout_width="69dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="40dp"
@@ -129,7 +129,29 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <Button
-                    android:id="@+id/button13"
+                    android:id="@+id/day2"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#FFFFFF"
+                    android:text="1박2일"
+                    android:textColor="#535353"
+                    app:layout_constraintStart_toEndOf="@+id/day1"
+                    app:layout_constraintTop_toTopOf="@+id/day1" />
+
+            <Button
+                    android:id="@+id/day3"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:background="#FFFFFF"
+                    android:text="2박3일"
+                    android:textColor="#535353"
+                    app:layout_constraintEnd_toStartOf="@+id/day4"
+                    app:layout_constraintStart_toEndOf="@+id/day2"
+                    app:layout_constraintTop_toTopOf="@+id/day2" />
+
+            <Button
+                    android:id="@+id/day4"
                     android:layout_width="69dp"
                     android:layout_height="45dp"
                     android:layout_marginEnd="40dp"
@@ -137,67 +159,45 @@
                     android:text="3박4일"
                     android:textColor="#535353"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/button12" />
+                    app:layout_constraintTop_toTopOf="@+id/day3" />
 
             <Button
-                    android:id="@+id/button4"
-                    android:layout_width="69dp"
-                    android:layout_height="45dp"
-                    android:background="#FFFFFF"
-                    android:text="5박6일"
-                    android:textColor="#535353"
-                    app:layout_constraintEnd_toEndOf="@+id/button11"
-                    app:layout_constraintStart_toStartOf="@+id/button11"
-                    app:layout_constraintTop_toTopOf="@+id/button2" />
-
-            <Button
-                    android:id="@+id/button5"
-                    android:layout_width="69dp"
-                    android:layout_height="45dp"
-                    android:background="#FFFFFF"
-                    android:text="6박7일"
-                    android:textColor="#535353"
-                    app:layout_constraintEnd_toEndOf="@+id/button12"
-                    app:layout_constraintStart_toStartOf="@+id/button12"
-                    app:layout_constraintTop_toTopOf="@+id/button4" />
-
-            <Button
-                    android:id="@+id/button11"
-                    android:layout_width="69dp"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="16dp"
-                    android:background="#FFFFFF"
-                    android:text="1박2일"
-                    android:textColor="#535353"
-                    app:layout_constraintStart_toEndOf="@+id/button10"
-                    app:layout_constraintTop_toTopOf="@+id/button10" />
-
-            <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/day5"
                     android:layout_width="69dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="12dp"
                     android:background="#FFFFFF"
                     android:text="4박5일"
                     android:textColor="#535353"
-                    app:layout_constraintStart_toStartOf="@+id/button10"
-                    app:layout_constraintTop_toBottomOf="@+id/button10" />
+                    app:layout_constraintStart_toStartOf="@+id/day1"
+                    app:layout_constraintTop_toBottomOf="@+id/day1" />
 
             <Button
-                    android:id="@+id/button12"
+                    android:id="@+id/day6"
                     android:layout_width="69dp"
                     android:layout_height="45dp"
                     android:background="#FFFFFF"
-                    android:text="2박3일"
+                    android:text="5박6일"
                     android:textColor="#535353"
-                    app:layout_constraintEnd_toStartOf="@+id/button13"
-                    app:layout_constraintStart_toEndOf="@+id/button11"
-                    app:layout_constraintTop_toTopOf="@+id/button11" />
+                    app:layout_constraintEnd_toEndOf="@+id/day2"
+                    app:layout_constraintStart_toStartOf="@+id/day2"
+                    app:layout_constraintTop_toTopOf="@+id/day5" />
+
+            <Button
+                    android:id="@+id/day7"
+                    android:layout_width="69dp"
+                    android:layout_height="45dp"
+                    android:background="#FFFFFF"
+                    android:text="6박7일"
+                    android:textColor="#535353"
+                    app:layout_constraintEnd_toEndOf="@+id/day3"
+                    app:layout_constraintStart_toStartOf="@+id/day3"
+                    app:layout_constraintTop_toTopOf="@+id/day6" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-                android:id="@+id/recommend"
+                android:id="@+id/tour_search"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:background="@color/colorPrimary"
@@ -211,7 +211,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/main_bottom_navigation_view"
+            android:id="@+id/bottom_navigation_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

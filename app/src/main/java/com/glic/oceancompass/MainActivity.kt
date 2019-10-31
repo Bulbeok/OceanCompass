@@ -38,7 +38,7 @@ open class MainActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
 
-        val bottomNavigationView  = findViewById<View>(R.id.main_bottom_navigation_view) as BottomNavigationView
+        val bottomNavigationView  = findViewById<View>(R.id.bottom_navigation_view) as BottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
