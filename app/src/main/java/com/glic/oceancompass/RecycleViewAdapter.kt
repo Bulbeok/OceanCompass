@@ -33,7 +33,7 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
 
     inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
         fun bind(str: String, index: Int, position: Int) {
-            when(index) {
+            when (index) {
                 1 -> {
                     itemView.location_recycleview_text.text = str.trim()
                     itemView.setOnClickListener {

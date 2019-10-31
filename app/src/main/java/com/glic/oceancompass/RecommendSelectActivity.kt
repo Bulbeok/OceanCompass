@@ -1,12 +1,12 @@
 package com.glic.oceancompass
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
-class Select_tourActivity : AppCompatActivity() {
+class RecommendSelectActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_select_tour)
+        setContentView(R.layout.recommendselect)
     }
 }

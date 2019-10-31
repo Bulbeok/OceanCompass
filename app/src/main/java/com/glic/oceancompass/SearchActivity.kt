@@ -46,11 +46,6 @@ class SearchActivity : AppCompatActivity() {
             true
         }
 
-        tour_search.setOnClickListener {
-            startActivity(Intent(this,RecommendActivity::class.java))
-            finish()
-        }
-
         input_local.setOnClickListener {
             startActivityForResult(Intent(this,SearchLocationActivity::class.java), 1)
         }
@@ -64,7 +59,10 @@ class SearchActivity : AppCompatActivity() {
                 play == "" -> Toast.makeText(this, "놀거리를 선택해주세요", Toast.LENGTH_LONG).show()
                 day == "" -> Toast.makeText(this, "여행 기간을 선택해주세요", Toast.LENGTH_LONG).show()
                 else -> {
-                    startActivity(Intent(this,RecommendActivity::class.java))
+                    startActivity(Intent(this,RecommendActivity::class.java)
+                        .putExtra("location",location)
+                        .putExtra("play",play)
+                        .putExtra("day",day))
                     finish()
                 }
             }

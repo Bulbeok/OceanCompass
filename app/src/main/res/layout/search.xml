@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="36dp"
                     android:layout_marginTop="24dp"
-                    android:text="놀거리"
+                    android:text="@string/놀거리"
                     android:textColor="#535353"
                     android:textSize="35sp"
                     app:layout_constraintStart_toStartOf="parent"

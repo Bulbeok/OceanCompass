@@ -16,8 +16,12 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
-        <activity android:name=".Select_tourActivity"></activity>
-        <activity android:name=".RecommendActivity" />
+        <activity android:name=".RecommendSelectActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/AppTheme" />
+        <activity android:name=".RecommendActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".SearchPlayActivity"
                 android:launchMode="singleTop"
