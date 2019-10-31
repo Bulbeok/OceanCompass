@@ -91,13 +91,15 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setColor(button: View, position: Int) {
-        button.setBackgroundColor((Color.parseColor("#008577")))
+        button.setBackgroundColor(Color.parseColor("#008577"))
+        findViewById<Button>(resources.getIdentifier("day$position", "id", packageName)).setTextColor(Color.parseColor("#FFFFFF"))
         day = position.toString()
         for (i in 1 until 8) {
             if(position == i) {
                 continue
             } else {
-                findViewById<Button>(resources.getIdentifier("day$i", "id", packageName)).setBackgroundColor((Color.parseColor("#FFFFFF")))
+                findViewById<Button>(resources.getIdentifier("day$i", "id", packageName)).setBackgroundColor(Color.parseColor("#FFFFFF"))
+                findViewById<Button>(resources.getIdentifier("day$i", "id", packageName)).setTextColor(Color.parseColor("#000000"))
             }
         }
     }
