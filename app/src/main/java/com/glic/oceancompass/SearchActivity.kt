@@ -109,8 +109,13 @@ class SearchActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == 1) {
-            input_local.text = data!!.extras!!.getString("city")
-            location = data.extras!!.getString("city")!!
+            if(data!!.extras!!.getString("city")!!.split(" ")[0] == data.extras!!.getString("city")!!.split(" ")[1]) {
+                input_local.text = data.extras!!.getString("city")!!.split(" ")[0]
+                location = data.extras!!.getString("city")!!
+            } else {
+                input_local.text = data.extras!!.getString("city")
+                location = data.extras!!.getString("city")!!
+            }
         } else if(resultCode == RESULT_OK && requestCode == 2) {
             if(data!!.extras!!.getString("play") != "") {
                 input_play.text = data.extras!!.getString("play")

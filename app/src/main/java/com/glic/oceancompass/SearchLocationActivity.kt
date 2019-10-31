@@ -1,7 +1,6 @@
 package com.glic.oceancompass
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -65,11 +64,7 @@ class SearchLocationActivity : AppCompatActivity(), RecycleViewClick {
 
     override fun cityClick(value: String) {
         val intent = intent
-        if(state == value) {
-            intent.putExtra("city", value)
-        } else {
-            intent.putExtra("city", "$state $value")
-        }
+        intent.putExtra("city", "$state $value")
         setResult(Activity.RESULT_OK, intent)
         finish()
     }
