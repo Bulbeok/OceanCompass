@@ -49,6 +49,7 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:singleLine="true"
+                    android:text="검색 결과가 없습니다."
                     android:textColor="#2C2C2C"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
