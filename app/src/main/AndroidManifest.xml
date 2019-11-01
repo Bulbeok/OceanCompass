@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        package="com.glic.oceancompass"
-        >
+        package="com.glic.oceancompass">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -17,65 +16,68 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
-        <activity android:name=".RecommendSelectActivity"
+        <activity android:name=".recommedresultActivity"></activity>
+        <activity
+                android:name=".RecommendSelectActivity"
                 android:launchMode="singleTop"
-                android:theme="@style/AppTheme"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".RecommendActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
+        <activity
+                android:name=".RecommendActivity"
                 android:launchMode="singleTop"
-                android:theme="@style/AppTheme"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".SearchPlayActivity"
                 android:launchMode="singleTop"
-                android:theme="@style/AppTheme"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".SearchLocationActivity"
                 android:launchMode="singleTop"
-                android:theme="@style/AppTheme"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".ReviewLocaActivity"
                 android:launchMode="singleTop"
-                android:theme="@style/AppTheme"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".SignUpActivity"
                 android:launchMode="singleTop"
-                android:theme="@style/AppTheme"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".ReviewAddActivity"
                 android:launchMode="singleTop"
-                android:theme="@style/AppTheme"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".SignInActivity"
                 android:launchMode="singleTop"
-                android:theme="@style/AppTheme"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".MainActivity"
                 android:launchMode="singleTop"
-                android:theme="@style/AppTheme"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".SearchActivity"
                 android:launchMode="singleTop"
-                android:theme="@style/AppTheme"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".ReviewActivity"
                 android:launchMode="singleTop"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme"
-                android:windowSoftInputMode="adjustNothing"
-                android:screenOrientation="portrait"/>
+                android:windowSoftInputMode="adjustNothing" />
         <activity
                 android:name=".StartActivity"
                 android:noHistory="true"
-                android:theme="@style/FullScreen"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:theme="@style/FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
