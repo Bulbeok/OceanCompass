@@ -130,4 +130,5 @@ class SignUpActivity : AppCompatActivity() {
         startActivity(Intent(this@SignUpActivity, SignInActivity::class.java))
         finish()
     }
+
 }

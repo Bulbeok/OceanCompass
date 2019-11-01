@@ -31,18 +31,19 @@ class ReviewLocaActivity : AppCompatActivity() {
 
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                map.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap2.jsp?address=$query")
+                map.loadUrl("https://175.206.239.109:8443/oceancompass/map.jsp?address=$query")
                 return true
             }
             override fun onQueryTextChange(newText: String): Boolean {
                 return true
             }
         })
-
-        map.settings.javaScriptEnabled = true
-        map.settings.domStorageEnabled = true
+        map.settings.apply {
+            javaScriptEnabled = true
+            domStorageEnabled = true
+        }
         map.addJavascriptInterface(WebBrideg(),"address")
-        map.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap2.jsp")
+        map.webViewClient = WebViewClient()
         map.webViewClient = object : WebViewClient(){
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler!!.proceed()
@@ -50,9 +51,10 @@ class ReviewLocaActivity : AppCompatActivity() {
         }
         map.webChromeClient = object : WebChromeClient() {
             override fun onGeolocationPermissionsShowPrompt(origin: String, callback: GeolocationPermissions.Callback) {
-                callback.invoke(origin, true, false)
+                callback.invoke(origin, true, true)
             }
         }
+        map.loadUrl("https://175.206.239.109:8443/oceancompass/map.jsp?pages=address")
     }
 
     inner class WebBrideg{

@@ -100,11 +100,15 @@ class RecommendActivity : AppCompatActivity() {
         option1.setOnClickListener {
             Toast.makeText(this,"첫번째를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
+            number1.setImageResource(R.drawable.number1_check)
+            number2.setImageResource(R.drawable.number2)
         }
 
         option2.setOnClickListener {
             Toast.makeText(this,"두번째를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
+            number1.setImageResource(R.drawable.number1)
+            number2.setImageResource(R.drawable.number2_check)
         }
         complete.setOnClickListener {
 

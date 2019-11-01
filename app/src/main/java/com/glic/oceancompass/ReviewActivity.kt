@@ -1,6 +1,5 @@
 package com.glic.oceancompass
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.http.SslError
@@ -21,7 +20,6 @@ import kotlinx.android.synthetic.main.review.*
 
 class ReviewActivity : AppCompatActivity() {
 
-    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.review)
@@ -58,7 +56,7 @@ class ReviewActivity : AppCompatActivity() {
 
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                map.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap.jsp?search=$query")
+                map.loadUrl("https://175.206.239.109:8443/oceancompass/map.jsp?search=$query")
                 return true
             }
             override fun onQueryTextChange(newText: String): Boolean {
@@ -100,9 +98,10 @@ class ReviewActivity : AppCompatActivity() {
             }
         }
 
-        map.settings.javaScriptEnabled = true
-        map.settings.domStorageEnabled = true
-        map.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap.jsp")
+        map.settings.apply {
+            javaScriptEnabled = true
+            domStorageEnabled = true
+        }
         map.webViewClient = object : WebViewClient(){
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler!!.proceed()
@@ -110,9 +109,10 @@ class ReviewActivity : AppCompatActivity() {
         }
         map.webChromeClient = object : WebChromeClient() {
             override fun onGeolocationPermissionsShowPrompt(origin: String, callback: GeolocationPermissions.Callback) {
-                callback.invoke(origin, true, false)
+                callback.invoke(origin, true, true)
             }
         }
+        map.loadUrl("https://175.206.239.109:8443/oceancompass/map.jsp")
     }
 
     override fun onBackPressed() {

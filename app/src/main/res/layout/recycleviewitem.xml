@@ -38,7 +38,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/truefalse">
 
             <TextView
-                    android:id="@+id/location_recycleview_text"
+                    android:id="@+id/recycleview_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
