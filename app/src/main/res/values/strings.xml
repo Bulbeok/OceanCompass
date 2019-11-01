@@ -19,4 +19,5 @@
     <string name="addLoca">위치선택</string>
     <string name="select">선택 완료</string>
     <string name="놀거리">놀거리</string>
+    <string name="noSearch">검색 결과가 없습니다.</string>
 </resources>
