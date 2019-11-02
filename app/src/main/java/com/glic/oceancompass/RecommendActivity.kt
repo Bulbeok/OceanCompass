@@ -8,12 +8,19 @@ import android.webkit.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.recommend.*
+import kotlin.properties.Delegates
 
 class RecommendActivity : AppCompatActivity() {
 
+    private var count by Delegates.notNull<Int>()
+    private var day by Delegates.notNull<Int>()
+    private lateinit var key:String
+    private lateinit var location:String
+    private lateinit var play:String
+    private var select = false
+    private var finalURL = ""
     private var url = ""
     private var url2 = ""
-    private lateinit var finalurl:String
     private var td1 = ""
     private var td2 = ""
     private var td3 = ""
@@ -31,14 +38,18 @@ class RecommendActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recommend)
 
-        val key = intent.getStringExtra("key")!!
-        val location = intent.getStringExtra("location")!!
-        val day = intent.getIntExtra("count", 0)
+        count = intent.getIntExtra("count", 1)
+        day = intent.getIntExtra("day",1)
+        key = intent.getStringExtra("key")!!
+        location = intent.getStringExtra("location")!!
+        play = intent.getStringExtra("play")!!
+
         val pref = this.getSharedPreferences(key, Context.MODE_PRIVATE)
         val edit = pref.edit()
 
-        day_textView.text = "$day 일차"
-        daycomplete.text = "$day 일차"
+        day_textView.text = "$count 일차"
+        daycomplete.text = "$count 일차"
+
         if(location.split(" ")[0] == location.split(" ")[1]) {
             location_textView.text = location.split(" ")[0]
         } else {
@@ -61,63 +72,83 @@ class RecommendActivity : AppCompatActivity() {
         }
 
         type1.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 1)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 1)
         }
         type2.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 2)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 2)
         }
         type3.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 3)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 3)
         }
         type4.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 4)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 4)
         }
         type5.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 5)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 5)
         }
         type6.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 6)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 6)
         }
         type7.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 7)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 7)
         }
         type8.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 8)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 8)
         }
         type9.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 9)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 9)
         }
         type10.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 10)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 10)
         }
         type11.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 11)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 11)
         }
         type12.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 12)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 12)
         }
 
         option1.setOnClickListener {
             Toast.makeText(this,"첫번째를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
+            select = true
+            finalURL = url
             number1.setImageResource(R.drawable.number1_check)
             number2.setImageResource(R.drawable.number2)
-            finalurl = url
         }
 
         option2.setOnClickListener {
             Toast.makeText(this,"두번째를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
+            select = true
+            finalURL = url2
             number1.setImageResource(R.drawable.number1)
             number2.setImageResource(R.drawable.number2_check)
-            finalurl = url2
         }
+
         daycomplete.setOnClickListener {
-            edit.putString("$day", finalurl)
-            edit.apply()
+            if(day == count) {
+            } else if(url == "" && url2 == "") {
+                Toast.makeText(this,"경로를 하나 이상 추가 해주세요",Toast.LENGTH_LONG).show()
+            } else if(select) {
+                Toast.makeText(this,"경로를 선택 해주세요",Toast.LENGTH_LONG).show()
+            } else {
+                edit.putString("$count", finalURL)
+                edit.apply()
+                startActivity(
+                    intent
+                        .putExtra("key", key)
+                        .putExtra("location", location)
+                        .putExtra("play", play)
+                        .putExtra("day",day)
+                        .putExtra("count",count+1)
+                )
+            }
         }
+
         complete.setOnClickListener {
-            edit.putString("$day", finalurl)
+            edit.putString("$day-1", url)
+            edit.putString("$day-2", url2)
             edit.apply()
         }
     }
@@ -188,7 +219,16 @@ class RecommendActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this,SearchActivity::class.java))
-        finish()
+        if(count != 1) {
+            startActivity(intent
+                .putExtra("key",key)
+                .putExtra("location",location)
+                .putExtra("play",play)
+                .putExtra("day",day)
+                .putExtra("count",count-1))
+            finish()
+        } else {
+            startActivity(Intent(this, SearchActivity::class.java))
+        }
     }
 }

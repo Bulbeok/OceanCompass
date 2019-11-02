@@ -16,7 +16,7 @@ class SearchActivity : AppCompatActivity() {
 
     private var location: String = ""
     private var play: String = ""
-    private var day: String = ""
+    private var day: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +61,7 @@ class SearchActivity : AppCompatActivity() {
             when {
                 location == "" -> Toast.makeText(this, "위치를 선택해주세요", Toast.LENGTH_LONG).show()
                 play == "" -> Toast.makeText(this, "놀거리를 선택해주세요", Toast.LENGTH_LONG).show()
-                day == "" -> Toast.makeText(this, "여행 기간을 선택해주세요", Toast.LENGTH_LONG).show()
+                day == 0 -> Toast.makeText(this, "여행 기간을 선택해주세요", Toast.LENGTH_LONG).show()
                 else -> {
                     val count = intent.getIntExtra("count", 1)
                     val randomString: String = List(20) { (('a'..'z') + ('A'..'Z') + ('0'..'9')).random() }.joinToString("")
@@ -104,7 +104,7 @@ class SearchActivity : AppCompatActivity() {
     private fun setColor(button: View, position: Int) {
         button.setBackgroundColor(Color.parseColor("#008577"))
         findViewById<Button>(resources.getIdentifier("day$position", "id", packageName)).setTextColor(Color.parseColor("#FFFFFF"))
-        day = position.toString()
+        day = position
         for (i in 1 .. 7) {
             if(position == i) {
                 continue
