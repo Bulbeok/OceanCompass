@@ -72,40 +72,40 @@ class RecommendActivity : AppCompatActivity() {
         }
 
         type1.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 1)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 1)
         }
         type2.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 2)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 2)
         }
         type3.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 3)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 3)
         }
         type4.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 4)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 4)
         }
         type5.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 5)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 5)
         }
         type6.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 6)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 6)
         }
         type7.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 7)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 7)
         }
         type8.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 8)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 8)
         }
         type9.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 9)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 9)
         }
         type10.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 10)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 10)
         }
         type11.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 11)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 11)
         }
         type12.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",key).putExtra("location",location), 12)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 12)
         }
 
         option1.setOnClickListener {
