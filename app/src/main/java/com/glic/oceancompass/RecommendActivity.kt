@@ -9,11 +9,14 @@ import android.webkit.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.recommend.*
+import kotlinx.android.synthetic.main.reviewadd.*
+import kotlin.properties.Delegates
 
 class RecommendActivity : AppCompatActivity() {
 
     private var url = ""
     private var url2 = ""
+    private lateinit var finalurl:String
     private var td1 = ""
     private var td2 = ""
     private var td3 = ""
@@ -33,26 +36,22 @@ class RecommendActivity : AppCompatActivity() {
 
 
         val pref = this.getSharedPreferences("recommend", Context.MODE_PRIVATE)
-        val days = pref.getString("sessionCookie", null)
+        val edit = pref.edit()
         val loca = intent.getStringExtra("location")!!
+        val days = intent.getIntExtra("count", 0)
 
-        Log.e("테스트", intent.toString())
-        if (!intent.hasExtra("count")) {
-            day.text = "1일차"
-            complete.text = "1일차 완성"
-        } else {
-            day.text = intent.getStringExtra("count")!! + "일차"
-            complete.text = intent.getStringExtra("count")!! + "일차"
-        }
+        day.text = "$days 일차"
+        daycomplete.text = "$days 일차"
         if(loca.split(" ")[0] == loca.split(" ")[1]) {
             location.text = loca.split(" ")[0]
         } else {
             location.text = loca
         }
 
-        map.settings.javaScriptEnabled = true
-        map.settings.domStorageEnabled = true
-        //map.loadUrl("https://175.206.239.109:8443/oceancompass/mobilemap.jsp")
+        map.settings.apply {
+            javaScriptEnabled = true
+            domStorageEnabled = true
+        }
         map.webViewClient = object : WebViewClient(){
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler!!.proceed()
@@ -106,6 +105,7 @@ class RecommendActivity : AppCompatActivity() {
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
             number1.setImageResource(R.drawable.number1_check)
             number2.setImageResource(R.drawable.number2)
+            finalurl = url
         }
 
         option2.setOnClickListener {
@@ -113,9 +113,15 @@ class RecommendActivity : AppCompatActivity() {
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
             number1.setImageResource(R.drawable.number1)
             number2.setImageResource(R.drawable.number2_check)
+            finalurl = url2
+        }
+        daycomplete.setOnClickListener {
+            edit.putString("$days", finalurl)
+            edit.apply()
         }
         complete.setOnClickListener {
-
+            edit.putString("$days", finalurl)
+            edit.apply()
         }
     }
 
