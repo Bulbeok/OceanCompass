@@ -1,5 +1,6 @@
 package com.glic.oceancompass
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -20,8 +21,11 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search)
-        val bottomNavigationView  = findViewById<View>(R.id.bottom_navigation_view) as BottomNavigationView
 
+        val pref = this.getSharedPreferences("history", Context.MODE_PRIVATE)
+        val edit = pref.edit()
+
+        val bottomNavigationView  = findViewById<View>(R.id.bottom_navigation_view) as BottomNavigationView
         bottomNavigationView.menu.findItem(R.id.search).isChecked = true
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -59,7 +63,13 @@ class SearchActivity : AppCompatActivity() {
                 play == "" -> Toast.makeText(this, "놀거리를 선택해주세요", Toast.LENGTH_LONG).show()
                 day == "" -> Toast.makeText(this, "여행 기간을 선택해주세요", Toast.LENGTH_LONG).show()
                 else -> {
+                    val count = intent.getIntExtra("count", 1)
+                    val randomString: String = List(20) { (('a'..'z') + ('A'..'Z') + ('0'..'9')).random() }.joinToString("")
+                    edit.putString("$count", randomString)
+                    edit.putInt("count", count+1)
+                    edit.apply()
                     startActivity(Intent(this,RecommendActivity::class.java)
+                        .putExtra("key",randomString)
                         .putExtra("location",location)
                         .putExtra("play",play)
                         .putExtra("day",day))

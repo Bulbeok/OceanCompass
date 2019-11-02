@@ -4,13 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.net.http.SslError
 import android.os.Bundle
-import android.util.Log
 import android.webkit.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.recommend.*
-import kotlinx.android.synthetic.main.reviewadd.*
-import kotlin.properties.Delegates
 
 class RecommendActivity : AppCompatActivity() {
 
@@ -34,18 +31,18 @@ class RecommendActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recommend)
 
-
-        val pref = this.getSharedPreferences("recommend", Context.MODE_PRIVATE)
+        val key = intent.getStringExtra("key")!!
+        val location = intent.getStringExtra("location")!!
+        val day = intent.getIntExtra("count", 0)
+        val pref = this.getSharedPreferences(key, Context.MODE_PRIVATE)
         val edit = pref.edit()
-        val loca = intent.getStringExtra("location")!!
-        val days = intent.getIntExtra("count", 0)
 
-        day.text = "$days 일차"
-        daycomplete.text = "$days 일차"
-        if(loca.split(" ")[0] == loca.split(" ")[1]) {
-            location.text = loca.split(" ")[0]
+        day_textView.text = "$day 일차"
+        daycomplete.text = "$day 일차"
+        if(location.split(" ")[0] == location.split(" ")[1]) {
+            location_textView.text = location.split(" ")[0]
         } else {
-            location.text = loca
+            location_textView.text = location
         }
 
         map.settings.apply {
@@ -64,40 +61,40 @@ class RecommendActivity : AppCompatActivity() {
         }
 
         type1.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 1)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 1)
         }
         type2.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 2)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 2)
         }
         type3.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 3)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 3)
         }
         type4.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 4)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 4)
         }
         type5.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 5)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 5)
         }
         type6.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 6)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 6)
         }
         type7.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 7)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 7)
         }
         type8.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 8)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 8)
         }
         type9.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 9)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 9)
         }
         type10.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 10)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 10)
         }
         type11.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 11)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 11)
         }
         type12.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",loca), 12)
+            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",intent.getStringExtra("play")).putExtra("location",location), 12)
         }
 
         option1.setOnClickListener {
@@ -116,11 +113,11 @@ class RecommendActivity : AppCompatActivity() {
             finalurl = url2
         }
         daycomplete.setOnClickListener {
-            edit.putString("$days", finalurl)
+            edit.putString("$day", finalurl)
             edit.apply()
         }
         complete.setOnClickListener {
-            edit.putString("$days", finalurl)
+            edit.putString("$day", finalurl)
             edit.apply()
         }
     }
