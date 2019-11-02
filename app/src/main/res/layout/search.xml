@@ -5,26 +5,27 @@
         android:id="@+id/search_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="10"
+        android:layout_weight="80"
         tools:context=".SearchActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
             android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@drawable/search_background"
+            android:orientation="vertical"
+            android:weightSum="65"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp"
-            android:background="@drawable/search_background"
-            >
+            tools:layout_editor_absoluteX="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/local"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="36dp"
-                android:layout_weight="3"
+                android:layout_weight="20"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -60,10 +61,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/act"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="36dp"
-                android:layout_weight="3"
+                android:layout_weight="20"
                 app:layout_constraintBottom_toTopOf="@+id/time"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -102,10 +103,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/time"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="36dp"
-                android:layout_marginEnd="36dp"
-                android:layout_weight="3"
+                android:layout_weight="20"
                 app:layout_constraintBottom_toTopOf="@+id/tour_search"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -115,8 +115,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
+                    android:weightSum="20"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -124,94 +124,104 @@
                         android:id="@+id/textView5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="6"
                         android:text="여행기간"
                         android:textColor="#535353"
                         android:textSize="35sp" />
 
                 <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="10">
 
                     <Button
                             android:id="@+id/day1"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
                             android:background="#FFFFFF"
                             android:text="1일"
                             android:textColor="#535353" />
 
                     <Button
                             android:id="@+id/day2"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="10dp"
+                            android:layout_weight="2"
                             android:background="#FFFFFF"
                             android:text="1박2일"
                             android:textColor="#535353" />
 
                     <Button
                             android:id="@+id/day3"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="20dp"
+                            android:layout_weight="2"
                             android:background="#FFFFFF"
                             android:text="2박3일"
                             android:textColor="#535353" />
 
                     <Button
                             android:id="@+id/day4"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
                             android:background="#FFFFFF"
                             android:text="3박4일"
                             android:textColor="#535353" />
                 </LinearLayout>
 
                 <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="10">
 
                     <Button
                             android:id="@+id/day5"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
                             android:background="#FFFFFF"
                             android:text="4박5일"
                             android:textColor="#535353" />
 
                     <Button
                             android:id="@+id/day6"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="10dp"
+                            android:layout_weight="2"
                             android:background="#FFFFFF"
                             android:text="5박6일"
                             android:textColor="#535353" />
 
                     <Button
                             android:id="@+id/day7"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="20dp"
+                            android:layout_weight="2"
                             android:background="#FFFFFF"
                             android:text="6박7일"
                             android:textColor="#535353" />
 
                     <Button
                             android:id="@+id/day8"
-                            android:layout_width="69dp"
-                            android:layout_height="45dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
                             android:background="#FFFFFF"
+                            android:text="1일"
                             android:textColor="#535353"
                             android:visibility="invisible" />
                 </LinearLayout>
@@ -224,22 +234,22 @@
                 android:id="@+id/tour_search"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_weight="5"
                 android:background="@color/colorPrimary"
                 android:text="여행지 검색"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_weight="1" />
+                app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:background="?android:attr/windowBackground"
             app:itemIconTint="@drawable/selector"
             app:layout_behavior="tech.thdev.app.view.BottomNavigationBehavior"
