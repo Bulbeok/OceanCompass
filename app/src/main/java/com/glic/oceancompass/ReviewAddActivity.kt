@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request.Method.POST
@@ -11,6 +14,9 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.reviewadd.*
+import kotlin.collections.HashMap
+import kotlin.collections.Map
+import kotlin.collections.set
 
 
 class ReviewAddActivity : AppCompatActivity() {
@@ -19,11 +25,15 @@ class ReviewAddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.reviewadd)
 
+        var categorys = ""
+
         send.setOnClickListener {
+            Log.e("테ㅡ트",categorys)
             when {
                 titles.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
                 explanation.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
                 loca.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
+                categorys == "" -> Toast.makeText(this, "카테고리를 선택해주세요", Toast.LENGTH_LONG).show()
                 else -> {
                     val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
                     val sessionId = pref.getString("sessionCookie", null)
@@ -43,6 +53,7 @@ class ReviewAddActivity : AppCompatActivity() {
                             params["title"] = titles.text.toString()
                             params["explanation"] = explanation.text.toString()
                             params["address"] = loca.text.toString()
+                            params["category"] = categorys
                             return params
                         }
 
@@ -57,6 +68,20 @@ class ReviewAddActivity : AppCompatActivity() {
                 }
             }
         }
+
+        category.adapter = ArrayAdapter(this, R.layout.spinner_item, resources.getStringArray(R.array.category))
+        category.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                when(position) {
+                    0 -> categorys = "숙박"
+                    1 -> categorys = "음식점"
+                    2 -> categorys = "놀거리"
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+            }
+        }
+
         loca.setOnClickListener {
             startActivityForResult(Intent(this, ReviewLocaActivity::class.java), 1)
         }
@@ -74,200 +99,3 @@ class ReviewAddActivity : AppCompatActivity() {
         finish()
     }
 }
-
-/*
-private fun getRealPathFromURI(contentURI: Uri): String {
-
-
-    val proj = arrayOf(MediaStore.Images.Media.DATA)
-    val c = managedQuery(contentURI, proj, null, null, null)
-    val index = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-
-    c.moveToFirst()
-
-    return c.getString(index)
-
-
-
-
-    *//*       if (contentURI.path!!.startsWith("/storage")) {
-               return contentURI.path
-           }
-           val id =
-               DocumentsContract.getDocumentId(contentURI).split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
-           val columns = arrayOf(MediaStore.Files.FileColumns.DATA)
-           val selection = MediaStore.Files.FileColumns._ID + " = " + id
-           val cursor = contentResolver.query(
-               MediaStore.Files.getContentUri("external"),
-               columns,
-               selection,
-               null,
-               null
-           )
-           try {
-               val columnIndex = cursor!!.getColumnIndex(columns[0])
-               if (cursor.moveToFirst()) {
-                   return cursor.getString(columnIndex)
-               }
-           } finally {
-               cursor!!.close()
-           }
-           return null*//*
-}
-
-private val GET_GALLERY_IMAGE = 200*/
-
-
-/*if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.data != null) {
-
-    //getting the image Uri
-    val imageUri = data.data
-    try {
-//                val test = imageUri?.let { getRealPathFromURI(it) }
-        Log.e("테스트",getRealPathFromURI(imageUri!!))
-        Toast.makeText(this, imageUri.toString(), Toast.LENGTH_SHORT).show()
-        //getting bitmap object from uri
-        *//*val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)*//*
-        //calling the method uploadBitmap to upload image
-    } catch (e: IOException) {
-        e.printStackTrace()
-    }
-}*/
-// private val GET_GALLERY_IMAGE = 200
-//
-// private var imageView: ImageView? = null
-// private var imageView2: ImageView? = null
-// private var imageView3: ImageView? = null
-//
-// private var i = 1
-// private var temp = arrayListOf<Bitmap>()
-//
-// imageView.setOnClickListener(new View.OnClickListener(){
-// @Override
-// public void onClick(View v) {
-// Intent intent = new Intent();
-// intent.setType("image/*");
-// intent.setAction(Intent.ACTION_GET_CONTENT);
-// startActivityForResult(intent, REQUEST_CODE);
-// }
-// });
-//
-// override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-// super.onActivityResult(requestCode, resultCode, data)
-// if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.data != null) {
-//
-// //getting the image Uri
-// val imageUri = data.data
-// try {
-// //getting bitmap object from uri
-// val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)
-//
-// //displaying selected image to imageview
-// when (i) {
-// 1 -> {
-// imageView?.setImageURI(imageUri)
-// imageView2!!.isVisible = true
-// }
-// 2 -> {
-// imageView2?.setImageURI(imageUri)
-// imageView3!!.isVisible = true
-// }
-// 3 -> imageView3?.setImageURI(imageUri)
-// }
-// i++
-//
-// //calling the method uploadBitmap to upload image
-// temp.add(bitmap)
-// } catch (e: IOException) {
-// e.printStackTrace()
-// }
-//
-// }
-// }
-//
-//
-// */
-// /*
-// * The method is taking Bitmap as an argument
-// * then it will return the byte[] array for the given bitmap
-// * and we will send this array to the server
-// * here we are using PNG Compression with 80% quality
-// * you can give quality between 0 to 100
-// * 0 means worse quality
-// * 100 means best quality
-// * *//*
-//
-// fun getFileDataFromDrawable(bitmap: Bitmap): ByteArray {
-// val byteArrayOutputStream = ByteArrayOutputStream()
-// bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream)
-// return byteArrayOutputStream.toByteArray()
-// }
-//
-// private fun uploadBitmap(bitmap: ArrayList<Bitmap>) {
-//
-// val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
-// val sessionId = pref.getString("sessionCookie", null)
-//
-// NukeSSLCerts().nuke()
-//
-// //our custom volley request
-// val volleyMultipartRequest =
-// object : VolleyMultipartRequest(POST,"https://175.206.239.109:8443/oceancompass/AddMobilReviewServlet",
-// Response.Listener { response ->
-// try {
-// val obj = JSONObject(String(response.data))
-// Toast.makeText(
-// applicationContext,
-// obj.getString("message"),
-// Toast.LENGTH_SHORT
-// ).show()
-// } catch (e: JSONException) {
-// e.printStackTrace()
-// }
-// },
-// Response.ErrorListener { error ->
-// Toast.makeText(applicationContext, error.message, Toast.LENGTH_SHORT).show() }
-// ) {
-// override fun getHeaders(): Map<String, String> {
-// val headers = HashMap<String, String>()
-// headers["Cookie"] = sessionId!!
-// return headers
-// }
-//
-// */
-// /*
-// * If you want to add more parameters with the image
-// * you can do it here
-// * here we have only one parameter with the image
-// * which is tags
-// * *//*
-//
-// @Throws(AuthFailureError::class)
-// override fun getParams(): Map<String, String> {
-// val params = HashMap<String,String>()
-// params["title"] = reviewtitle.text.toString()
-// return params
-// }
-//
-// */
-// /*
-// * Here we are passing image by renaming it with a unique name
-// * *//*
-//
-// override fun getByteData(): Map<String, DataPart>? {
-// val params = HashMap<String,DataPart>()
-// val imagename = System.currentTimeMillis()
-// params["test"] = DataPart(
-// "$imagename.png",
-// getFileDataFromDrawable(bitmap[0])
-// )
-// return params
-// }
-// }
-//
-// //adding the request to volley
-// volleyMultipartRequest.retryPolicy = DefaultRetryPolicy(30000,
-// DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-// DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
-// Volley.newRequestQueue(this).add(volleyMultipartRequest)
-// }

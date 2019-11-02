@@ -1,5 +1,6 @@
 package com.glic.oceancompass
 
+import android.content.Context
 import android.content.Intent
 import android.net.http.SslError
 import android.os.Bundle
@@ -30,6 +31,9 @@ class RecommendActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recommend)
 
+
+        val pref = this.getSharedPreferences("recommend", Context.MODE_PRIVATE)
+        val days = pref.getString("sessionCookie", null)
         val loca = intent.getStringExtra("location")!!
 
         Log.e("테스트", intent.toString())
