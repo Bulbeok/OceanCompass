@@ -1,6 +1,7 @@
 package com.glic.oceancompass
 
 import android.content.Context
+import android.content.Intent
 import android.net.http.SslError
 import android.os.Bundle
 import android.webkit.*
@@ -30,7 +31,6 @@ class RecommendResultActivity : AppCompatActivity(), RecycleViewClick {
 
         map.settings.javaScriptEnabled = true
         map.settings.domStorageEnabled = true
-        //map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp")
         map.webViewClient = object : WebViewClient(){
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler!!.proceed()
@@ -48,5 +48,10 @@ class RecommendResultActivity : AppCompatActivity(), RecycleViewClick {
     }
 
     override fun cityClick(value: String) {
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this,SearchActivity::class.java))
+        finish()
     }
 }
