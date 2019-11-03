@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.http.SslError
 import android.os.Bundle
 import android.webkit.*
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.recommend.*
@@ -48,6 +49,36 @@ class RecommendActivity : AppCompatActivity() {
         val edit = pref.edit()
         var select1 = true
         var select2 = true
+
+        if(intent.hasExtra("random")) {
+            val randomList = intent.getStringExtra("random")!!.substring(1,intent.getStringExtra("random")!!.length-1).split(",")
+            for (i in 1..randomList.size) {
+                if(randomList[i-1] == "" || randomList[i-1] == " " ) {
+                    continue
+                }
+                when(i) {
+                    1 -> td1 = randomList[i - 1].split("/")[1]
+                    2 -> td2 = randomList[i - 1].split("/")[1]
+                    3 -> td3 = randomList[i - 1].split("/")[1]
+                    4 -> td4 = randomList[i - 1].split("/")[1]
+                    5 -> td5 = randomList[i - 1].split("/")[1]
+                    6 -> td6 = randomList[i - 1].split("/")[1]
+                    7 -> td7 = randomList[i - 1].split("/")[1]
+                    8 -> td8 = randomList[i - 1].split("/")[1]
+                    9 -> td9 = randomList[i - 1].split("/")[1]
+                    10 -> td10 = randomList[i - 1].split("/")[1]
+                    11 -> td11 = randomList[i - 1].split("/")[1]
+                    12 -> td12 = randomList[i - 1].split("/")[1]
+                }
+                if(i<=6) {
+                    url = url + "," + randomList[i - 1].split("/")[1]
+                } else {
+                    url2 = url2 + "," + randomList[i - 1].split("/")[1]
+                }
+                findViewById<TextView>(resources.getIdentifier("type$i", "id", packageName)).text = randomList[i-1].split("/")[0]
+            }
+        }
+
 
         day_textView.text = count.toString() +"일차"
         daycomplete.text = count.toString() +"일차"
@@ -147,8 +178,7 @@ class RecommendActivity : AppCompatActivity() {
                     } else {
                         edit.putString("$count", finalURL)
                         edit.apply()
-                        startActivity(
-                            intent
+                        startActivity(Intent(this, RandomRecommendActivity::class.java)
                                 .putExtra("key", key)
                                 .putExtra("location", location)
                                 .putExtra("play", play)
