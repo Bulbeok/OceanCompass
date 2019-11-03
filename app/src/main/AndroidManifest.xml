@@ -16,7 +16,16 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
-        <activity android:name=".RecommendResultActivity"></activity>
+        <activity
+                android:name=".RandomRecommendActivity"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
+        <activity
+                android:name=".RecommendResultActivity"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".RecommendSelectActivity"
                 android:launchMode="singleTop"

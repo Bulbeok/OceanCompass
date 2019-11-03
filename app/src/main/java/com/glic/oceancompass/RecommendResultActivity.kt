@@ -22,7 +22,7 @@ class RecommendResultActivity : AppCompatActivity(), RecycleViewClick {
         val recommendList = arrayListOf<String>()
 
         for (i in 1..count) {
-            recommendList.add(pref.getString("$count", null)!!)
+            recommendList.add(pref.getString("$i", null)!!)
         }
 
         result.adapter = RecycleViewAdapter(6, recommendList, this@RecommendResultActivity,this@RecommendResultActivity)

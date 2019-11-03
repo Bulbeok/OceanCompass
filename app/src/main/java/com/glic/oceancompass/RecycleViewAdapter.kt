@@ -79,7 +79,7 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
                 }
                 6 -> {
                     itemView.countday.text = (position + 1).toString() + "일차"
-                    val temp = str.split(",")
+                    val temp = str.trim().split(",")
                     for (i in 1 until temp.size) {
                         itemView.findViewById<TextView>(itemView.resources.getIdentifier("type$i", "id", context.packageName)).text = temp[i-1]
                         if(i != 1) {

@@ -68,7 +68,7 @@ class SearchActivity : AppCompatActivity() {
                     edit.putString("$count", randomString)
                     edit.putInt("count", count+1)
                     edit.apply()
-                    startActivity(Intent(this,RecommendActivity::class.java)
+                    startActivity(Intent(this,RandomRecommendActivity::class.java)
                         .putExtra("key",randomString)
                         .putExtra("location",location)
                         .putExtra("play",play)
