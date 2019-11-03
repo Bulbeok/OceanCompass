@@ -9,6 +9,7 @@ import android.view.View
 import android.webkit.*
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request.Method.POST
 import com.android.volley.Response
@@ -74,7 +75,19 @@ class ReviewActivity : AppCompatActivity() {
                     Response.Listener {
                         when {
                             it.trim() == "0" -> Toast.makeText(this, "이메일 인증 후 리뷰 작성이 가능합니다.", Toast.LENGTH_LONG).show()
-                            it.trim() == "2" -> Toast.makeText(this, "로그인 후 리뷰 작성이 가능합니다.", Toast.LENGTH_LONG).show()
+                            it.trim() == "2" -> {
+                                val alert = AlertDialog.Builder(this)
+                                alert.setMessage("로그인 후 리뷰 작성이 가능합니다 \n로그인페이지로 이동 하시곘습니까?")
+                                alert.setPositiveButton("확인") { _, _ ->
+                                    startActivity(Intent(this,SignInActivity::class.java))
+                                    finish()
+                                    overridePendingTransition(0, 0)
+                                }
+                                alert.setNegativeButton("취소") { _, _ ->
+                                }
+                                val dialog: AlertDialog = alert.create()
+                                dialog.show()
+                            }
                             else -> {
                                 startActivity(Intent(this,ReviewAddActivity::class.java))
                                 finish()
@@ -94,7 +107,17 @@ class ReviewActivity : AppCompatActivity() {
                 val queue = Volley.newRequestQueue(this)
                 queue.add(request)
             } else {
-                Toast.makeText(this, "로그인 후 리뷰 작성이 가능합니다.", Toast.LENGTH_LONG).show()
+                val alert = AlertDialog.Builder(this)
+                alert.setMessage("로그인 후 리뷰 작성이 가능합니다 \n로그인페이지로 이동 하시곘습니까?")
+                alert.setPositiveButton("확인") { _, _ ->
+                    startActivity(Intent(this,SignInActivity::class.java))
+                    finish()
+                    overridePendingTransition(0, 0)
+                }
+                alert.setNegativeButton("취소") { _, _ ->
+                }
+                val dialog: AlertDialog = alert.create()
+                dialog.show()
             }
         }
 
