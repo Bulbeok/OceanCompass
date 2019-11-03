@@ -110,7 +110,7 @@ class RecommendActivity : AppCompatActivity() {
         }
 
         option1.setOnClickListener {
-            Toast.makeText(this,"첫번째를 클릭하셨습니다",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"첫번째 경로를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
             select1 = false
             finalURL = url
@@ -119,7 +119,7 @@ class RecommendActivity : AppCompatActivity() {
         }
 
         option2.setOnClickListener {
-            Toast.makeText(this,"두번째를 클릭하셨습니다",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"두번째 경로를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
             select2 = false
             finalURL = url2
