@@ -71,9 +71,9 @@ class RecommendActivity : AppCompatActivity() {
                     12 -> td12 = randomList[i - 1].split("/")[1]
                 }
                 if(i<=6) {
-                    url = url + "," + randomList[i - 1].split("/")[1]
+                    url = url + randomList[i - 1].split("/")[1] + ","
                 } else {
-                    url2 = url2 + "," + randomList[i - 1].split("/")[1]
+                    url2 = url2 + randomList[i - 1].split("/")[1] + ","
                 }
                 findViewById<TextView>(resources.getIdentifier("type$i", "id", packageName)).text = randomList[i-1].split("/")[0]
             }
