@@ -32,7 +32,6 @@ class RandomRecommendActivity : AppCompatActivity() {
             POST, "https://175.206.239.109:8443/oceancompass/RandomRecommendServlet",
             //요청 성공 시
             Response.Listener {
-                Log.e("테스트",it)
                 moveActivity(it)
             },
             // 에러 발생 시
@@ -51,8 +50,6 @@ class RandomRecommendActivity : AppCompatActivity() {
             DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
             DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(request)
-
-
     }
 
     fun moveActivity(value: String){
@@ -63,5 +60,8 @@ class RandomRecommendActivity : AppCompatActivity() {
             .putExtra("day",day)
             .putExtra("count",count)
             .putExtra("random", value))
+    }
+
+    override fun onBackPressed() {
     }
 }
