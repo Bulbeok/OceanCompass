@@ -17,7 +17,6 @@ class RecommendActivity : AppCompatActivity() {
     private lateinit var key:String
     private lateinit var location:String
     private lateinit var play:String
-    private var select = false
     private var finalURL = ""
     private var url = ""
     private var url2 = ""
@@ -46,6 +45,8 @@ class RecommendActivity : AppCompatActivity() {
 
         val pref = this.getSharedPreferences(key, Context.MODE_PRIVATE)
         val edit = pref.edit()
+        var select1 = true
+        var select2 = true
 
         day_textView.text = "$count 일차"
         daycomplete.text = "$count 일차"
@@ -111,7 +112,7 @@ class RecommendActivity : AppCompatActivity() {
         option1.setOnClickListener {
             Toast.makeText(this,"첫번째를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
-            select = true
+            select1 = false
             finalURL = url
             number1.setImageResource(R.drawable.number1_check)
             number2.setImageResource(R.drawable.number2)
@@ -120,36 +121,47 @@ class RecommendActivity : AppCompatActivity() {
         option2.setOnClickListener {
             Toast.makeText(this,"두번째를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
-            select = true
+            select2 = false
             finalURL = url2
             number1.setImageResource(R.drawable.number1)
             number2.setImageResource(R.drawable.number2_check)
         }
 
         daycomplete.setOnClickListener {
-            if(day == count) {
-            } else if(url == "" && url2 == "") {
-                Toast.makeText(this,"경로를 하나 이상 추가 해주세요",Toast.LENGTH_LONG).show()
-            } else if(select) {
+            if(select1 && select2) {
                 Toast.makeText(this,"경로를 선택 해주세요",Toast.LENGTH_LONG).show()
             } else {
-                edit.putString("$count", finalURL)
-                edit.apply()
-                startActivity(
-                    intent
-                        .putExtra("key", key)
-                        .putExtra("location", location)
-                        .putExtra("play", play)
-                        .putExtra("day",day)
-                        .putExtra("count",count+1)
-                )
+                if(url == "" && !select1) {
+                    Toast.makeText(this,"선택한 경로에 선택된 것이 없습니다",Toast.LENGTH_LONG).show()
+                } else if(url2 == "" && !select2) {
+                        Toast.makeText(this, "선택한 경로에 선택된 것이 없습니다", Toast.LENGTH_LONG).show()
+                }else {
+                    if(day == count) {
+                        edit.putString("$count", finalURL)
+                        edit.apply()
+                        startActivity(Intent(this, RecommendResultActivity::class.java).putExtra("key",key).putExtra("count",count))
+                        finish()
+                    } else {
+                        edit.putString("$count", finalURL)
+                        edit.apply()
+                        startActivity(
+                            intent
+                                .putExtra("key", key)
+                                .putExtra("location", location)
+                                .putExtra("play", play)
+                                .putExtra("day", day)
+                                .putExtra("count", count + 1)
+                        )
+                    }
+                }
             }
         }
 
         complete.setOnClickListener {
-            edit.putString("$day-1", url)
-            edit.putString("$day-2", url2)
+            edit.putString("$count", finalURL)
             edit.apply()
+            startActivity(Intent(this, RecommendResultActivity::class.java).putExtra("key",key).putExtra("count",count))
+            finish()
         }
     }
 

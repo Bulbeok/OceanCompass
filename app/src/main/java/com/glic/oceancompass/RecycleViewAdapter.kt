@@ -5,16 +5,23 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.recommed_recycleview.view.*
 import kotlinx.android.synthetic.main.recycleviewitem.view.*
 
 class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<String>, val context: Context, private val listener: RecycleViewClick?):
     RecyclerView.Adapter<RecycleViewAdapter.Holder>() {
 
-//    private lateinit var view:View
+    private lateinit var view:View
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(LayoutInflater.from(context).inflate(R.layout.recycleviewitem, parent, false))
+        view = when(index) {
+            1,2,3,4,5 -> LayoutInflater.from(context).inflate(R.layout.recycleviewitem, parent, false)
+            6 -> LayoutInflater.from(context).inflate(R.layout.recommed_recycleview, parent, false)
+            else -> LayoutInflater.from(context).inflate(R.layout.recycleviewitem, parent, false)
+        }
+        return Holder(view)
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -68,6 +75,13 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
                         itemView.setOnClickListener {
                             listener!!.cityClick(urlList[position].trim())
                         }
+                    }
+                }
+                6 -> {
+                    itemView.countday.text = (position + 1).toString() + "일차"
+                    listener!!.cityClick(str)
+                    itemView.setOnClickListener {
+                        listener.stateClick(str)
                     }
                 }
             }

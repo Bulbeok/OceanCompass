@@ -20,16 +20,16 @@ class RecommendSelectActivity : AppCompatActivity(), RecycleViewClick {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recommendselect)
 
-        val test = arrayListOf<String>()
+        val recommendList = arrayListOf<String>()
 
         NukeSSLCerts().nuke()
 
         house.setOnClickListener {
-            test.clear()
-            test.add("숙박업소")
-            test.add("캠핑장")
-            test.add("휴양림")
-            firstrecycleview.adapter = RecycleViewAdapter(4, test , this@RecommendSelectActivity,this@RecommendSelectActivity)
+            recommendList.clear()
+            recommendList.add("숙박업소")
+            recommendList.add("캠핑장")
+            recommendList.add("휴양림")
+            firstrecycleview.adapter = RecycleViewAdapter(4, recommendList , this@RecommendSelectActivity,this@RecommendSelectActivity)
             firstrecycleview.layoutManager = LinearLayoutManager(this@RecommendSelectActivity)
             firstrecycleview.setHasFixedSize(true)
         }
@@ -39,9 +39,9 @@ class RecommendSelectActivity : AppCompatActivity(), RecycleViewClick {
             firstrecycleview.setHasFixedSize(true)
         }
         food.setOnClickListener {
-            test.clear()
-            test.add("음식점")
-            firstrecycleview.adapter = RecycleViewAdapter(4, test , this@RecommendSelectActivity,this@RecommendSelectActivity)
+            recommendList.clear()
+            recommendList.add("음식점")
+            firstrecycleview.adapter = RecycleViewAdapter(4, recommendList , this@RecommendSelectActivity,this@RecommendSelectActivity)
             firstrecycleview.layoutManager = LinearLayoutManager(this@RecommendSelectActivity)
             firstrecycleview.setHasFixedSize(true)
         }

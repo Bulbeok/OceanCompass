@@ -16,7 +16,7 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
-        <activity android:name=".recommedresultActivity"></activity>
+        <activity android:name=".RecommendResultActivity"></activity>
         <activity
                 android:name=".RecommendSelectActivity"
                 android:launchMode="singleTop"

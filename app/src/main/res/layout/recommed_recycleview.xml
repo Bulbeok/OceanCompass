@@ -19,15 +19,26 @@
             app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/countday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
-                android:text="1일"
                 android:textColor="#464646"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/type1"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="16dp"
+                android:singleLine="true"
+                android:textColor="#353535"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/countday"
                 app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -37,61 +48,12 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toStartOf="@+id/type2"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/type1"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/arrow" />
-
-        <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/type5"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/type4"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:srcCompat="@drawable/arrow" />
-
-        <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/type6"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/type5"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                app:srcCompat="@drawable/arrow" />
-
-        <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/type3"
-                app:layout_constraintStart_toEndOf="@+id/type2"
-                app:layout_constraintTop_toTopOf="@+id/imageView2"
-                app:srcCompat="@drawable/arrow" />
-
-        <TextView
-                android:id="@+id/type1"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="16dp"
-                android:singleLine="true"
-                android:text="놀거리1"
-                android:textColor="#353535"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/textView6"
-                app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
                 android:id="@+id/type2"
@@ -99,11 +61,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="44dp"
                 android:singleLine="true"
-                android:text="놀거리2"
                 android:textColor="#353535"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/type1"
                 app:layout_constraintTop_toTopOf="@+id/type1" />
+
+        <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@+id/type3"
+                app:layout_constraintStart_toEndOf="@+id/type2"
+                app:layout_constraintTop_toTopOf="@+id/imageView2"
+                app:srcCompat="@drawable/arrow" />
 
         <TextView
                 android:id="@+id/type3"
@@ -111,11 +84,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="44dp"
                 android:singleLine="true"
-                android:text="중식"
                 android:textColor="#353535"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/type2"
                 app:layout_constraintTop_toTopOf="@+id/type2" />
+
+        <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="27dp"
+                android:layout_height="47dp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.275"
+                app:layout_constraintStart_toEndOf="@+id/type3"
+                app:layout_constraintTop_toTopOf="@+id/imageView2"
+                app:srcCompat="@drawable/arrow" />
 
         <TextView
                 android:id="@+id/type4"
@@ -124,7 +107,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="15dp"
                 android:singleLine="true"
-                android:text="놀거리3"
                 android:textColor="#353535"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -132,23 +114,49 @@
                 app:layout_constraintTop_toBottomOf="@+id/type1"
                 app:layout_constraintVertical_bias="0.0" />
 
+        <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@+id/type5"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/type4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:srcCompat="@drawable/arrow" />
+
         <TextView
                 android:id="@+id/type5"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text="석식"
                 android:textColor="#353535"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/type2"
                 app:layout_constraintTop_toTopOf="@+id/type4" />
+
+        <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@+id/type6"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/type5"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                app:srcCompat="@drawable/arrow" />
 
         <TextView
                 android:id="@+id/type6"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text="숙소"
                 android:textColor="#353535"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/type3"
