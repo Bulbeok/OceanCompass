@@ -83,7 +83,7 @@ open class MainActivity : AppCompatActivity() {
                         when(Integer.parseInt(it.split(",")[3])) {
                             1, 4 -> backgroundweather.setBackgroundResource(R.drawable.background_rain)
                             2, 3 -> backgroundweather.setBackgroundResource(R.drawable.background_snow)
-                            else -> backgroundweather.setBackgroundResource(R.drawable.background1)
+                            else -> backgroundweather.setBackgroundResource(R.drawable.background)
                         }
                         temperature.text = it.split(",")[0]
                         humidity.text = it.split(",")[1]
@@ -124,7 +124,7 @@ open class MainActivity : AppCompatActivity() {
                                 when(Integer.parseInt(it.split(",")[3])) {
                                     1, 4 -> backgroundweather.setBackgroundResource(R.drawable.background_rain)
                                     2, 3 -> backgroundweather.setBackgroundResource(R.drawable.background_snow)
-                                    else -> backgroundweather.setBackgroundResource(R.drawable.background1)
+                                    else -> backgroundweather.setBackgroundResource(R.drawable.background)
                                 }
                                 temperature.text = it.split(",")[0]
                                 humidity.text = it.split(",")[1]
