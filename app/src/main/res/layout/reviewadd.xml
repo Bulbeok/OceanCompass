@@ -12,14 +12,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="10">
+            android:weightSum="100">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="0.2"
+                android:layout_weight="2"
                 android:background="@color/colorPrimary">
 
             <Button
@@ -54,26 +54,28 @@
                 android:id="@+id/constraintLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.3"
+                android:layout_gravity="center"
+                android:layout_weight="3"
                 android:background="@drawable/top_bottom_stroke"
                 android:padding="10dp">
 
             <Spinner
                     android:id="@+id/category"
-                    android:layout_width="60dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:background="#00FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/loca"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_weight="0.5" />
 
             <Button
                     android:id="@+id/loca"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="5dp"
                     android:background="#FFFFFF"
                     android:gravity="left"
                     android:padding="10dp"
@@ -83,7 +85,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/category"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_weight="2.5" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -91,7 +94,7 @@
                 android:id="@+id/titles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_weight="5"
                 android:background="@drawable/top_bottom_stroke"
                 android:gravity="center_vertical"
                 android:hint="제목"
@@ -106,7 +109,7 @@
                 android:id="@+id/explanation"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="9"
+                android:layout_weight="90"
                 android:background="@drawable/top_bottom_stroke"
                 android:gravity="top|left"
                 android:paddingLeft="10dp"

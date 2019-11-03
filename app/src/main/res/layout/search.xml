@@ -148,7 +148,8 @@
                             android:layout_weight="25"
                             android:background="#FFFFFF"
                             android:text="1일"
-                            android:textColor="#535353" />
+                            android:textColor="#535353"
+                            android:textSize="18sp" />
 
                     <Button
                             android:id="@+id/day2"
@@ -159,7 +160,8 @@
                             android:layout_weight="25"
                             android:background="#FFFFFF"
                             android:text="1박2일"
-                            android:textColor="#535353" />
+                            android:textColor="#535353"
+                            android:textSize="18sp" />
 
                     <Button
                             android:id="@+id/day3"
@@ -170,7 +172,8 @@
                             android:layout_weight="25"
                             android:background="#FFFFFF"
                             android:text="2박3일"
-                            android:textColor="#535353" />
+                            android:textColor="#535353"
+                            android:textSize="18sp" />
 
                     <Button
                             android:id="@+id/day4"
@@ -179,7 +182,8 @@
                             android:layout_weight="25"
                             android:background="#FFFFFF"
                             android:text="3박4일"
-                            android:textColor="#535353" />
+                            android:textColor="#535353"
+                            android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -196,7 +200,8 @@
                             android:layout_weight="25"
                             android:background="#FFFFFF"
                             android:text="4박5일"
-                            android:textColor="#535353" />
+                            android:textColor="#535353"
+                            android:textSize="18sp" />
 
                     <Button
                             android:id="@+id/day6"
@@ -207,7 +212,8 @@
                             android:layout_weight="25"
                             android:background="#FFFFFF"
                             android:text="5박6일"
-                            android:textColor="#535353" />
+                            android:textColor="#535353"
+                            android:textSize="18sp" />
 
                     <Button
                             android:id="@+id/day7"
@@ -218,7 +224,8 @@
                             android:layout_weight="25"
                             android:background="#FFFFFF"
                             android:text="6박7일"
-                            android:textColor="#535353" />
+                            android:textColor="#535353"
+                            android:textSize="18sp" />
 
                     <Button
                             android:id="@+id/day8"
