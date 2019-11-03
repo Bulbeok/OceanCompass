@@ -24,6 +24,7 @@ class ReviewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.review)
+
         val bottomNavigationView  = findViewById<View>(R.id.bottom_navigation_view) as BottomNavigationView
         bottomNavigationView.menu.findItem(R.id.share).isChecked = true
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
@@ -135,6 +136,8 @@ class ReviewActivity : AppCompatActivity() {
                 callback.invoke(origin, true, true)
             }
         }
+        map.setBackgroundColor(0)
+        map.setBackgroundResource(R.drawable.splash)
         map.loadUrl("https://175.206.239.109:8443/oceancompass/map.jsp")
     }
 

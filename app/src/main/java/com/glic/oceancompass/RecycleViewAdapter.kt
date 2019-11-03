@@ -18,8 +18,7 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         view = when(index) {
-            1,2,3,4,5,6 -> LayoutInflater.from(context).inflate(R.layout.recycleviewitem, parent, false)
-            7 -> LayoutInflater.from(context).inflate(R.layout.recommed_recycleview, parent, false)
+            6 -> LayoutInflater.from(context).inflate(R.layout.recommed_recycleview, parent, false)
             else -> LayoutInflater.from(context).inflate(R.layout.recycleviewitem, parent, false)
         }
         return Holder(view)
@@ -63,18 +62,12 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
                     }
                 }
                 4 -> {
-                    itemView.recycleview_text.text = str.trim()
-                    itemView.setOnClickListener {
-                        listener!!.stateClick(urlList[position].trim())
-                    }
-                }
-                5 -> {
                     itemView.recycleview_text.text = str.trim().split(",")[0]
                     itemView.setOnClickListener {
                         listener!!.stateClick(urlList[position].trim())
                     }
                 }
-                6 -> {
+                5 -> {
                     if(str.trim() == "") {
                         itemView.recycleview_text.text = "검색결과가 없습니다."
                     } else {
@@ -84,7 +77,7 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
                         }
                     }
                 }
-                7 -> {
+                6 -> {
                     itemView.countday.text = (position + 1).toString() + "일차"
                     val temp = str.split(",")
                     for (i in 1 until temp.size) {

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.recommend.*
 import kotlin.properties.Delegates
 
+
 class RecommendActivity : AppCompatActivity() {
 
     private var count by Delegates.notNull<Int>()
@@ -61,6 +62,8 @@ class RecommendActivity : AppCompatActivity() {
             javaScriptEnabled = true
             domStorageEnabled = true
         }
+        map.setBackgroundColor(0)
+        map.setBackgroundResource(R.drawable.splash)
         map.webViewClient = object : WebViewClient(){
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler!!.proceed()
@@ -167,7 +170,10 @@ class RecommendActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val dataList = data!!.extras!!.getString("type")!!.split("/")
+        var dataList:List<String> = emptyList()
+        if(resultCode == RESULT_OK) {
+            dataList = data!!.extras!!.getString("type")!!.split("/")
+        }
         if (resultCode == RESULT_OK && requestCode == 1) {
             type1.text = dataList[1]
             td1 = dataList[2] + ","

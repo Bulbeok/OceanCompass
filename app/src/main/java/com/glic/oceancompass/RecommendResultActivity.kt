@@ -25,12 +25,16 @@ class RecommendResultActivity : AppCompatActivity(), RecycleViewClick {
             recommendList.add(pref.getString("$count", null)!!)
         }
 
-        result.adapter = RecycleViewAdapter(7, recommendList, this@RecommendResultActivity,this@RecommendResultActivity)
+        result.adapter = RecycleViewAdapter(6, recommendList, this@RecommendResultActivity,this@RecommendResultActivity)
         result.layoutManager = LinearLayoutManager(this@RecommendResultActivity)
         result.setHasFixedSize(true)
 
-        map.settings.javaScriptEnabled = true
-        map.settings.domStorageEnabled = true
+        map.setBackgroundColor(0)
+        map.setBackgroundResource(R.drawable.splash)
+        map.settings.apply {
+            javaScriptEnabled = true
+            domStorageEnabled = true
+        }
         map.webViewClient = object : WebViewClient(){
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler!!.proceed()
