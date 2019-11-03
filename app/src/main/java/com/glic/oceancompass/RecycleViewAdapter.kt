@@ -2,9 +2,11 @@ package com.glic.oceancompass
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recommed_recycleview.view.*
@@ -79,10 +81,21 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
                 }
                 6 -> {
                     itemView.countday.text = (position + 1).toString() + "일차"
-                    listener!!.cityClick(str)
-                    itemView.setOnClickListener {
-                        listener.stateClick(str)
+
+                    val temp = str.split(",")
+                    Log.e("테스트사이즈", temp.size.toString())
+                    for (i in 1 until temp.size) {
+                        Log.e("테스트배열", temp[i-1])
+                        itemView.findViewById<TextView>(itemView.resources.getIdentifier("type$i", "id", context.packageName)).text = temp[i-1]
+                        if(i != 1) {
+                            itemView.findViewById<ImageView>(itemView.resources.getIdentifier("imageView$i", "id", context.packageName)).visibility = View.VISIBLE
+                        }
                     }
+
+                    itemView.setOnClickListener {
+                        listener!!.stateClick(str)
+                    }
+
                 }
             }
         }

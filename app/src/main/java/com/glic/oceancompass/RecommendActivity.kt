@@ -48,8 +48,8 @@ class RecommendActivity : AppCompatActivity() {
         var select1 = true
         var select2 = true
 
-        day_textView.text = "$count 일차"
-        daycomplete.text = "$count 일차"
+        day_textView.text = count.toString() +"일차"
+        daycomplete.text = count.toString() +"일차"
 
         if(location.split(" ")[0] == location.split(" ")[1]) {
             location_textView.text = location.split(" ")[0]
