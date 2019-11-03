@@ -21,26 +21,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="28dp"
-                android:layout_weight="20"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="10"
                 android:background="#00FFFFFF"
                 android:gravity="center"
                 android:text="@string/로그인"
                 android:textColor="#000000"
-                android:textSize="45sp" />
+                android:textSize="40sp" />
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="50"
+                android:layout_weight="60"
                 android:orientation="vertical"
-                android:weightSum="50">
+                android:weightSum="60">
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="25"
+                    android:layout_weight="30"
                     android:orientation="vertical"
-                    android:weightSum="25">
+                    android:weightSum="30">
 
                 <TextView
                         android:id="@+id/EmailText"
@@ -48,7 +49,7 @@
                         android:layout_height="0dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="0dp"
-                        android:layout_weight="10"
+                        android:layout_weight="15"
                         android:background="#00FFFFFF"
                         android:gravity="center"
                         android:paddingLeft="10dp"
@@ -73,16 +74,16 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:textColor="#303030"
-                        android:textSize="40sp" />
+                        android:textSize="30sp" />
 
             </LinearLayout>
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="25"
+                    android:layout_weight="30"
                     android:orientation="vertical"
-                    android:weightSum="25">
+                    android:weightSum="30">
 
                 <TextView
                         android:id="@+id/PasswordText"
@@ -90,7 +91,7 @@
                         android:layout_height="0dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="0dp"
-                        android:layout_weight="10"
+                        android:layout_weight="15"
                         android:background="#00FDFCFC"
                         android:gravity="center"
                         android:paddingLeft="10dp"
@@ -115,7 +116,7 @@
                         android:paddingTop="5dp"
                         android:paddingBottom="10dp"
                         android:textColor="#303030"
-                        android:textSize="40sp" />
+                        android:textSize="30sp" />
             </LinearLayout>
 
         </LinearLayout>
