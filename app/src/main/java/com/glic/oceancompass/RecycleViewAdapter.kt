@@ -2,7 +2,6 @@ package com.glic.oceancompass
 
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,8 +18,8 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         view = when(index) {
-            1,2,3,4,5 -> LayoutInflater.from(context).inflate(R.layout.recycleviewitem, parent, false)
-            6 -> LayoutInflater.from(context).inflate(R.layout.recommed_recycleview, parent, false)
+            1,2,3,4,5,6 -> LayoutInflater.from(context).inflate(R.layout.recycleviewitem, parent, false)
+            7 -> LayoutInflater.from(context).inflate(R.layout.recommed_recycleview, parent, false)
             else -> LayoutInflater.from(context).inflate(R.layout.recycleviewitem, parent, false)
         }
         return Holder(view)
@@ -70,6 +69,12 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
                     }
                 }
                 5 -> {
+                    itemView.recycleview_text.text = str.trim().split(",")[0]
+                    itemView.setOnClickListener {
+                        listener!!.stateClick(urlList[position].trim())
+                    }
+                }
+                6 -> {
                     if(str.trim() == "") {
                         itemView.recycleview_text.text = "검색결과가 없습니다."
                     } else {
@@ -79,13 +84,10 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
                         }
                     }
                 }
-                6 -> {
+                7 -> {
                     itemView.countday.text = (position + 1).toString() + "일차"
-
                     val temp = str.split(",")
-                    Log.e("테스트사이즈", temp.size.toString())
                     for (i in 1 until temp.size) {
-                        Log.e("테스트배열", temp[i-1])
                         itemView.findViewById<TextView>(itemView.resources.getIdentifier("type$i", "id", context.packageName)).text = temp[i-1]
                         if(i != 1) {
                             itemView.findViewById<ImageView>(itemView.resources.getIdentifier("imageView$i", "id", context.packageName)).visibility = View.VISIBLE

@@ -25,7 +25,7 @@ class RecommendResultActivity : AppCompatActivity(), RecycleViewClick {
             recommendList.add(pref.getString("$count", null)!!)
         }
 
-        result.adapter = RecycleViewAdapter(6, recommendList, this@RecommendResultActivity,this@RecommendResultActivity)
+        result.adapter = RecycleViewAdapter(7, recommendList, this@RecommendResultActivity,this@RecommendResultActivity)
         result.layoutManager = LinearLayoutManager(this@RecommendResultActivity)
         result.setHasFixedSize(true)
 

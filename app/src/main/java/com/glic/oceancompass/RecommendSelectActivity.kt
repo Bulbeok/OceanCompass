@@ -29,19 +29,23 @@ class RecommendSelectActivity : AppCompatActivity(), RecycleViewClick {
             recommendList.add("숙박업소")
             recommendList.add("캠핑장")
             recommendList.add("휴양림")
-            firstrecycleview.adapter = RecycleViewAdapter(4, recommendList , this@RecommendSelectActivity,this@RecommendSelectActivity)
+            recommendList.add("사용자추천,숙박")
+            firstrecycleview.adapter = RecycleViewAdapter(5, recommendList , this@RecommendSelectActivity,this@RecommendSelectActivity)
             firstrecycleview.layoutManager = LinearLayoutManager(this@RecommendSelectActivity)
             firstrecycleview.setHasFixedSize(true)
         }
         play.setOnClickListener {
-            firstrecycleview.adapter = RecycleViewAdapter(4, ArrayList(intent.getStringExtra("play")!!.split(',')) , this@RecommendSelectActivity,this@RecommendSelectActivity)
+            val playList = ArrayList(intent.getStringExtra("play")!!.split(','))
+            playList.add("사용자추천,놀거리")
+            firstrecycleview.adapter = RecycleViewAdapter(4, playList, this@RecommendSelectActivity,this@RecommendSelectActivity)
             firstrecycleview.layoutManager = LinearLayoutManager(this@RecommendSelectActivity)
             firstrecycleview.setHasFixedSize(true)
         }
         food.setOnClickListener {
             recommendList.clear()
             recommendList.add("음식점")
-            firstrecycleview.adapter = RecycleViewAdapter(4, recommendList , this@RecommendSelectActivity,this@RecommendSelectActivity)
+            recommendList.add("사용자추천,음식점")
+            firstrecycleview.adapter = RecycleViewAdapter(5, recommendList , this@RecommendSelectActivity,this@RecommendSelectActivity)
             firstrecycleview.layoutManager = LinearLayoutManager(this@RecommendSelectActivity)
             firstrecycleview.setHasFixedSize(true)
         }
@@ -53,7 +57,7 @@ class RecommendSelectActivity : AppCompatActivity(), RecycleViewClick {
             POST, "https://175.206.239.109:8443/oceancompass/RecommendServlet",
             //요청 성공 시
             Response.Listener {
-                seccndrecycleview.adapter = RecycleViewAdapter(5, ArrayList(it.substring(1,it.length-1).split(',')) , this@RecommendSelectActivity,this@RecommendSelectActivity)
+                seccndrecycleview.adapter = RecycleViewAdapter(6, ArrayList(it.substring(1,it.length-1).split(',')) , this@RecommendSelectActivity,this@RecommendSelectActivity)
                 seccndrecycleview.layoutManager = LinearLayoutManager(this@RecommendSelectActivity)
                 seccndrecycleview.setHasFixedSize(true)
             },
