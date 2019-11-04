@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.reviewloca.*
 
 
-class ReviewLocaActivity : AppCompatActivity() {
+class ReviewLocationActivity : AppCompatActivity() {
 
     var handler : Handler? = Handler()
     var address : String? = null
@@ -62,7 +62,7 @@ class ReviewLocaActivity : AppCompatActivity() {
         fun getAddress(add : String){
             handler!!.post {
                 address = add
-                Toast.makeText(this@ReviewLocaActivity,"선택한 위치는 $add 입니다.",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ReviewLocationActivity,"선택한 위치는 $add 입니다.",Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -63,16 +63,18 @@ class SearchActivity : AppCompatActivity() {
                 play == "" -> Toast.makeText(this, "놀거리를 선택해주세요", Toast.LENGTH_LONG).show()
                 day == 0 -> Toast.makeText(this, "여행 기간을 선택해주세요", Toast.LENGTH_LONG).show()
                 else -> {
-                    val count = intent.getIntExtra("count", 1)
+                    val count = pref.getInt("count", 1)
                     val randomString: String = List(20) { (('a'..'z') + ('A'..'Z') + ('0'..'9')).random() }.joinToString("")
                     edit.putString("$count", randomString)
+                    edit.putString("$count"+"address", location)
                     edit.putInt("count", count+1)
                     edit.apply()
                     startActivity(Intent(this,RandomRecommendActivity::class.java)
                         .putExtra("key",randomString)
                         .putExtra("location",location)
                         .putExtra("play",play)
-                        .putExtra("day",day))
+                        .putExtra("day",day)
+                        .putExtra("historyCount",count))
                     finish()
                 }
             }

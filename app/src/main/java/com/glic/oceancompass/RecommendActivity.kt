@@ -15,6 +15,7 @@ import kotlin.properties.Delegates
 
 class RecommendActivity : AppCompatActivity(), View.OnClickListener {
 
+    private var historyCount by Delegates.notNull<Int>()
     private var count by Delegates.notNull<Int>()
     private var day by Delegates.notNull<Int>()
     private lateinit var key:String
@@ -34,9 +35,12 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
         key = intent.getStringExtra("key")!!
         location = intent.getStringExtra("location")!!
         play = intent.getStringExtra("play")!!
+        historyCount = intent.getIntExtra("historyCount", 1)
 
         val pref = this.getSharedPreferences(key, Context.MODE_PRIVATE)
+        val historyPref = this.getSharedPreferences("history", Context.MODE_PRIVATE)
         val edit = pref.edit()
+        val historyEdit = historyPref.edit()
         var select1 = true
         var select2 = true
 
@@ -115,6 +119,8 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
                         Toast.makeText(this, "선택한 경로에 선택된 것이 없습니다", Toast.LENGTH_LONG).show()
                 }else {
                     if(day == count) {
+                        historyEdit.putInt("$historyCount" +"count",count)
+                        historyEdit.apply()
                         edit.putString("$count", urlList[2])
                         edit.apply()
                         startActivity(Intent(this, RecommendResultActivity::class.java).putExtra("key",key).putExtra("count",count))
@@ -128,6 +134,7 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
                                 .putExtra("play", play)
                                 .putExtra("day", day)
                                 .putExtra("count", count + 1)
+                                .putExtra("historyCount",historyCount)
                         )
                     }
                 }
@@ -135,6 +142,8 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         complete.setOnClickListener {
+            historyEdit.putInt("$historyCount" +"count",count)
+            historyEdit.apply()
             edit.putString("$count", urlList[2])
             edit.apply()
             startActivity(Intent(this, RecommendResultActivity::class.java).putExtra("key",key).putExtra("count",count))
@@ -177,9 +186,18 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
                 .putExtra("location",location)
                 .putExtra("play",play)
                 .putExtra("day",day)
-                .putExtra("count",count-1))
+                .putExtra("count",count-1)
+                .putExtra("historyCount",historyCount))
             finish()
         } else {
+            val pref = this.getSharedPreferences(key, Context.MODE_PRIVATE)
+            val edit = pref.edit()
+            val pref2 = this.getSharedPreferences("history", Context.MODE_PRIVATE)
+            val edit2 = pref2.edit()
+            edit.clear()
+            edit.apply()
+            edit2.putInt("count", pref2.getInt("count", 1))
+            edit2.apply()
             startActivity(Intent(this, SearchActivity::class.java))
         }
     }

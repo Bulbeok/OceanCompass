@@ -83,7 +83,7 @@ class ReviewAddActivity : AppCompatActivity() {
         }
 
         loca.setOnClickListener {
-            startActivityForResult(Intent(this, ReviewLocaActivity::class.java), 1)
+            startActivityForResult(Intent(this, ReviewLocationActivity::class.java), 1)
         }
     }
 

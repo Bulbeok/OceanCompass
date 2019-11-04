@@ -9,11 +9,13 @@ import com.android.volley.Request.Method.POST
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import kotlin.properties.Delegates
 
 class RandomRecommendActivity : AppCompatActivity() {
 
-    private var count = 0
-    private var day = 0
+    private var historyCount by Delegates.notNull<Int>()
+    private var count by Delegates.notNull<Int>()
+    private var day by Delegates.notNull<Int>()
     private var key: String? = null
     private var location: String? = null
     private var play: String? = null
@@ -22,6 +24,7 @@ class RandomRecommendActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.randomrecommend)
 
+        historyCount = intent.getIntExtra("historyCount", 1)
         count = intent.getIntExtra("count",1)
         day = intent.getIntExtra("day",1)
         key = intent.getStringExtra("key")!!
@@ -62,6 +65,7 @@ class RandomRecommendActivity : AppCompatActivity() {
                     .putExtra("play", play)
                     .putExtra("day", day)
                     .putExtra("count", count)
+                    .putExtra("historyCount",historyCount)
             )
         } else {
             startActivity(
@@ -72,6 +76,7 @@ class RandomRecommendActivity : AppCompatActivity() {
                     .putExtra("day", day)
                     .putExtra("count", count)
                     .putExtra("random", value)
+                    .putExtra("historyCount",historyCount)
             )
         }
     }

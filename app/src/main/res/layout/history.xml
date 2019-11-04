@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".historyActivity"
+        tools:context=".`H'istoryActivity`"
         android:background="#ffffff">
 
     <LinearLayout
@@ -28,6 +28,7 @@
                 android:background="@drawable/searchadd_stroke1"/>
 
         <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/history"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="90" />

@@ -141,6 +141,7 @@ class SignInActivity : AppCompatActivity() {
                         password.isEnabled = true
                         temp = true
                         login.text = "로그인"
+                        signup.text = "회원가입"
                     },
                     // 에러 발생 시
                     Response.ErrorListener {
@@ -159,15 +160,15 @@ class SignInActivity : AppCompatActivity() {
                 password.setText("")
             }
         }
-        /*
         signup.setOnClickListener {
-            if(sessionId){
-                startActivity(Intent(this,mypageActivity::class.java))
+            if (signup.text == "마이페이지") {
+                startActivity(Intent(this, MyPageActivity::class.java))
+                finish()
+            } else {
+                startActivity(Intent(this, SignUpActivity::class.java))
                 finish()
             }
-            startActivity(Intent(this,SignUpActivity::class.java))
-            finish()
-        }*/
+        }
     }
 
     override fun onBackPressed() {

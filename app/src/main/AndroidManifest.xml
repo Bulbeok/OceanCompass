@@ -16,9 +16,21 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
-        <activity android:name=".historyActivity"></activity>
-        <activity android:name=".myreviewActivity" />
-        <activity android:name=".mypageActivity" />
+        <activity
+                android:name=".HistoryActivity"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
+        <activity
+                android:name=".myreviewActivity"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme" />
+        <activity
+                android:name=".MyPageActivity"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme"  />
         <activity
                 android:name=".RandomRecommendActivity"
                 android:launchMode="singleTop"
@@ -49,7 +61,7 @@
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme" />
         <activity
-                android:name=".ReviewLocaActivity"
+                android:name=".ReviewLocationActivity"
                 android:launchMode="singleTop"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme" />

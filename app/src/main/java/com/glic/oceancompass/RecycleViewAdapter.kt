@@ -2,6 +2,7 @@ package com.glic.oceancompass
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -86,11 +87,15 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
                             itemView.findViewById<ImageView>(itemView.resources.getIdentifier("imageView$i", "id", context.packageName)).visibility = View.VISIBLE
                         }
                     }
-
                     itemView.setOnClickListener {
                         listener!!.stateClick(str)
                     }
-
+                }
+                7 -> {
+                    itemView.recycleview_text.text = str.trim()
+                    itemView.setOnClickListener {
+                        listener!!.stateClick((position+1).toString())
+                    }
                 }
             }
         }
