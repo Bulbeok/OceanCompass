@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.http.SslError
 import android.os.Bundle
+import android.view.View
 import android.webkit.*
 import android.widget.TextView
 import android.widget.Toast
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.recommend.*
 import kotlin.properties.Delegates
 
 
-class RecommendActivity : AppCompatActivity() {
+class RecommendActivity : AppCompatActivity(), View.OnClickListener {
 
     private var count by Delegates.notNull<Int>()
     private var day by Delegates.notNull<Int>()
@@ -35,6 +36,8 @@ class RecommendActivity : AppCompatActivity() {
     private var td11 = ""
     private var td12 = ""
 
+    private val textViewList = arrayListOf<TextView>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recommend)
@@ -49,6 +52,11 @@ class RecommendActivity : AppCompatActivity() {
         val edit = pref.edit()
         var select1 = true
         var select2 = true
+
+        for(i in 1..12) {
+            textViewList.add(findViewById(resources.getIdentifier("type$i","id",packageName)))
+            textViewList[i-1].setOnClickListener(this)
+        }
 
         if(intent.hasExtra("random")) {
             val randomList = intent.getStringExtra("random")!!.substring(1,intent.getStringExtra("random")!!.length-1).split(",")
@@ -106,43 +114,6 @@ class RecommendActivity : AppCompatActivity() {
             }
         }
 
-        type1.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 1)
-        }
-        type2.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 2)
-        }
-        type3.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 3)
-        }
-        type4.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 4)
-        }
-        type5.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 5)
-        }
-        type6.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 6)
-        }
-        type7.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 7)
-        }
-        type8.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 8)
-        }
-        type9.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 9)
-        }
-        type10.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 10)
-        }
-        type11.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 11)
-        }
-        type12.setOnClickListener {
-            startActivityForResult(Intent(this, RecommendSelectActivity::class.java).putExtra("play",play).putExtra("location",location), 12)
-        }
-
         option1.setOnClickListener {
             Toast.makeText(this,"첫번째 경로를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
@@ -196,6 +167,14 @@ class RecommendActivity : AppCompatActivity() {
             startActivity(Intent(this, RecommendResultActivity::class.java).putExtra("key",key).putExtra("count",count))
             finish()
         }
+    }
+
+    override fun onClick(view: View?) {
+        startActivityForResult(Intent(this, RecommendSelectActivity::class.java)
+            .putExtra("play",play)
+            .putExtra("location",location)
+            , Integer.parseInt(view!!.resources.getResourceName(view.id)
+                .substring(29,view.resources.getResourceName(view.id).length)))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
