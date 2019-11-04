@@ -71,8 +71,8 @@ class ReviewAddActivity : AppCompatActivity() {
         send.setOnClickListener {
             when {
                 titles.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
-                explanation.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
-                loca.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
+                explanation.text.toString() == "" -> Toast.makeText(this, "내용을 입력해주세요", Toast.LENGTH_LONG).show()
+                loca.text.toString() == "" -> Toast.makeText(this, "위치를 입력해주세요", Toast.LENGTH_LONG).show()
                 categorys == "" -> Toast.makeText(this, "카테고리를 선택해주세요", Toast.LENGTH_LONG).show()
                 else -> {
                     val request = object : StringRequest(
