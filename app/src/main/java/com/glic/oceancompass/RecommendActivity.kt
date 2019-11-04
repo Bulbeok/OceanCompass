@@ -20,19 +20,8 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var key:String
     private lateinit var location:String
     private lateinit var play:String
-    private var td1 = ""
-    private var td2 = ""
-    private var td3 = ""
-    private var td4 = ""
-    private var td5 = ""
-    private var td6 = ""
-    private var td7 = ""
-    private var td8 = ""
-    private var td9 = ""
-    private var td10 = ""
-    private var td11 = ""
-    private var td12 = ""
 
+    private val selectList = Array(12) {""}
     private val urlList = arrayOf("","","")
     private val textViewList = arrayListOf<TextView>()
 
@@ -62,20 +51,7 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
                 if(randomList[i-1] == "" || randomList[i-1] == " " ) {
                     continue
                 }
-                when(i) {
-                    1 -> td1 = randomList[i - 1].split("/")[1]
-                    2 -> td2 = randomList[i - 1].split("/")[1]
-                    3 -> td3 = randomList[i - 1].split("/")[1]
-                    4 -> td4 = randomList[i - 1].split("/")[1]
-                    5 -> td5 = randomList[i - 1].split("/")[1]
-                    6 -> td6 = randomList[i - 1].split("/")[1]
-                    7 -> td7 = randomList[i - 1].split("/")[1]
-                    8 -> td8 = randomList[i - 1].split("/")[1]
-                    9 -> td9 = randomList[i - 1].split("/")[1]
-                    10 -> td10 = randomList[i - 1].split("/")[1]
-                    11 -> td11 = randomList[i - 1].split("/")[1]
-                    12 -> td12 = randomList[i - 1].split("/")[1]
-                }
+                selectList[i] = randomList[i - 1].split("/")[1]
                 if(i<=6) {
                     urlList[0] = urlList[0] + randomList[i - 1].split("/")[1] + ","
                 } else {
@@ -180,65 +156,15 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
         if(resultCode == RESULT_OK) {
             dataList = data!!.extras!!.getString("type")!!.split("/")
         }
-        if (resultCode == RESULT_OK && requestCode == 1) {
-            type1.text = dataList[1]
-            td1 = dataList[2] + ","
-            urlList[0] = td1+td2+td3+td4+td5+td6
+        if (resultCode == RESULT_OK && requestCode <= 6) {
+            findViewById<TextView>(resources.getIdentifier("type$requestCode", "id", packageName)).text = dataList[1]
+            selectList[resultCode] = dataList[2] + ","
+            for(i in 1..6) urlList[0] + selectList[i]
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
-        } else if(resultCode == RESULT_OK && requestCode == 2) {
-            type2.text = dataList[1]
-            td2 = dataList[2] + ","
-            urlList[0] = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
-        }else if(resultCode == RESULT_OK && requestCode == 3) {
-            type3.text = dataList[1]
-            td3 = dataList[2] + ","
-            urlList[0] = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
-        }else if(resultCode == RESULT_OK && requestCode == 4) {
-            type4.text = dataList[1]
-            td4 = dataList[2] + ","
-            urlList[0] = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
-        }else if(resultCode == RESULT_OK && requestCode == 5) {
-            type5.text = dataList[1]
-            td5 = dataList[2] + ","
-            urlList[0] = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
-        }else if(resultCode == RESULT_OK && requestCode == 6) {
-            type6.text = dataList[1]
-            td6 = dataList[2] + ","
-            urlList[0] = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
-        }else if(resultCode == RESULT_OK && requestCode == 7) {
-            type7.text = dataList[1]
-            td7 = dataList[2] + ","
-            urlList[1] = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
-        }else if(resultCode == RESULT_OK && requestCode == 8) {
-            type8.text = dataList[1]
-            td8 = dataList[2] + ","
-            urlList[1] = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
-        }else if(resultCode == RESULT_OK && requestCode == 9) {
-            type9.text = dataList[1]
-            td9 = dataList[2] + ","
-            urlList[1] = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
-        }else if(resultCode == RESULT_OK && requestCode == 10) {
-            type10.text = dataList[1]
-            td10 = dataList[2] + ","
-            urlList[1] = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
-        }else if(resultCode == RESULT_OK && requestCode == 11) {
-            type11.text = dataList[1]
-            td11 = dataList[2] + ","
-            urlList[1] = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
-        }else if(resultCode == RESULT_OK && requestCode == 12) {
-            type12.text = dataList[1]
-            td12 = dataList[2] + ","
-            urlList[1] = td7+td8+td9+td10+td11+td12
+        } else if(resultCode == RESULT_OK && requestCode > 6) {
+            findViewById<TextView>(resources.getIdentifier("type$requestCode", "id", packageName)).text = dataList[1]
+            selectList[resultCode] = dataList[2] + ","
+            for(i in 7..12) urlList[0] + selectList[i]
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
         }
     }
