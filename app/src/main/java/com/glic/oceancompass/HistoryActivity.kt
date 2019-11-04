@@ -34,6 +34,7 @@ class HistoryActivity : AppCompatActivity(), RecycleViewClick {
         startActivity(Intent(this, RecommendResultActivity::class.java)
             .putExtra("key", pref.getString(value, ""))
             .putExtra("count", pref.getInt(value+"count", 1)))
+        finish()
     }
 
     override fun cityClick(value: String) {
