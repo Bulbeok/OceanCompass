@@ -68,6 +68,7 @@ class SignInActivity : AppCompatActivity() {
                     temp = false
                     id.setText(pref.getString("sessionId", null))
                     login.text = "로그아웃"
+                    signup.text = "마이페이지"
                 }
             },
             // 에러 발생 시
@@ -102,6 +103,7 @@ class SignInActivity : AppCompatActivity() {
                                 password.isEnabled = false
                                 temp = false
                                 login.text = "로그아웃"
+                                signup.text = "마이페이지"
                             }
                         },
                         // 에러 발생 시
@@ -157,11 +159,15 @@ class SignInActivity : AppCompatActivity() {
                 password.setText("")
             }
         }
-
+        /*
         signup.setOnClickListener {
+            if(sessionId){
+                startActivity(Intent(this,mypageActivity::class.java))
+                finish()
+            }
             startActivity(Intent(this,SignUpActivity::class.java))
             finish()
-        }
+        }*/
     }
 
     override fun onBackPressed() {
