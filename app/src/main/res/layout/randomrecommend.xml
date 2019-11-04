@@ -10,7 +10,7 @@
             android:id="@+id/dancer"
             android:layout_width="414dp"
             android:layout_height="731dp"
-            android:src="@drawable/rabbit"
+            android:src="@drawable/gifbackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
