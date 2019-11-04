@@ -51,7 +51,7 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
                 if(randomList[i-1] == "" || randomList[i-1] == " " ) {
                     continue
                 }
-                selectList[i] = randomList[i - 1].split("/")[1]
+                selectList[i-1] = randomList[i - 1].split("/")[1]
                 if(i<=6) {
                     urlList[0] = urlList[0] + randomList[i - 1].split("/")[1] + ","
                 } else {
@@ -91,7 +91,7 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
             Toast.makeText(this,"첫번째 경로를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
             select1 = false
-            urlList[3] = urlList[0]
+            urlList[2] = urlList[0]
             number1.setImageResource(R.drawable.number1_check)
             number2.setImageResource(R.drawable.number2)
         }
@@ -100,7 +100,7 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
             Toast.makeText(this,"두번째 경로를 클릭하셨습니다",Toast.LENGTH_LONG).show()
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
             select2 = false
-            urlList[3] = urlList[0]
+            urlList[2] = urlList[0]
             number1.setImageResource(R.drawable.number1)
             number2.setImageResource(R.drawable.number2_check)
         }
@@ -115,12 +115,12 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
                         Toast.makeText(this, "선택한 경로에 선택된 것이 없습니다", Toast.LENGTH_LONG).show()
                 }else {
                     if(day == count) {
-                        edit.putString("$count", urlList[3])
+                        edit.putString("$count", urlList[2])
                         edit.apply()
                         startActivity(Intent(this, RecommendResultActivity::class.java).putExtra("key",key).putExtra("count",count))
                         finish()
                     } else {
-                        edit.putString("$count", urlList[3])
+                        edit.putString("$count", urlList[2])
                         edit.apply()
                         startActivity(Intent(this, RandomRecommendActivity::class.java)
                                 .putExtra("key", key)
@@ -135,7 +135,7 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         complete.setOnClickListener {
-            edit.putString("$count", urlList[3])
+            edit.putString("$count", urlList[2])
             edit.apply()
             startActivity(Intent(this, RecommendResultActivity::class.java).putExtra("key",key).putExtra("count",count))
             finish()
@@ -153,18 +153,19 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         var dataList:List<String> = emptyList()
+
         if(resultCode == RESULT_OK) {
             dataList = data!!.extras!!.getString("type")!!.split("/")
         }
         if (resultCode == RESULT_OK && requestCode <= 6) {
             findViewById<TextView>(resources.getIdentifier("type$requestCode", "id", packageName)).text = dataList[1]
-            selectList[resultCode] = dataList[2] + ","
-            for(i in 1..6) urlList[0] + selectList[i]
+            selectList[requestCode] = dataList[2] + ","
+            for(i in 0 until 6) urlList[0] + selectList[i]
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
         } else if(resultCode == RESULT_OK && requestCode > 6) {
             findViewById<TextView>(resources.getIdentifier("type$requestCode", "id", packageName)).text = dataList[1]
-            selectList[resultCode] = dataList[2] + ","
-            for(i in 7..12) urlList[0] + selectList[i]
+            selectList[requestCode] = dataList[2] + ","
+            for(i in 6 until 12) urlList[0] + selectList[i]
             map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
         }
     }
