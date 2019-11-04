@@ -22,7 +22,7 @@
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme" />
         <activity
-                android:name=".myreviewActivity"
+                android:name=".MyReviewActivity"
                 android:launchMode="singleTop"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme" />

@@ -12,7 +12,7 @@ class MyPageActivity : AppCompatActivity() {
         setContentView(R.layout.mypage)
 
         myreview.setOnClickListener {
-                startActivity(Intent(this, myreviewActivity::class.java))
+                startActivity(Intent(this, MyReviewActivity::class.java))
                 finish()
         }
         history.setOnClickListener {

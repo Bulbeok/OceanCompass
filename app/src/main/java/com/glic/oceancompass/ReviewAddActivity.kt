@@ -14,8 +14,6 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.reviewadd.*
-import kotlin.collections.HashMap
-import kotlin.collections.Map
 import kotlin.collections.set
 
 
@@ -26,23 +24,69 @@ class ReviewAddActivity : AppCompatActivity() {
         setContentView(R.layout.reviewadd)
 
         var categorys = ""
+        val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
+        val sessionId = pref.getString("sessionCookie", null)
+
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.category, R.layout.spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        category.adapter = adapter
+        category.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                when(position) {
+                    0 -> categorys = "숙박"
+                    1 -> categorys = "음식점"
+                    2 -> categorys = "놀거리"
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+            }
+        }
+
+        if(intent.hasExtra("id")) {
+            val request = object : StringRequest(
+                POST, "https://175.206.239.109:8443/oceancompass/MobileReviewServlet",
+                Response.Listener {
+                    titles.setText(it.split("/")[0])
+                    explanation.setText(it.split("/")[1])
+                    loca.text = it.split("/")[2]
+                    category.setSelection(adapter.getPosition(it.split("/")[3]))
+                },
+                Response.ErrorListener {
+                    Log.e("에러", "[${it.message}]")
+                }) {
+                // request 시 key, value 보낼 때
+                override fun getParams(): Map<String, String> {
+                    val params = HashMap<String, String>()
+                    params["id"] = intent.getStringExtra("id")!!
+                    return params
+                }
+            }
+            val queue = Volley.newRequestQueue(this)
+            queue.add(request)
+        }
 
         send.setOnClickListener {
-            Log.e("테ㅡ트",categorys)
             when {
                 titles.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
                 explanation.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
                 loca.text.toString() == "" -> Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_LONG).show()
                 categorys == "" -> Toast.makeText(this, "카테고리를 선택해주세요", Toast.LENGTH_LONG).show()
                 else -> {
-                    val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
-                    val sessionId = pref.getString("sessionCookie", null)
                     val request = object : StringRequest(
                         POST, "https://175.206.239.109:8443/oceancompass/AddMobilReviewServlet",
                         Response.Listener {
-                            Toast.makeText(this, "작성되었습니다.", Toast.LENGTH_LONG).show()
-                            startActivity(Intent(this,ReviewActivity::class.java))
-                            finish()
+                            if(intent.hasExtra("id")) {
+                                Toast.makeText(this, "수정되었습니다..", Toast.LENGTH_LONG).show()
+                                startActivity(Intent(this, ReviewActivity::class.java))
+                                finish()
+                            } else {
+                                Toast.makeText(this, "작성되었습니다.", Toast.LENGTH_LONG).show()
+                                startActivity(Intent(this, ReviewActivity::class.java))
+                                finish()
+                            }
                         },
                         Response.ErrorListener {
                             Log.e("에러", "[${it.message}]")
@@ -66,19 +110,6 @@ class ReviewAddActivity : AppCompatActivity() {
                     val queue = Volley.newRequestQueue(this)
                     queue.add(request)
                 }
-            }
-        }
-
-        category.adapter = ArrayAdapter(this, R.layout.spinner_item, resources.getStringArray(R.array.category))
-        category.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                when(position) {
-                    0 -> categorys = "숙박"
-                    1 -> categorys = "음식점"
-                    2 -> categorys = "놀거리"
-                }
-            }
-            override fun onNothingSelected(parent: AdapterView<*>) {
             }
         }
 

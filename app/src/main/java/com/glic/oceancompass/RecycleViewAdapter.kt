@@ -97,6 +97,16 @@ class RecycleViewAdapter(private val index:Int, private val urlList: ArrayList<S
                         listener!!.stateClick((position+1).toString())
                     }
                 }
+                8 -> {
+                    if(str.trim() == "") {
+                        itemView.recycleview_text.text = "작성한 글이 없습니다."
+                    } else {
+                        itemView.recycleview_text.text = str.trim().split("/")[0]
+                        itemView.setOnClickListener {
+                            listener!!.stateClick(urlList[position].trim().split("/")[urlList[position].trim().split("/").size-1])
+                        }
+                    }
+                }
             }
         }
     }
