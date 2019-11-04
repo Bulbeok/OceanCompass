@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.search.*
 
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity(), View.OnClickListener  {
 
     private var location: String = ""
     private var play: String = ""
@@ -24,6 +24,12 @@ class SearchActivity : AppCompatActivity() {
 
         val pref = this.getSharedPreferences("history", Context.MODE_PRIVATE)
         val edit = pref.edit()
+
+        val buttonList = arrayListOf<Button>()
+        for(i in 1..7) {
+            buttonList.add(findViewById(resources.getIdentifier("day$i","id",packageName)))
+            buttonList[i-1].setOnClickListener(this)
+        }
 
         val bottomNavigationView  = findViewById<View>(R.id.bottom_navigation_view) as BottomNavigationView
         bottomNavigationView.menu.findItem(R.id.search).isChecked = true
@@ -79,44 +85,19 @@ class SearchActivity : AppCompatActivity() {
                 }
             }
         }
-
-        day1.setOnClickListener {
-            setColor(it, 1)
-        }
-        day2.setOnClickListener {
-            setColor(it, 2)
-        }
-        day3.setOnClickListener {
-            setColor(it, 3)
-        }
-        day4.setOnClickListener {
-            setColor(it, 4)
-        }
-        day5.setOnClickListener {
-            setColor(it, 5)
-        }
-        day6.setOnClickListener {
-            setColor(it, 6)
-        }
-        day7.setOnClickListener {
-            setColor(it, 7)
-        }
     }
 
-    private fun setColor(button: View, position: Int) {
-        button.setBackgroundColor(Color.parseColor("#008577"))
-        findViewById<Button>(resources.getIdentifier("day$position", "id", packageName)).setTextColor(Color.parseColor("#FFFFFF"))
-        day = position
+    override fun onClick(view: View?) {
+        findViewById<Button>(view!!.id)!!.setTextColor(Color.parseColor("#FFFFFF"))
         for (i in 1 .. 7) {
-            if(position == i) {
-                continue
-            } else {
-                findViewById<Button>(resources.getIdentifier("day$i", "id", packageName)).setBackgroundColor(Color.parseColor("#FFFFFF"))
-                findViewById<Button>(resources.getIdentifier("day$i", "id", packageName)).setTextColor(Color.parseColor("#000000"))
-            }
-        }
-    }
+            findViewById<Button>(resources.getIdentifier("day$i","id", packageName))
+                .setBackgroundColor(Color.parseColor("#FFFFFF"))
+            findViewById<Button>(resources.getIdentifier("day$i","id", packageName))
+                .setTextColor(Color.parseColor("#000000"))
 
+        }
+        view.setBackgroundColor(Color.parseColor("#008577"))
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
