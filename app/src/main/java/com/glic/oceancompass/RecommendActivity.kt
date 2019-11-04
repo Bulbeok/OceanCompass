@@ -78,8 +78,8 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
             javaScriptEnabled = true
             domStorageEnabled = true
         }
-        map.setBackgroundColor(0)
-        map.setBackgroundResource(R.drawable.splash)
+/*        map.setBackgroundColor(0)
+        map.setBackgroundResource(R.drawable.splash)*/
         map.webViewClient = object : WebViewClient(){
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler!!.proceed()

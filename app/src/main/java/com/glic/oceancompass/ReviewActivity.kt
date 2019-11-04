@@ -136,8 +136,8 @@ class ReviewActivity : AppCompatActivity() {
                 callback.invoke(origin, true, true)
             }
         }
-        map.setBackgroundColor(0)
-        map.setBackgroundResource(R.drawable.splash)
+/*        map.setBackgroundColor(0)
+        map.setBackgroundResource(R.drawable.splash)*/
         map.loadUrl("https://175.206.239.109:8443/oceancompass/map.jsp")
     }
 

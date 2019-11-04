@@ -29,8 +29,8 @@ class RecommendResultActivity : AppCompatActivity(), RecycleViewClick {
         result.layoutManager = LinearLayoutManager(this@RecommendResultActivity)
         result.setHasFixedSize(true)
 
-        map.setBackgroundColor(0)
-        map.setBackgroundResource(R.drawable.splash)
+/*        map.setBackgroundColor(0)
+        map.setBackgroundResource(R.drawable.splash)*/
         map.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
