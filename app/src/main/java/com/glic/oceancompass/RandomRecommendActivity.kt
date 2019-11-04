@@ -36,6 +36,7 @@ class RandomRecommendActivity : AppCompatActivity() {
             },
             // 에러 발생 시
             Response.ErrorListener {
+                moveActivity("1")
                 Log.e("에러", "[${it.message}]")
             }) {
             override fun getParams(): Map<String, String> {
@@ -52,14 +53,27 @@ class RandomRecommendActivity : AppCompatActivity() {
         queue.add(request)
     }
 
-    fun moveActivity(value: String){
-        startActivity(Intent(this,RecommendActivity::class.java)
-            .putExtra("key",key)
-            .putExtra("location",location)
-            .putExtra("play",play)
-            .putExtra("day",day)
-            .putExtra("count",count)
-            .putExtra("random", value))
+    fun moveActivity(value: String) {
+        if (value.trim() == "1") {
+            startActivity(
+                Intent(this, RecommendActivity::class.java)
+                    .putExtra("key", key)
+                    .putExtra("location", location)
+                    .putExtra("play", play)
+                    .putExtra("day", day)
+                    .putExtra("count", count)
+            )
+        } else {
+            startActivity(
+                Intent(this, RecommendActivity::class.java)
+                    .putExtra("key", key)
+                    .putExtra("location", location)
+                    .putExtra("play", play)
+                    .putExtra("day", day)
+                    .putExtra("count", count)
+                    .putExtra("random", value)
+            )
+        }
     }
 
     override fun onBackPressed() {
