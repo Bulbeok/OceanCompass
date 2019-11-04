@@ -20,9 +20,6 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var key:String
     private lateinit var location:String
     private lateinit var play:String
-    private var finalURL = ""
-    private var url = ""
-    private var url2 = ""
     private var td1 = ""
     private var td2 = ""
     private var td3 = ""
@@ -36,6 +33,7 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
     private var td11 = ""
     private var td12 = ""
 
+    private val urlList = arrayOf("","","")
     private val textViewList = arrayListOf<TextView>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,14 +77,13 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
                     12 -> td12 = randomList[i - 1].split("/")[1]
                 }
                 if(i<=6) {
-                    url = url + randomList[i - 1].split("/")[1] + ","
+                    urlList[0] = urlList[0] + randomList[i - 1].split("/")[1] + ","
                 } else {
-                    url2 = url2 + randomList[i - 1].split("/")[1] + ","
+                    urlList[1] = urlList[1] + randomList[i - 1].split("/")[1] + ","
                 }
                 findViewById<TextView>(resources.getIdentifier("type$i", "id", packageName)).text = randomList[i-1].split("/")[0]
             }
         }
-
 
         day_textView.text = count.toString() +"일차"
         daycomplete.text = count.toString() +"일차"
@@ -116,18 +113,18 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
 
         option1.setOnClickListener {
             Toast.makeText(this,"첫번째 경로를 클릭하셨습니다",Toast.LENGTH_LONG).show()
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
             select1 = false
-            finalURL = url
+            urlList[3] = urlList[0]
             number1.setImageResource(R.drawable.number1_check)
             number2.setImageResource(R.drawable.number2)
         }
 
         option2.setOnClickListener {
             Toast.makeText(this,"두번째 경로를 클릭하셨습니다",Toast.LENGTH_LONG).show()
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
             select2 = false
-            finalURL = url2
+            urlList[3] = urlList[0]
             number1.setImageResource(R.drawable.number1)
             number2.setImageResource(R.drawable.number2_check)
         }
@@ -136,18 +133,18 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
             if(select1 && select2) {
                 Toast.makeText(this,"경로를 선택 해주세요",Toast.LENGTH_LONG).show()
             } else {
-                if(url == "" && !select1) {
+                if(urlList[0] == "" && !select1) {
                     Toast.makeText(this,"선택한 경로에 선택된 것이 없습니다",Toast.LENGTH_LONG).show()
-                } else if(url2 == "" && !select2) {
+                } else if(urlList[1] == "" && !select2) {
                         Toast.makeText(this, "선택한 경로에 선택된 것이 없습니다", Toast.LENGTH_LONG).show()
                 }else {
                     if(day == count) {
-                        edit.putString("$count", finalURL)
+                        edit.putString("$count", urlList[3])
                         edit.apply()
                         startActivity(Intent(this, RecommendResultActivity::class.java).putExtra("key",key).putExtra("count",count))
                         finish()
                     } else {
-                        edit.putString("$count", finalURL)
+                        edit.putString("$count", urlList[3])
                         edit.apply()
                         startActivity(Intent(this, RandomRecommendActivity::class.java)
                                 .putExtra("key", key)
@@ -162,7 +159,7 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         complete.setOnClickListener {
-            edit.putString("$count", finalURL)
+            edit.putString("$count", urlList[3])
             edit.apply()
             startActivity(Intent(this, RecommendResultActivity::class.java).putExtra("key",key).putExtra("count",count))
             finish()
@@ -186,63 +183,63 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
         if (resultCode == RESULT_OK && requestCode == 1) {
             type1.text = dataList[1]
             td1 = dataList[2] + ","
-            url = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
+            urlList[0] = td1+td2+td3+td4+td5+td6
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
         } else if(resultCode == RESULT_OK && requestCode == 2) {
             type2.text = dataList[1]
             td2 = dataList[2] + ","
-            url = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
+            urlList[0] = td1+td2+td3+td4+td5+td6
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
         }else if(resultCode == RESULT_OK && requestCode == 3) {
             type3.text = dataList[1]
             td3 = dataList[2] + ","
-            url = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
+            urlList[0] = td1+td2+td3+td4+td5+td6
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
         }else if(resultCode == RESULT_OK && requestCode == 4) {
             type4.text = dataList[1]
             td4 = dataList[2] + ","
-            url = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
+            urlList[0] = td1+td2+td3+td4+td5+td6
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
         }else if(resultCode == RESULT_OK && requestCode == 5) {
             type5.text = dataList[1]
             td5 = dataList[2] + ","
-            url = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
+            urlList[0] = td1+td2+td3+td4+td5+td6
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
         }else if(resultCode == RESULT_OK && requestCode == 6) {
             type6.text = dataList[1]
             td6 = dataList[2] + ","
-            url = td1+td2+td3+td4+td5+td6
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url")
+            urlList[0] = td1+td2+td3+td4+td5+td6
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[0])
         }else if(resultCode == RESULT_OK && requestCode == 7) {
             type7.text = dataList[1]
             td7 = dataList[2] + ","
-            url2 = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
+            urlList[1] = td7+td8+td9+td10+td11+td12
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
         }else if(resultCode == RESULT_OK && requestCode == 8) {
             type8.text = dataList[1]
             td8 = dataList[2] + ","
-            url2 = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
+            urlList[1] = td7+td8+td9+td10+td11+td12
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
         }else if(resultCode == RESULT_OK && requestCode == 9) {
             type9.text = dataList[1]
             td9 = dataList[2] + ","
-            url2 = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
+            urlList[1] = td7+td8+td9+td10+td11+td12
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
         }else if(resultCode == RESULT_OK && requestCode == 10) {
             type10.text = dataList[1]
             td10 = dataList[2] + ","
-            url2 = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
+            urlList[1] = td7+td8+td9+td10+td11+td12
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
         }else if(resultCode == RESULT_OK && requestCode == 11) {
             type11.text = dataList[1]
             td11 = dataList[2] + ","
-            url2 = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
+            urlList[1] = td7+td8+td9+td10+td11+td12
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
         }else if(resultCode == RESULT_OK && requestCode == 12) {
             type12.text = dataList[1]
             td12 = dataList[2] + ","
-            url2 = td7+td8+td9+td10+td11+td12
-            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=$url2")
+            urlList[1] = td7+td8+td9+td10+td11+td12
+            map.loadUrl("https://175.206.239.109:8443/oceancompass/route.jsp?type=" + urlList[1])
         }
     }
 
