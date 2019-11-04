@@ -89,6 +89,7 @@ class SearchActivity : AppCompatActivity(), View.OnClickListener  {
 
     override fun onClick(view: View?) {
         findViewById<Button>(view!!.id)!!.setTextColor(Color.parseColor("#FFFFFF"))
+        day = Integer.parseInt(view.resources.getResourceName(view.id).substring(view.resources.getResourceName(view.id).length - 1))
         for (i in 1 .. 7) {
             findViewById<Button>(resources.getIdentifier("day$i","id", packageName))
                 .setBackgroundColor(Color.parseColor("#FFFFFF"))
