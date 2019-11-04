@@ -24,8 +24,11 @@ class ReviewAddActivity : AppCompatActivity() {
         setContentView(R.layout.reviewadd)
 
         var categorys = ""
+        var id = ""
         val pref = this.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE)
         val sessionId = pref.getString("sessionCookie", null)
+
+        var url = "https://175.206.239.109:8443/oceancompass/AddMobilReviewServlet"
 
         val adapter = ArrayAdapter.createFromResource(
             this,
@@ -46,6 +49,7 @@ class ReviewAddActivity : AppCompatActivity() {
         }
 
         if(intent.hasExtra("id")) {
+            id = intent.getStringExtra("id")!!
             val request = object : StringRequest(
                 POST, "https://175.206.239.109:8443/oceancompass/MobileReviewServlet",
                 Response.Listener {
@@ -53,6 +57,7 @@ class ReviewAddActivity : AppCompatActivity() {
                     explanation.setText(it.split("/")[1])
                     loca.text = it.split("/")[2]
                     category.setSelection(adapter.getPosition(it.split("/")[3]))
+                    url = "https://175.206.239.109:8443/oceancompass/MobileUpdateReviewServlet"
                 },
                 Response.ErrorListener {
                     Log.e("에러", "[${it.message}]")
@@ -76,7 +81,7 @@ class ReviewAddActivity : AppCompatActivity() {
                 categorys == "" -> Toast.makeText(this, "카테고리를 선택해주세요", Toast.LENGTH_LONG).show()
                 else -> {
                     val request = object : StringRequest(
-                        POST, "https://175.206.239.109:8443/oceancompass/AddMobilReviewServlet",
+                        POST, url,
                         Response.Listener {
                             if(intent.hasExtra("id")) {
                                 Toast.makeText(this, "수정되었습니다..", Toast.LENGTH_LONG).show()
@@ -98,6 +103,7 @@ class ReviewAddActivity : AppCompatActivity() {
                             params["explanation"] = explanation.text.toString()
                             params["address"] = loca.text.toString()
                             params["category"] = categorys
+                            params["id"] = id
                             return params
                         }
 

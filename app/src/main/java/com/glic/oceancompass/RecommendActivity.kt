@@ -196,7 +196,7 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
             val edit2 = pref2.edit()
             edit.clear()
             edit.apply()
-            edit2.putInt("count", pref2.getInt("count", 1))
+            edit2.putInt("count", pref2.getInt("count", 1)-1)
             edit2.apply()
             startActivity(Intent(this, SearchActivity::class.java))
         }
