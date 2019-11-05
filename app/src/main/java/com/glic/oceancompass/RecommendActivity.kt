@@ -188,7 +188,6 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
                 .putExtra("day",day)
                 .putExtra("count",count-1)
                 .putExtra("historyCount",historyCount))
-            finish()
         } else {
             val pref = this.getSharedPreferences(key, Context.MODE_PRIVATE)
             val edit = pref.edit()
@@ -199,6 +198,7 @@ class RecommendActivity : AppCompatActivity(), View.OnClickListener {
             edit2.putInt("count", pref2.getInt("count", 1)-1)
             edit2.apply()
             startActivity(Intent(this, SearchActivity::class.java))
+            finish()
         }
     }
 }
