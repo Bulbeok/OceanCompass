@@ -67,6 +67,7 @@ class RandomRecommendActivity : AppCompatActivity() {
                     .putExtra("count", count)
                     .putExtra("historyCount",historyCount)
             )
+            finish()
         } else {
             startActivity(
                 Intent(this, RecommendActivity::class.java)
@@ -78,6 +79,7 @@ class RandomRecommendActivity : AppCompatActivity() {
                     .putExtra("random", value)
                     .putExtra("historyCount",historyCount)
             )
+            finish()
         }
     }
 

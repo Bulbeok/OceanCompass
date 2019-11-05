@@ -33,7 +33,7 @@
                 android:theme="@style/AppTheme"  />
         <activity
                 android:name=".RandomRecommendActivity"
-                android:launchMode="singleTop"
+                android:noHistory="true"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme" />
         <activity
